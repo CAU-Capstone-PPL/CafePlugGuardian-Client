@@ -1,5 +1,7 @@
 import 'package:cafe_plug_guardian_client/screens/home_screen.dart';
+import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const App());
@@ -13,7 +15,8 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'cafe_plug_guardian_client',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        fontFamily: 'Nunito',
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColor.main),
         useMaterial3: true,
       ),
       home: const HomeScreen(),
