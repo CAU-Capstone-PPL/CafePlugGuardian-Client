@@ -17,7 +17,7 @@ class Plug extends StatelessWidget {
         );
       },
       child: Container(
-        width: 150,
+        width: 160,
         clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
           border: Border.all(color: AppColor.text),
@@ -31,7 +31,66 @@ class Plug extends StatelessWidget {
             )
           ],
         ),
-        child: const Text('하이'),
+        child: const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                flex: 1,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('플러그 이름'),
+                    Text('ON'),
+                  ],
+                ),
+              ),
+              Flexible(
+                flex: 1,
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('사용시작시간'),
+                        Text('07:12'),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('이용 시간'),
+                        Text('02:14'),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Flexible(
+                flex: 1,
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('실시간 사용량'),
+                        Text('24.9W'),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('남은 전력량'),
+                        Text('2000W'),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
