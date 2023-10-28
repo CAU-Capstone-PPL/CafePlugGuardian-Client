@@ -1,6 +1,7 @@
 import 'package:cafe_plug_guardian_client/screens/plug_list_screen.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/plug_widget.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -74,7 +75,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Flexible(
-              flex: 3,
+              flex: 1,
               child: Column(
                 children: [
                   Row(
@@ -88,18 +89,18 @@ class HomeScreen extends StatelessWidget {
                             fontWeight: FontWeight.w500),
                       ),
                       OutlinedButton(
-                          onPressed: () {
-                            print("버튼 클릭");
-                          },
-                          child: const Text(
-                            'View All',
-                            style: TextStyle(color: AppColor.text),
-                          )),
+                        onPressed: () {},
+                        child: const Text(
+                          'View All',
+                          style: TextStyle(color: AppColor.text),
+                        ),
+                      ),
                     ],
                   ),
                 ],
               ),
             ),
+            Flexible(flex: 3, child: LineChart(LineChartData()))
           ],
         ),
       ),
