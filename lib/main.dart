@@ -1,4 +1,5 @@
 import 'package:cafe_plug_guardian_client/screens/home_screen.dart';
+import 'package:cafe_plug_guardian_client/screens/login_screen.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class App extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: AppColor.main),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: const LoginScreen(),
     );
   }
 }
