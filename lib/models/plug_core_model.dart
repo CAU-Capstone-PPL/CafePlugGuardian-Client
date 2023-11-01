@@ -1,10 +1,18 @@
 class PlugCoreModel {
-  final String plugName, onOff, startTime, runningTime, assignPower;
+  final String plugId,
+      plugName,
+      onOff,
+      startTime,
+      runningTime,
+      usedPower,
+      assignPower;
 
   PlugCoreModel.fromJson(Map<String, dynamic> json)
-      : plugName = json['plugName'],
+      : plugId = json['plugId'],
+        plugName = json['plugName'],
         onOff = json['onOff'],
         startTime = json['startTime'],
         runningTime = json['runningTime'],
+        usedPower = json['usedPower'],
         assignPower = json['assignPower'];
 }

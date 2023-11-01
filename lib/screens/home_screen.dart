@@ -1,49 +1,42 @@
+import 'package:cafe_plug_guardian_client/models/plug_core_model.dart';
 import 'package:cafe_plug_guardian_client/screens/plug_list_screen.dart';
+import 'package:cafe_plug_guardian_client/services/api_plug.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/plug_widget.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+
+  //final Future<List<PlugCoreModel>> plugs = ApiPlug.getPlugs();
+
+  final Future<List<PlugCoreModel>> plugs =
+      ApiPlug.testFetchPlugData(); //test code
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.background,
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: AppColor.background,
+        foregroundColor: AppColor.text,
+        title: const Text(
+          "카페닉네임들어갈자리",
+          style: TextStyle(
+            fontSize: 24,
+            color: AppColor.text,
+          ),
+        ),
+      ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
-        child: Column(
-          children: [
-            const Flexible(
-              flex: 1,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    "example of Nickname",
-                    style: TextStyle(
-                        color: AppColor.text,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  Icon(
-                    Icons.add_alert_outlined,
-                    size: 40,
-                  ),
-                ],
-              ),
-            ),
-            const Flexible(
-              flex: 1,
-              child: SizedBox(
-                height: 20,
-              ),
-            ),
-            Flexible(
-              flex: 3,
-              child: Column(
+        padding: const EdgeInsets.all(20.0),
+        child: FutureBuilder(
+          future: plugs,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                         style: TextStyle(
                             color: AppColor.text,
                             fontSize: 20,
-                            fontWeight: FontWeight.w500),
+                            fontWeight: FontWeight.bold),
                       ),
                       OutlinedButton(
                           onPressed: () {
@@ -70,52 +63,38 @@ class HomeScreen extends StatelessWidget {
                           )),
                     ],
                   ),
-                  Expanded(child: makeList())
+                  const SizedBox(height: 20),
+                  Expanded(child: makeList(snapshot))
                 ],
-              ),
-            ),
-            Flexible(
-              flex: 1,
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Power ',
-                        style: TextStyle(
-                            color: AppColor.text,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      OutlinedButton(
-                        onPressed: () {},
-                        child: const Text(
-                          'View All',
-                          style: TextStyle(color: AppColor.text),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Flexible(flex: 3, child: LineChart(LineChartData()))
-          ],
+              );
+            }
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          },
         ),
       ),
     );
   }
-}
 
-ListView makeList() {
-  return ListView.separated(
-    scrollDirection: Axis.horizontal,
-    itemCount: 10,
-    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-    itemBuilder: (context, index) {
-      return const Plug();
-    },
-    separatorBuilder: (context, index) => const SizedBox(width: 10),
-  );
+  ListView makeList(AsyncSnapshot<List<PlugCoreModel>> snapshot) {
+    return ListView.separated(
+      scrollDirection: Axis.horizontal,
+      itemCount: snapshot.data!.length,
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      itemBuilder: (context, index) {
+        var plug = snapshot.data![index];
+        return Plug(
+          plugId: plug.plugId,
+          plugName: plug.plugName,
+          onOff: plug.onOff,
+          startTime: plug.startTime,
+          runningTime: plug.runningTime,
+          usedPower: plug.usedPower,
+          assignPower: plug.assignPower,
+        );
+      },
+      separatorBuilder: (context, index) => const SizedBox(width: 20),
+    );
+  }
 }

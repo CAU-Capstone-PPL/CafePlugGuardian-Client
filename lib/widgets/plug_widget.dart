@@ -3,7 +3,24 @@ import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:flutter/material.dart';
 
 class Plug extends StatelessWidget {
-  const Plug({super.key});
+  final String plugId,
+      plugName,
+      onOff,
+      startTime,
+      runningTime,
+      usedPower,
+      assignPower;
+
+  const Plug({
+    super.key,
+    required this.plugId,
+    required this.plugName,
+    required this.onOff,
+    required this.startTime,
+    required this.runningTime,
+    required this.usedPower,
+    required this.assignPower,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +34,9 @@ class Plug extends StatelessWidget {
         );
       },
       child: Container(
-        width: 160,
-        clipBehavior: Clip.hardEdge,
+        width: 180,
+        height: 200,
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           border: Border.all(color: AppColor.text),
           color: AppColor.background,
@@ -31,65 +49,59 @@ class Plug extends StatelessWidget {
             )
           ],
         ),
-        child: const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Flexible(
-                flex: 1,
-                child: Row(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  plugName,
+                  style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: AppColor.text),
+                ),
+                Text(onOff),
+              ],
+            ),
+            Column(
+              children: [
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('플러그 이름'),
-                    Text('ON'),
+                    const Text('사용시작시간'),
+                    Text(startTime),
                   ],
                 ),
-              ),
-              Flexible(
-                flex: 1,
-                child: Column(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('사용시작시간'),
-                        Text('07:12'),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('이용 시간'),
-                        Text('02:14'),
-                      ],
-                    ),
+                    const Text('이용 시간'),
+                    Text(runningTime),
                   ],
                 ),
-              ),
-              Flexible(
-                flex: 1,
-                child: Column(
+              ],
+            ),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('실시간 사용량'),
-                        Text('24.9W'),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('남은 전력량'),
-                        Text('2000W'),
-                      ],
-                    ),
+                    const Text('사용한 전력량'),
+                    Text(usedPower),
                   ],
                 ),
-              ),
-            ],
-          ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('할당 전력량'),
+                    Text(assignPower),
+                  ],
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
