@@ -3,7 +3,6 @@ import 'package:cafe_plug_guardian_client/screens/plug_list_screen.dart';
 import 'package:cafe_plug_guardian_client/services/api_plug.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/plug_widget.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {

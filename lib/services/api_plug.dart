@@ -173,7 +173,7 @@ class ApiPlug {
       "runningTime": "2 h",
       "usedPower": "100W",
       "assignPower": "150W",
-      "plugDesciption": "hello 1",
+      "plugDescription": "hello 1",
     },
     {
       "plugId": "2",
@@ -183,7 +183,7 @@ class ApiPlug {
       "runningTime": "",
       "usedPower": "",
       "assignPower": "",
-      "plugDesciption": "hello 2",
+      "plugDescription": "hello 2",
     },
     {
       "plugId": "3",
@@ -193,7 +193,7 @@ class ApiPlug {
       "runningTime": "3 h",
       "usedPower": "120W",
       "assignPower": "200W",
-      "plugDesciption": "hello 3",
+      "plugDescription": "hello 3",
     },
     {
       "plugId": "4",
@@ -203,7 +203,7 @@ class ApiPlug {
       "runningTime": "1.5 h",
       "usedPower": "80W",
       "assignPower": "110W",
-      "plugDesciption": "hello 4",
+      "plugDescription": "hello 4",
     },
     {
       "plugId": "5",
@@ -213,7 +213,7 @@ class ApiPlug {
       "runningTime": "",
       "usedPower": "",
       "assignPower": "",
-      "plugDesciption": "hello 5",
+      "plugDescription": "hello 5",
     },
     {
       "plugId": "6",
@@ -223,7 +223,7 @@ class ApiPlug {
       "runningTime": "2 h",
       "usedPower": "110W",
       "assignPower": "150W",
-      "plugDesciption": "hello 6",
+      "plugDescription": "hello 6",
     },
     {
       "plugId": "7",
@@ -233,7 +233,7 @@ class ApiPlug {
       "runningTime": "2.5 h",
       "usedPower": "95W",
       "assignPower": "130W",
-      "plugDesciption": "hello 7",
+      "plugDescription": "hello 7",
     },
     {
       "plugId": "8",
@@ -243,7 +243,7 @@ class ApiPlug {
       "runningTime": "",
       "usedPower": "",
       "assignPower": "",
-      "plugDesciption": "hello 8",
+      "plugDescription": "hello 8",
     },
     {
       "plugId": "9",
@@ -253,7 +253,7 @@ class ApiPlug {
       "runningTime": "4 h",
       "usedPower": "150W",
       "assignPower": "180W",
-      "plugDesciption": "hello 9",
+      "plugDescription": "hello 9",
     },
     {
       "plugId": "10",
@@ -263,7 +263,7 @@ class ApiPlug {
       "runningTime": "",
       "usedPower": "",
       "assignPower": "",
-      "plugDesciption": "hello 10",
+      "plugDescription": "hello 10",
     },
     {
       "plugId": "11",
@@ -273,7 +273,7 @@ class ApiPlug {
       "runningTime": "3 h",
       "usedPower": "120W",
       "assignPower": "160W",
-      "plugDesciption": "hello 11",
+      "plugDescription": "hello 11",
     },
     {
       "plugId": "12",
@@ -283,7 +283,7 @@ class ApiPlug {
       "runningTime": "1.5 h",
       "usedPower": "70W",
       "assignPower": "100W",
-      "plugDesciption": "hello 12",
+      "plugDescription": "hello 12",
     },
     {
       "plugId": "13",
@@ -293,7 +293,7 @@ class ApiPlug {
       "runningTime": "",
       "usedPower": "",
       "assignPower": "",
-      "plugDesciption": "hello 13",
+      "plugDescription": "hello 13",
     }
   ];
 

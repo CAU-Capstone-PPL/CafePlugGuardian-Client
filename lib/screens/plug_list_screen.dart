@@ -7,9 +7,7 @@ class PlugListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Container(
-        child: const Text("여기는 플러그 리스트 페이지 입니다."),
-      ),
+      body: const Text("여기는 플러그 리스트 페이지 입니다."),
     );
   }
 }

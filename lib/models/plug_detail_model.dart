@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class PlugDetatilModel {
   final String plugId,
       plugName,

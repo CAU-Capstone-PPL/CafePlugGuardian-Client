@@ -29,7 +29,7 @@ class Plug extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const PlugDetailScreen(),
+            builder: (context) => PlugDetailScreen(id: plugId),
           ),
         );
       },
