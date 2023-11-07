@@ -4,7 +4,7 @@ import 'package:cafe_plug_guardian_client/screens/plug_list_screen.dart';
 import 'package:cafe_plug_guardian_client/services/api_plug.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/plug_widget.dart';
-import 'package:fl_chart/fl_chart.dart';
+import 'package:cafe_plug_guardian_client/widgets/weekly_power_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -95,15 +95,20 @@ class HomeScreen extends StatelessWidget {
               future: weeklyPowerData,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  return const Column(
+                  return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Power Graph',
                         style: TextStyle(
                             color: AppColor.text,
                             fontSize: 20,
                             fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 300,
+                        width: 500,
+                        child: WeeklyPowerWidget(weeklyData: snapshot.data!),
                       ),
                     ],
                   );
