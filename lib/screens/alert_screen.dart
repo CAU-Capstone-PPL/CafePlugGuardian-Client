@@ -1,5 +1,5 @@
 import 'package:cafe_plug_guardian_client/models/alert_model.dart';
-import 'package:cafe_plug_guardian_client/services/api_plug.dart';
+import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +16,7 @@ class _AlertScreenState extends State<AlertScreen> {
   @override
   void initState() {
     super.initState();
-    alerts = ApiPlug.tsetGetAlertList();
+    alerts = ApiTest.tsetGetAlertList();
   }
 
   @override

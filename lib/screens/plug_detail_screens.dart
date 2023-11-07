@@ -1,5 +1,5 @@
 import 'package:cafe_plug_guardian_client/models/plug_detail_model.dart';
-import 'package:cafe_plug_guardian_client/services/api_plug.dart';
+import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:flutter/material.dart';
 
 class PlugDetailScreen extends StatefulWidget {
@@ -16,7 +16,7 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
   @override
   void initState() {
     super.initState();
-    plug = ApiPlug.testFetchPlugDetailById(widget.id);
+    plug = ApiTest.testGetPlugById(widget.id);
     //plug = ApiPlug.getPlugById(widget.id);
   }
 

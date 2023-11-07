@@ -1,7 +1,7 @@
 import 'package:cafe_plug_guardian_client/models/plug_core_model.dart';
 import 'package:cafe_plug_guardian_client/screens/alert_screen.dart';
 import 'package:cafe_plug_guardian_client/screens/plug_list_screen.dart';
-import 'package:cafe_plug_guardian_client/services/api_plug.dart';
+import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/plug_widget.dart';
 import 'package:cafe_plug_guardian_client/widgets/weekly_power_widget.dart';
@@ -12,10 +12,9 @@ class HomeScreen extends StatelessWidget {
 
   //final Future<List<PlugCoreModel>> plugs = ApiPlug.getPlugs();
 
-  final Future<List<PlugCoreModel>> plugs =
-      ApiPlug.testFetchPlugData(); //test code
+  final Future<List<PlugCoreModel>> plugs = ApiTest.testGetPlugs(); //test code
   final Future<List<double>> weeklyPowerData =
-      ApiPlug.testGetWeeklyPower(); //test code
+      ApiTest.testGetWeeklyPower(); //test code
 
   @override
   Widget build(BuildContext context) {
