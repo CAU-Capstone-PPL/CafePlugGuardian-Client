@@ -35,7 +35,7 @@ class Plug extends StatelessWidget {
       },
       child: Container(
         width: 180,
-        height: 200,
+        height: 300,
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           border: Border.all(color: AppColor.text),

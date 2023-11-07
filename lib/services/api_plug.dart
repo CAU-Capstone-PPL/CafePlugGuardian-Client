@@ -31,6 +31,16 @@ class ApiPlug {
     throw Error();
   }
 
+  static Future<List<double>> getWeeklyPower() async {
+    final url = Uri.parse('$baseUrl/power weekly url'); //url 수정 필요
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      final List<double> weeklyPower = jsonDecode(response.body);
+      return weeklyPower;
+    }
+    throw Error();
+  }
+
   //더미데이터
   static const List<Map<String, dynamic>> dummyDataPlugCore = [
     {
@@ -303,5 +313,20 @@ class ApiPlug {
         dummyDataPlugDetail.firstWhere((e) => e['plugId'] == id);
     final plugInstance = PlugDetatilModel.fromJson(plugDataById);
     return plugInstance;
+  }
+
+  static const List<double> dummyDataWeeklyPowerData = [
+    70.0,
+    60.0,
+    120.0,
+    150.6,
+    200.7,
+    70.4,
+    80.7
+  ];
+
+  static Future<List<double>> testGetWeeklyPower() async {
+    List<double> weeklyPowerData = dummyDataWeeklyPowerData;
+    return Future.delayed(const Duration(seconds: 0), () => weeklyPowerData);
   }
 }
