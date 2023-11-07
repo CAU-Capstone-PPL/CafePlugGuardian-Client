@@ -137,7 +137,6 @@ class HomeScreen extends StatelessWidget {
             plugId: plug.plugId,
             plugName: plug.plugName,
             onOff: plug.onOff,
-            startTime: plug.startTime,
             runningTime: plug.runningTime,
             usedPower: plug.usedPower,
             assignPower: plug.assignPower,

@@ -3,20 +3,13 @@ import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:flutter/material.dart';
 
 class Plug extends StatelessWidget {
-  final String plugId,
-      plugName,
-      onOff,
-      startTime,
-      runningTime,
-      usedPower,
-      assignPower;
+  final String plugId, plugName, onOff, runningTime, usedPower, assignPower;
 
   const Plug({
     super.key,
     required this.plugId,
     required this.plugName,
     required this.onOff,
-    required this.startTime,
     required this.runningTime,
     required this.usedPower,
     required this.assignPower,
@@ -67,13 +60,6 @@ class Plug extends StatelessWidget {
             ),
             Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text('사용시작시간'),
-                    Text(startTime),
-                  ],
-                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
