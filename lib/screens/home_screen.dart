@@ -12,7 +12,8 @@ class HomeScreen extends StatelessWidget {
 
   //final Future<List<PlugCoreModel>> plugs = ApiPlug.getPlugs();
 
-  final Future<List<PlugCoreModel>> plugs = ApiTest.testGetPlugs(); //test code
+  final Future<List<PlugCoreModel>> plugs =
+      ApiTest.testGetOnPlugs(); //test code
   final Future<List<double>> weeklyPowerData =
       ApiTest.testGetWeeklyPower(); //test code
 
