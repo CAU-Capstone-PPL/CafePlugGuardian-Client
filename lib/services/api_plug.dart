@@ -30,17 +30,6 @@ class ApiPlug {
     return PlugDetatilModel.fromJson(jsonDecode(response.body));
   }
 
-  //최근 일주일 간 총 플러그 전력 사용량 (get)
-  static Future<List<double>> getWeeklyPower() async {
-    final url = Uri.parse('$baseUrl/power weekly url'); //url 수정 필요
-    final response = await http.get(url);
-    if (response.statusCode == 200) {
-      final List<double> weeklyPower = jsonDecode(response.body);
-      return weeklyPower;
-    }
-    throw Error();
-  }
-
   //알림 리스트 ⇒ 알림 스크린에 띄울것 (get)
   static Future<List<AlertModel>> getAlertList() async {
     List<AlertModel> alertInstance = [];
@@ -56,4 +45,29 @@ class ApiPlug {
     }
     throw Error();
   }
+
+  //플러그 총 갯수와 플러그 리스트 → 플러그 리스트 스크린에 띄울 것 (get)
+
+  //플러그 개별 제어 on/off → 홈스크린에서 개별 플러그 On/off 제어 (post)
+
+  //최근 일주일 간 총 플러그 전력 사용량 (get)
+  static Future<List<double>> getWeeklyPower() async {
+    final url = Uri.parse('$baseUrl/power weekly url'); //url 수정 필요
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      final List<double> weeklyPower = jsonDecode(response.body);
+      return weeklyPower;
+    }
+    throw Error();
+  }
+
+  //최근 일주일 간 개별 플러그 전력 사용량 (get) ⇒ 플러그 상세 스크린에 해당 플러그 전력 사용 그래프 띄울 것
+
+  //플러그 추가
+
+  //플러그 삭제
+
+  //플러그 이름 수정
+
+  //플러그 설명 수정
 }
