@@ -4,7 +4,7 @@ import 'package:cafe_plug_guardian_client/models/plug_detail_model.dart';
 import 'package:cafe_plug_guardian_client/services/data_test.dart';
 
 class ApiTest {
-  static Future<List<PlugCoreModel>> testGetPlugs() async {
+  static Future<List<PlugCoreModel>> testGetOnPlugs() async {
     // 실제 API를 호출하는 대신 더미 데이터를 반환합니다.
     List<PlugCoreModel> plugInstances = [];
     const List<dynamic> plugs = dummyDataPlugCore;

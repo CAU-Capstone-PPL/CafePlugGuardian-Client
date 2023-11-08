@@ -8,15 +8,6 @@ const List<Map<String, dynamic>> dummyDataPlugCore = [
     'assignPower': '150W',
   },
   {
-    'plugId': '2',
-    'plugName': 'Plug 2',
-    'onOff': 'Off',
-    'startTime': '',
-    'runningTime': '',
-    'usedPower': '',
-    'assignPower': '',
-  },
-  {
     'plugId': '3',
     'plugName': 'Plug 3',
     'onOff': 'On',
@@ -31,14 +22,6 @@ const List<Map<String, dynamic>> dummyDataPlugCore = [
     'runningTime': '1.5 h',
     'usedPower': '80W',
     'assignPower': '110W'
-  },
-  {
-    'plugId': '5',
-    'plugName': 'Plug 5',
-    'onOff': 'Off',
-    'runningTime': '',
-    'usedPower': '',
-    'assignPower': ''
   },
   {
     'plugId': '6',
@@ -57,28 +40,12 @@ const List<Map<String, dynamic>> dummyDataPlugCore = [
     'assignPower': '130W'
   },
   {
-    'plugId': '8',
-    'plugName': 'Plug 8',
-    'onOff': 'Off',
-    'runningTime': '',
-    'usedPower': '',
-    'assignPower': ''
-  },
-  {
     'plugId': '9',
     'plugName': 'Plug 9',
     'onOff': 'On',
     'runningTime': '4 h',
     'usedPower': '150W',
     'assignPower': '180W'
-  },
-  {
-    'plugId': '10',
-    'plugName': 'Plug 10',
-    'onOff': 'Off',
-    'runningTime': '',
-    'usedPower': '',
-    'assignPower': ''
   },
   {
     'plugId': '11',
@@ -96,14 +63,6 @@ const List<Map<String, dynamic>> dummyDataPlugCore = [
     'usedPower': '70W',
     'assignPower': '100W'
   },
-  {
-    'plugId': '13',
-    'plugName': 'Plug 13',
-    'onOff': 'Off',
-    'runningTime': '',
-    'usedPower': '',
-    'assignPower': ''
-  }
 ];
 
 //더미데이터

@@ -8,7 +8,7 @@ class ApiPlug {
   static const String baseUrl = 'http://43.202.29.19';
 
   //플러그 정보 리스트 (get) ⇒ 홈스크린과 플러그 전체 스크린에 띄울 것
-  static Future<List<PlugCoreModel>> getPlugs() async {
+  static Future<List<PlugCoreModel>> getOnPlugs() async {
     final url = Uri.parse('$baseUrl/plug url'); //url 수정 필요
     final response = await http.get(url);
     if (response.statusCode != 200) {
