@@ -26,10 +26,7 @@ class ApiTest {
   static Future<List<AlertModel>> tsetGetAlertList() async {
     List<AlertModel> alertInstance = [];
     const List<dynamic> alerts = dummyDataAlerts;
-    for (var alert in alerts) {
-      final instance = AlertModel.fromJson(alert);
-      alertInstance.add(instance);
-    }
+    alertInstance = alerts.map((alert) => AlertModel.fromJson(alert)).toList();
     return alertInstance;
   }
 }

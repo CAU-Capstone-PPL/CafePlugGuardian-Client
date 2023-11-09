@@ -35,15 +35,12 @@ class ApiPlug {
     List<AlertModel> alertInstance = [];
     final url = Uri.parse('$baseUrl/alerts url'); //url 수정 필요
     final response = await http.get(url);
-    if (response.statusCode == 200) {
-      final List<dynamic> alerts = jsonDecode(response.body);
-      for (var alert in alerts) {
-        final instance = AlertModel.fromJson(alert);
-        alertInstance.add(instance);
-      }
-      return alertInstance;
+    if (response.statusCode != 200) {
+      throw Error();
     }
-    throw Error();
+    final List<dynamic> alerts = jsonDecode(response.body);
+    alertInstance = alerts.map((alert) => AlertModel.fromJson(alert)).toList();
+    return alertInstance;
   }
 
   //플러그 총 갯수와 플러그 리스트 → 플러그 리스트 스크린에 띄울 것 (get)
