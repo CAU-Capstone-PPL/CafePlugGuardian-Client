@@ -40,6 +40,7 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
                   Text(snapshot.data!.usedPower),
                   Text(snapshot.data!.assignPower),
                   Text(snapshot.data!.plugDescription),
+                  Text(snapshot.data!.realTimePower),
                 ],
               );
             }
