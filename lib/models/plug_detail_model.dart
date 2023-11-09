@@ -6,7 +6,8 @@ class PlugDetatilModel {
       runningTime,
       usedPower,
       assignPower,
-      plugDescription;
+      plugDescription,
+      realTimePower;
 
   PlugDetatilModel.fromJson(Map<String, dynamic> json)
       : plugId = json['plugId'],
@@ -16,5 +17,6 @@ class PlugDetatilModel {
         runningTime = json['runningTime'],
         usedPower = json['usedPower'],
         assignPower = json['assignPower'],
-        plugDescription = json['plugDescription'];
+        plugDescription = json['plugDescription'],
+        realTimePower = json['realTimePower;'];
 }

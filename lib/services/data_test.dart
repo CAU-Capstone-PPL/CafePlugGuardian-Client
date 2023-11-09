@@ -76,6 +76,7 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'usedPower': '100W',
     'assignPower': '150W',
     'plugDescription': 'hello 1',
+    'realTimePower': '200W'
   },
   {
     'plugId': '2',
@@ -86,6 +87,7 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'usedPower': '',
     'assignPower': '',
     'plugDescription': 'hello 2',
+    'realTimePower': ''
   },
   {
     'plugId': '3',
@@ -96,6 +98,7 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'usedPower': '120W',
     'assignPower': '200W',
     'plugDescription': 'hello 3',
+    'realTimePower': '50W'
   },
   {
     'plugId': '4',
@@ -106,6 +109,7 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'usedPower': '80W',
     'assignPower': '110W',
     'plugDescription': 'hello 4',
+    'realTimePower': '60W'
   },
   {
     'plugId': '5',
@@ -116,6 +120,7 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'usedPower': '',
     'assignPower': '',
     'plugDescription': 'hello 5',
+    'realTimePower': ''
   },
   {
     'plugId': '6',
@@ -126,6 +131,7 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'usedPower': '110W',
     'assignPower': '150W',
     'plugDescription': 'hello 6',
+    'realTimePower': '80W'
   },
   {
     'plugId': '7',
@@ -136,6 +142,7 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'usedPower': '95W',
     'assignPower': '130W',
     'plugDescription': 'hello 7',
+    'realTimePower': '120W'
   },
   {
     'plugId': '8',
@@ -146,6 +153,7 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'usedPower': '',
     'assignPower': '',
     'plugDescription': 'hello 8',
+    'realTimePower': ''
   },
   {
     'plugId': '9',
@@ -156,6 +164,7 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'usedPower': '150W',
     'assignPower': '180W',
     'plugDescription': 'hello 9',
+    'realTimePower': '210W'
   },
   {
     'plugId': '10',
@@ -166,6 +175,7 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'usedPower': '',
     'assignPower': '',
     'plugDescription': 'hello 10',
+    'realTimePower': ''
   },
   {
     'plugId': '11',
@@ -176,6 +186,7 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'usedPower': '120W',
     'assignPower': '160W',
     'plugDescription': 'hello 11',
+    'realTimePower': '211W'
   },
   {
     'plugId': '12',
@@ -186,6 +197,7 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'usedPower': '70W',
     'assignPower': '100W',
     'plugDescription': 'hello 12',
+    'realTimePower': '223W'
   },
   {
     'plugId': '13',
@@ -196,6 +208,7 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'usedPower': '',
     'assignPower': '',
     'plugDescription': 'hello 13',
+    'realTimePower': ''
   }
 ];
 
