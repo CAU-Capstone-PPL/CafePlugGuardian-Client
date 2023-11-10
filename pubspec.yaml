@@ -82,9 +82,13 @@ flutter:
         - asset: assets/fonts/Nunito-Bold.ttf
         - asset: assets/fonts/Nunito-Regular.ttf
 
-    - family: Poppins
+    - family: Gmarket
       fonts:
-        - asset: assets/fonts/Poppins-Bold.ttf
+        - asset: assets/fonts/GmarketSansTTFBold.ttf
+          weight: 700
+        - asset: assets/fonts/GmarketSansTTFMedium.ttf
+        - asset: assets/fonts/GmarketSansTTFLight.ttf
+          weight: 300
 
   #   - family: Schyler
   #     fonts:

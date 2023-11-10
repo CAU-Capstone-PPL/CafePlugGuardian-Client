@@ -14,7 +14,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'cafe_plug_guardian_client',
       theme: ThemeData(
-        fontFamily: 'Nunito',
+        fontFamily: 'Gmarket',
         colorScheme: ColorScheme.fromSeed(seedColor: AppColor.main),
         useMaterial3: true,
       ),

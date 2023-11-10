@@ -18,5 +18,5 @@ class PlugDetatilModel {
         usedPower = json['usedPower'],
         assignPower = json['assignPower'],
         plugDescription = json['plugDescription'],
-        realTimePower = json['realTimePower;'];
+        realTimePower = json['realTimePower'];
 }
