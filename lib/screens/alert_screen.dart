@@ -1,6 +1,7 @@
 import 'package:cafe_plug_guardian_client/models/alert_model.dart';
 import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
+import 'package:cafe_plug_guardian_client/widgets/alert_widget.dart';
 import 'package:flutter/material.dart';
 
 class AlertScreen extends StatefulWidget {
@@ -24,62 +25,36 @@ class _AlertScreenState extends State<AlertScreen> {
     return Scaffold(
       backgroundColor: AppColor.background,
       appBar: AppBar(
+        title: const Text(
+          '플러그 보호 알람 리스트',
+          style: TextStyle(fontSize: 20),
+        ),
         backgroundColor: AppColor.background,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: FutureBuilder(
-            future: alerts,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Column(
-                  children: [
-                    for (var alert in snapshot.data!)
-                      Container(
-                        margin: const EdgeInsets.only(bottom: 10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: AppColor.background,
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 5,
-                              offset: const Offset(5, 5),
-                              color: Colors.black.withOpacity(0.1),
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 20,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                '${alert.plugName}에서 비정상적인 전자기기가 ${alert.blockingTime}에 감지되었습니다.',
-                                style: const TextStyle(
-                                  color: AppColor.text,
-                                  fontSize: 8,
-                                ),
-                              ),
-                              const Icon(
-                                Icons.chevron_right_rounded,
-                                color: AppColor.main,
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
-                  ],
-                );
-              }
-              return const Center(
-                child: CircularProgressIndicator(),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: FutureBuilder(
+          future: alerts,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.separated(
+                itemCount: snapshot.data!.length,
+                separatorBuilder: (context, index) =>
+                    const SizedBox(height: 10), // 예시로 간격을 10으로 설정
+                itemBuilder: (context, index) {
+                  var alert = snapshot.data![index];
+                  return Alert(
+                    plugId: alert.plugId,
+                    plugName: alert.plugName,
+                    blockingTime: alert.blockingTime,
+                  );
+                },
               );
-            },
-          ),
+            }
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          },
         ),
       ),
     );
