@@ -126,7 +126,7 @@ class HomeScreen extends StatelessWidget {
 
   SizedBox makeList(AsyncSnapshot<List<PlugCoreModel>> snapshot) {
     return SizedBox(
-      height: 150,
+      height: 170,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: snapshot.data!.length,

@@ -22,10 +22,9 @@ class _AlertScreenState extends State<AlertScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.background,
       appBar: AppBar(
-        elevation: 2,
         backgroundColor: AppColor.background,
-        foregroundColor: AppColor.background,
       ),
       body: SingleChildScrollView(
         child: Padding(

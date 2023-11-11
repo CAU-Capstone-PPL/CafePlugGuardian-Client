@@ -24,7 +24,11 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: AppColor.background,
+      appBar: AppBar(
+        backgroundColor: AppColor.background,
+        title: const Text('플러그 상세 페이지'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: FutureBuilder(

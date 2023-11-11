@@ -6,5 +6,7 @@ class PlugListModel {
 
   PlugListModel.fromJson(Map<String, dynamic> json)
       : total = json['total'],
-        plugs = json['plugs'];
+        plugs = (json['plugs'] as List)
+            .map((plug) => PlugCoreModel.fromJson(plug))
+            .toList();
 }

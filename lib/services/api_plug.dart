@@ -43,7 +43,7 @@ class ApiPlug {
     return alertInstance;
   }
 
-  //플러그 총 갯수와 플러그 리스트 → 플러그 리스트 스크린에 띄울 것 (get)
+  //플러그 총 갯수와 플러그 리스트 → 플러그 리스트 스크린에 띄울 것 (get) : static Future<List<PlugCoreModel>> getPlugs() async
 
   //플러그 개별 제어 on/off → 홈스크린에서 개별 플러그 On/off 제어 (post)
 
