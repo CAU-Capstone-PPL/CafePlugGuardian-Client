@@ -14,8 +14,6 @@ class HomeScreen extends StatelessWidget {
 
   final Future<List<PlugCoreModel>> plugs =
       ApiTest.testGetOnPlugs(); //test code
-  final Future<List<double>> weeklyPowerData =
-      ApiTest.testGetWeeklyPower(); //test code
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +29,10 @@ class HomeScreen extends StatelessWidget {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => const AlertScreen()));
             },
-            icon: const Icon(Icons.add_alert_outlined),
+            icon: const Icon(
+              Icons.add_alert_outlined,
+              size: 40,
+            ),
           ),
         ],
         title: const Text(
@@ -91,32 +92,41 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            FutureBuilder(
-              future: weeklyPowerData,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Power Graph',
-                        style: TextStyle(
-                            color: AppColor.text,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+            Container(
+              margin: const EdgeInsets.only(bottom: 10),
+              decoration: BoxDecoration(
+                border: Border.all(color: AppColor.text, width: 1.5),
+                borderRadius: BorderRadius.circular(10),
+                color: AppColor.background,
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 5,
+                    offset: const Offset(5, 5),
+                    color: Colors.black.withOpacity(0.1),
+                  ),
+                ],
+              ),
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Total Power Graph',
+                      style: TextStyle(
+                        color: AppColor.text,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
                       ),
-                      SizedBox(
-                        height: 300,
-                        width: 500,
-                        child: WeeklyPowerWidget(weeklyData: snapshot.data!),
-                      ),
-                    ],
-                  );
-                }
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              },
+                    ),
+                    Icon(
+                      Icons.chevron_right_rounded,
+                      size: 30,
+                      color: AppColor.text,
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
