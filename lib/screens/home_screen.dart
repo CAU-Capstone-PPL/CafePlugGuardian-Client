@@ -4,7 +4,6 @@ import 'package:cafe_plug_guardian_client/screens/plug_list_screen.dart';
 import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/plug_widget.dart';
-import 'package:cafe_plug_guardian_client/widgets/weekly_power_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -48,44 +47,67 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'ON Plug List',
+                  style: TextStyle(
+                      color: AppColor.text,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ),
+                OutlinedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PlugListScreen(),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    'View All',
+                    style: TextStyle(color: AppColor.text),
+                  ),
+                ),
+              ],
+            ),
             FutureBuilder(
               future: plugs,
               builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            'Plug List',
-                            style: TextStyle(
-                                color: AppColor.text,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          OutlinedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const PlugListScreen(),
-                                  ),
-                                );
-                              },
-                              child: const Text(
-                                'View All',
-                                style: TextStyle(color: AppColor.text),
-                              )),
-                        ],
-                      ),
-                      makeList(snapshot),
-                    ],
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (snapshot.hasError) {
+                  return Center(
+                    child: Text('Error: ${snapshot.error}'),
+                  );
+                } else if (!snapshot.hasData) {
+                  return const Center(
+                    child: Text('No plugs available.'),
                   );
                 }
-                return const Center(
-                  child: CircularProgressIndicator(),
+                return Expanded(
+                  child: GridView.count(
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                    crossAxisCount: 2,
+                    childAspectRatio: 1.2,
+                    children: snapshot.data!
+                        .map(
+                          (plug) => Plug(
+                            plugId: plug.plugId,
+                            plugName: plug.plugName,
+                            onOff: plug.onOff,
+                            runningTime: plug.runningTime,
+                            usedPower: plug.usedPower,
+                            assignPower: plug.assignPower,
+                          ),
+                        )
+                        .toList(),
+                  ),
                 );
               },
             ),
@@ -93,16 +115,15 @@ class HomeScreen extends StatelessWidget {
               height: 20,
             ),
             Container(
-              margin: const EdgeInsets.only(bottom: 10),
               decoration: BoxDecoration(
                 border: Border.all(color: AppColor.text, width: 1.5),
                 borderRadius: BorderRadius.circular(10),
                 color: AppColor.background,
                 boxShadow: [
                   BoxShadow(
-                    blurRadius: 5,
+                    blurRadius: 2,
                     offset: const Offset(5, 5),
-                    color: Colors.black.withOpacity(0.1),
+                    color: Colors.black.withOpacity(0.3),
                   ),
                 ],
               ),
@@ -130,29 +151,6 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  SizedBox makeList(AsyncSnapshot<List<PlugCoreModel>> snapshot) {
-    return SizedBox(
-      height: 170,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        itemCount: snapshot.data!.length,
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-        itemBuilder: (context, index) {
-          var plug = snapshot.data![index];
-          return Plug(
-            plugId: plug.plugId,
-            plugName: plug.plugName,
-            onOff: plug.onOff,
-            runningTime: plug.runningTime,
-            usedPower: plug.usedPower,
-            assignPower: plug.assignPower,
-          );
-        },
-        separatorBuilder: (context, index) => const SizedBox(width: 20),
       ),
     );
   }

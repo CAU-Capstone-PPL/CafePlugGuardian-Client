@@ -38,8 +38,8 @@ class Plug extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
             boxShadow: [
               BoxShadow(
-                blurRadius: 10,
-                offset: const Offset(5, 5),
+                blurRadius: 2,
+                offset: const Offset(3, 3),
                 color: Colors.black.withOpacity(0.3),
               )
             ],
