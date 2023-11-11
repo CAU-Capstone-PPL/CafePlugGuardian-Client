@@ -4,6 +4,7 @@ import 'package:cafe_plug_guardian_client/screens/plug_list_screen.dart';
 import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/plug_widget.dart';
+import 'package:cafe_plug_guardian_client/widgets/power_entry_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -114,41 +115,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: AppColor.text, width: 1.5),
-                borderRadius: BorderRadius.circular(10),
-                color: AppColor.background,
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 2,
-                    offset: const Offset(5, 5),
-                    color: Colors.black.withOpacity(0.3),
-                  ),
-                ],
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Total Power Graph',
-                      style: TextStyle(
-                        color: AppColor.text,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Icon(
-                      Icons.chevron_right_rounded,
-                      size: 30,
-                      color: AppColor.text,
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            const PowerEntry(plugId: '0', plugName: 'null'),
           ],
         ),
       ),

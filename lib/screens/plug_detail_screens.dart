@@ -1,6 +1,9 @@
+import 'package:cafe_plug_guardian_client/models/alert_model.dart';
 import 'package:cafe_plug_guardian_client/models/plug_detail_model.dart';
 import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
+import 'package:cafe_plug_guardian_client/widgets/alert_widget.dart';
+import 'package:cafe_plug_guardian_client/widgets/power_entry_widget.dart';
 import 'package:flutter/material.dart';
 
 class PlugDetailScreen extends StatefulWidget {
@@ -13,11 +16,13 @@ class PlugDetailScreen extends StatefulWidget {
 
 class _PlugDetailScreenState extends State<PlugDetailScreen> {
   late Future<PlugDetatilModel> plug;
+  late Future<List<AlertModel>> alerts;
 
   @override
   void initState() {
     super.initState();
     plug = ApiTest.testGetPlugById(widget.id);
+    alerts = ApiTest.tsetGetAlertList();
     //plug = ApiPlug.getPlugById(widget.id);
   }
 
@@ -31,148 +36,149 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: FutureBuilder(
-          future: plug,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    Container(
-                      width: 400,
-                      height: 300,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: AppColor.text, width: 1.5),
-                        color: AppColor.background,
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 10,
-                            offset: const Offset(5, 5),
-                            color: Colors.black.withOpacity(0.3),
-                          )
-                        ],
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
-                            children: [
-                              Text(
-                                '플러그 ID: ${snapshot.data!.plugId}',
-                                style: const TextStyle(fontSize: 16),
-                              ),
-                              Text(
-                                snapshot.data!.plugName,
-                                style: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Image(
-                                  image: AssetImage('assets/smartPlug.png'),
-                                  width: 100,
-                                ),
-                              ),
-                              Text(
-                                snapshot.data!.onOff,
-                                style: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
-                              ),
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: snapshot.data!.onOff == 'On'
-                                    ? const Text('Off')
-                                    : const Text('On'),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                snapshot.data!.plugDescription,
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                ),
-                              ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            FutureBuilder(
+              future: plug,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const HeadingText(content: '플러그 정보'),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          width: 400,
+                          height: 300,
+                          decoration: BoxDecoration(
+                            border:
+                                Border.all(color: AppColor.text, width: 1.5),
+                            color: AppColor.background,
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 10,
+                                offset: const Offset(5, 5),
+                                color: Colors.black.withOpacity(0.3),
+                              )
                             ],
                           ),
-                          Column(
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              const Text(
-                                '누적 전력소모량',
-                                style: TextStyle(fontSize: 16),
+                              Column(
+                                children: [
+                                  NormalText(
+                                      content:
+                                          '플러그 ID: ${snapshot.data!.plugId}'),
+                                  BoldText(content: snapshot.data!.plugName),
+                                  const Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Image(
+                                      image: AssetImage('assets/smartPlug.png'),
+                                      width: 100,
+                                    ),
+                                  ),
+                                  BoldText(content: snapshot.data!.onOff),
+                                  ElevatedButton(
+                                    onPressed: () {},
+                                    child: snapshot.data!.onOff == 'On'
+                                        ? const NormalText(content: 'Off')
+                                        : const NormalText(content: 'On'),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    snapshot.data!.plugDescription,
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              Text(
-                                snapshot.data!.usedPower,
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                              const Text(
-                                '할당된 전력량',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                              Text(
-                                snapshot.data!.assignPower,
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                              const Text(
-                                '현재 전력 소모량',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                              Text(
-                                snapshot.data!.realTimePower,
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                              const Text(
-                                '플러그 사용 시작 시각',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                              Text(
-                                snapshot.data!.startTime,
-                                style: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
-                              ),
-                              const Text(
-                                '플러그 사용 시간',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                              Text(
-                                snapshot.data!.runningTime,
-                                style: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  const NormalText(content: '누적 전력소모량'),
+                                  TitleText(
+                                      content: '${snapshot.data!.usedPower} W'),
+                                  const NormalText(content: '할당된 전력량'),
+                                  TitleText(
+                                      content:
+                                          '${snapshot.data!.assignPower} W'),
+                                  const NormalText(content: '현재 전력 소모량'),
+                                  TitleText(
+                                      content:
+                                          '${snapshot.data!.realTimePower} W'),
+                                  const NormalText(content: '플러그 사용 시작 시각'),
+                                  TitleText(content: snapshot.data!.startTime),
+                                  const NormalText(content: '플러그 사용 시간'),
+                                  TitleText(
+                                      content:
+                                          '${snapshot.data!.runningTime} h'),
+                                ],
                               ),
                             ],
                           ),
-                        ],
-                      ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        PowerEntry(
+                            plugId: snapshot.data!.plugId,
+                            plugName: snapshot.data!.plugName),
+                      ],
                     ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    Container(
-                      child: const Text('알람 자리'),
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    Container(
-                      child: const Text('그래프 자리'),
-                    ),
-                  ],
-                ),
-              );
-            }
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          },
+                  );
+                }
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
+            ),
+            const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  HeadingText(content: '비정상 기기 로그'),
+                  /*FutureBuilder(
+                    future: alerts,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return Expanded(
+                          child: ListView.separated(
+                            itemCount: snapshot.data!.length,
+                            separatorBuilder: (context, index) =>
+                                const SizedBox(height: 10),
+                            itemBuilder: (context, index) {
+                              var alert = snapshot.data![index];
+                              return Alert(
+                                plugId: alert.plugId,
+                                plugName: alert.plugName,
+                                blockingTime: alert.blockingTime,
+                              );
+                            },
+                          ),
+                        );
+                      }
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    },
+                  ),*/
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

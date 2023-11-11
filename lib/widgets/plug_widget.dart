@@ -114,15 +114,8 @@ class PlugInfoWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          contentName,
-          style: const TextStyle(fontSize: 16, color: AppColor.text),
-        ),
-        Text(
-          '$content $unit',
-          style: const TextStyle(
-              fontSize: 16, fontWeight: FontWeight.bold, color: AppColor.text),
-        ),
+        NormalText(content: contentName),
+        BoldText(content: '$content $unit'),
       ],
     );
   }

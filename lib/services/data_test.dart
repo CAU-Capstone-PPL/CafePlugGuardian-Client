@@ -388,7 +388,6 @@ const List<Map<String, dynamic>> dummyDataPlugs = [
     'assignPower': '',
   }
 ];
-Map<String, dynamic> dummyDataPlug = {'total': 13, 'plugs': dummyDataPlugs};
 const List<double> dummyDataWeeklyPowerData = [
   70.0,
   60.0,

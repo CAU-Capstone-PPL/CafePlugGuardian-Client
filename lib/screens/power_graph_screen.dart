@@ -16,12 +16,13 @@ class _PowerGraphScreenState extends State<PowerGraphScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.background,
       appBar: AppBar(
         centerTitle: false,
         backgroundColor: AppColor.background,
         foregroundColor: AppColor.text,
         title: const Text(
-          "Cafe Nickname",
+          "Power Graph",
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
@@ -49,7 +50,7 @@ class _PowerGraphScreenState extends State<PowerGraphScreen> {
                       ),
                       SizedBox(
                         height: 300,
-                        width: 500,
+                        width: 400,
                         child: WeeklyPowerWidget(weeklyData: snapshot.data!),
                       ),
                     ],
