@@ -31,8 +31,12 @@ class ApiTest {
     return alertInstance;
   }
 
-  static Future<PlugListModel> testGetPlugs() async {
+  static Future<List<PlugCoreModel>> testGetPlugs() async {
+    List<PlugCoreModel> plugInstances = [];
+    const List<dynamic> plugs = dummyDataPlugs;
+    plugInstances = plugs.map((plug) => PlugCoreModel.fromJson(plug)).toList();
+    return plugInstances;
     // 실제 API를 호출하는 대신 더미 데이터를 반환합니다.
-    return PlugListModel.fromJson(dummyDataPlug);
+    //return PlugListModel.fromJson(dummyDataPlug);
   }
 }

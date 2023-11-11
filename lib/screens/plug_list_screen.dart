@@ -13,13 +13,12 @@ class PlugListScreen extends StatefulWidget {
 }
 
 class _PlugListScreenState extends State<PlugListScreen> {
-  late final Future<PlugListModel> plugs;
+  late final Future<List<PlugCoreModel>> plugs;
 
   @override
   void initState() {
     super.initState();
     plugs = ApiTest.testGetPlugs();
-    print('테스트: $plugs'); // Replace with your API call
   }
 
   @override
@@ -53,7 +52,7 @@ class _PlugListScreenState extends State<PlugListScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('플러그 총 개수: ${snapshot.data!.total}'),
+                    Text('플러그 총 개수: ${snapshot.data!.length}'),
                     const Text('플러그 추가'),
                     const Text('플러그 삭제'),
                   ],
@@ -65,7 +64,7 @@ class _PlugListScreenState extends State<PlugListScreen> {
                     crossAxisSpacing: 10,
                     crossAxisCount: 2,
                     childAspectRatio: 1.2,
-                    children: snapshot.data!.plugs
+                    children: snapshot.data!
                         .map(
                           (plug) => Plug(
                             plugId: plug.plugId,
