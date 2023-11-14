@@ -2,10 +2,20 @@ import 'package:cafe_plug_guardian_client/screens/power_graph_screen.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:flutter/material.dart';
 
-class PowerEntry extends StatelessWidget {
+class PowerEntry extends StatefulWidget {
   final String plugId, plugName;
-  const PowerEntry({super.key, required this.plugId, required this.plugName});
 
+  const PowerEntry({
+    super.key,
+    required this.plugId,
+    required this.plugName,
+  });
+
+  @override
+  State<PowerEntry> createState() => _PowerEntryState();
+}
+
+class _PowerEntryState extends State<PowerEntry> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -13,7 +23,10 @@ class PowerEntry extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const PowerGraphScreen(),
+            builder: (context) => PowerGraphScreen(
+              plugId: widget.plugId,
+              plugName: widget.plugName,
+            ),
           ),
         );
       },
@@ -35,7 +48,7 @@ class PowerEntry extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              plugId == '0'
+              widget.plugId == '0'
                   ? const Text(
                       'Total Power Graph',
                       style: TextStyle(
@@ -45,7 +58,7 @@ class PowerEntry extends StatelessWidget {
                       ),
                     )
                   : Text(
-                      '$plugName Power Graph',
+                      '${widget.plugName} Power Graph',
                       style: const TextStyle(
                         color: AppColor.text,
                         fontSize: 20,

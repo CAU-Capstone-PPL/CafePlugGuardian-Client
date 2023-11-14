@@ -4,7 +4,14 @@ import 'package:cafe_plug_guardian_client/widgets/weekly_power_widget.dart';
 import 'package:flutter/material.dart';
 
 class PowerGraphScreen extends StatefulWidget {
-  const PowerGraphScreen({super.key});
+  final String plugId;
+  final String plugName;
+
+  const PowerGraphScreen({
+    super.key,
+    required this.plugId,
+    required this.plugName,
+  });
 
   @override
   State<PowerGraphScreen> createState() => _PowerGraphScreenState();
@@ -18,18 +25,26 @@ class _PowerGraphScreenState extends State<PowerGraphScreen> {
     return Scaffold(
       backgroundColor: AppColor.background,
       appBar: AppBar(
-        centerTitle: false,
-        backgroundColor: AppColor.background,
-        foregroundColor: AppColor.text,
-        title: const Text(
-          "Power Graph",
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: AppColor.text,
-          ),
-        ),
-      ),
+          centerTitle: false,
+          backgroundColor: AppColor.background,
+          foregroundColor: AppColor.text,
+          title: widget.plugId == '0'
+              ? const Text(
+                  'Total Power Graph',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: AppColor.text,
+                  ),
+                )
+              : Text(
+                  '${widget.plugName} Power Graph',
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: AppColor.text,
+                  ),
+                )),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -38,22 +53,10 @@ class _PowerGraphScreenState extends State<PowerGraphScreen> {
               future: weeklyPowerData,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Power Graph',
-                        style: TextStyle(
-                            color: AppColor.text,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 300,
-                        width: 400,
-                        child: WeeklyPowerWidget(weeklyData: snapshot.data!),
-                      ),
-                    ],
+                  return SizedBox(
+                    height: 300,
+                    width: 400,
+                    child: WeeklyPowerWidget(weeklyData: snapshot.data!),
                   );
                 }
                 return const Center(
