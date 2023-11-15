@@ -1,9 +1,11 @@
 import 'package:cafe_plug_guardian_client/models/alert_model.dart';
 import 'package:cafe_plug_guardian_client/models/plug_detail_model.dart';
+import 'package:cafe_plug_guardian_client/screens/alert_by_plug_id.dart';
 import 'package:cafe_plug_guardian_client/services/api_plug.dart';
 import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/alert_widget.dart';
+import 'package:cafe_plug_guardian_client/widgets/page_entry_button_widget.dart';
 import 'package:cafe_plug_guardian_client/widgets/power_entry_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -145,6 +147,20 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
                         PowerEntry(
                             plugId: snapshot.data!.plugId,
                             plugName: snapshot.data!.plugName),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        PageEntryButton(
+                            content: '비정상 접근 로그',
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => AlertByPlugIdScreen(
+                                      plugId: snapshot.data!.plugId),
+                                ),
+                              );
+                            })
                       ],
                     ),
                   );
@@ -153,40 +169,6 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
                   child: CircularProgressIndicator(),
                 );
               },
-            ),
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  HeadingText(content: '비정상 기기 로그'),
-                  /*FutureBuilder(
-                    future: alerts,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        return Expanded(
-                          child: ListView.separated(
-                            itemCount: snapshot.data!.length,
-                            separatorBuilder: (context, index) =>
-                                const SizedBox(height: 10),
-                            itemBuilder: (context, index) {
-                              var alert = snapshot.data![index];
-                              return Alert(
-                                plugId: alert.plugId,
-                                plugName: alert.plugName,
-                                blockingTime: alert.blockingTime,
-                              );
-                            },
-                          ),
-                        );
-                      }
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    },
-                  ),*/
-                ],
-              ),
             ),
           ],
         ),
