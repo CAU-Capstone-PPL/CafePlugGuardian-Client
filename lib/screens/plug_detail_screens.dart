@@ -1,5 +1,6 @@
 import 'package:cafe_plug_guardian_client/models/alert_model.dart';
 import 'package:cafe_plug_guardian_client/models/plug_detail_model.dart';
+import 'package:cafe_plug_guardian_client/services/api_plug.dart';
 import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/alert_widget.dart';
@@ -17,6 +18,7 @@ class PlugDetailScreen extends StatefulWidget {
 class _PlugDetailScreenState extends State<PlugDetailScreen> {
   late Future<PlugDetatilModel> plug;
   late Future<List<AlertModel>> alerts;
+  late String plugOnOff;
 
   @override
   void initState() {
@@ -86,7 +88,15 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
                                   ),
                                   BoldText(content: snapshot.data!.onOff),
                                   ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      if (snapshot.data!.onOff == 'On') {
+                                        ApiPlug.patchPlugOff(
+                                            snapshot.data!.plugId);
+                                      } else {
+                                        ApiPlug.patchPlugOn(
+                                            snapshot.data!.plugId);
+                                      }
+                                    },
                                     child: snapshot.data!.onOff == 'On'
                                         ? const NormalText(content: 'Off')
                                         : const NormalText(content: 'On'),
