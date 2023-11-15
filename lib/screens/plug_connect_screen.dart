@@ -18,7 +18,7 @@ class _PlugConnectScreenState extends State<PlugConnectScreen> {
     return Scaffold(
       backgroundColor: AppColor.background,
       appBar: AppBar(
-        title: const HeadingText(content: '플러그 추가'),
+        title: const AppBarText(content: '플러그 추가'),
         backgroundColor: AppColor.background,
       ),
       body: Container(

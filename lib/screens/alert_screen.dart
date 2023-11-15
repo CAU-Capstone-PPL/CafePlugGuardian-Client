@@ -25,9 +25,8 @@ class _AlertScreenState extends State<AlertScreen> {
     return Scaffold(
       backgroundColor: AppColor.background,
       appBar: AppBar(
-        title: const Text(
-          '플러그 보호 알람 리스트',
-          style: TextStyle(fontSize: 20),
+        title: const AppBarText(
+          content: '플러그 보호 알람 리스트',
         ),
         backgroundColor: AppColor.background,
       ),

@@ -28,7 +28,7 @@ class _PlugListScreenState extends State<PlugListScreen> {
       backgroundColor: AppColor.background,
       appBar: AppBar(
         backgroundColor: AppColor.background,
-        title: const Text('플러그 관리 페이지'),
+        title: const AppBarText(content: '플러그 관리 페이지'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),

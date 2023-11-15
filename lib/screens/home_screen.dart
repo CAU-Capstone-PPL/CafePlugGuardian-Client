@@ -35,13 +35,8 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ],
-        title: const Text(
-          "Cafe Nickname",
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: AppColor.text,
-          ),
+        title: const AppBarText(
+          content: 'Cafe Nickname',
         ),
       ),
       body: Padding(
@@ -51,12 +46,8 @@ class HomeScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'ON Plug List',
-                  style: TextStyle(
-                      color: AppColor.text,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+                const HeadingText(
+                  content: 'ON Plug List',
                 ),
                 OutlinedButton(
                   onPressed: () {
@@ -83,11 +74,11 @@ class HomeScreen extends StatelessWidget {
                   );
                 } else if (snapshot.hasError) {
                   return Center(
-                    child: Text('Error: ${snapshot.error}'),
+                    child: BoldText(content: 'Error: ${snapshot.error}'),
                   );
                 } else if (!snapshot.hasData) {
                   return const Center(
-                    child: Text('No plugs available.'),
+                    child: BoldText(content: 'No plugs available.'),
                   );
                 }
                 return Expanded(

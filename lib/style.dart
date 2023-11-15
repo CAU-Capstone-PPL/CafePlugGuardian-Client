@@ -10,6 +10,7 @@ class AppColor extends Color {
 
 class BoldText extends StatelessWidget {
   final String content;
+  final Color color = AppColor.text;
   const BoldText({super.key, required this.content});
 
   @override
@@ -43,7 +44,8 @@ class TitleText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       content,
-      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      style: const TextStyle(
+          fontSize: 18, fontWeight: FontWeight.bold, color: AppColor.text),
     );
   }
 }
@@ -56,7 +58,22 @@ class HeadingText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       content,
-      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      style: const TextStyle(
+          fontSize: 20, fontWeight: FontWeight.bold, color: AppColor.text),
+    );
+  }
+}
+
+class AppBarText extends StatelessWidget {
+  final String content;
+  const AppBarText({super.key, required this.content});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      content,
+      style: const TextStyle(
+          fontSize: 24, fontWeight: FontWeight.bold, color: AppColor.text),
     );
   }
 }

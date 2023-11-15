@@ -8,7 +8,7 @@ class AlertByPlugIdScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const HeadingText(content: 'Alert')),
+      appBar: AppBar(title: const AppBarText(content: 'Alert')),
       body: Text('플러그 $plugId 개별 알람 스크린 입니다.'),
     );
   }

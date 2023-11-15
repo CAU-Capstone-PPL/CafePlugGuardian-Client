@@ -35,7 +35,7 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
       backgroundColor: AppColor.background,
       appBar: AppBar(
         backgroundColor: AppColor.background,
-        title: const Text('플러그 상세 페이지'),
+        title: const AppBarText(content: '플러그 상세 페이지'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),

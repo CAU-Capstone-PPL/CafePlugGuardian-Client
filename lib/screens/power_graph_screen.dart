@@ -29,21 +29,11 @@ class _PowerGraphScreenState extends State<PowerGraphScreen> {
           backgroundColor: AppColor.background,
           foregroundColor: AppColor.text,
           title: widget.plugId == 0
-              ? const Text(
-                  'Total Power Graph',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: AppColor.text,
-                  ),
+              ? const AppBarText(
+                  content: 'Total Power Graph',
                 )
-              : Text(
-                  '${widget.plugName} Power Graph',
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: AppColor.text,
-                  ),
+              : AppBarText(
+                  content: '${widget.plugName} Power Graph',
                 )),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
