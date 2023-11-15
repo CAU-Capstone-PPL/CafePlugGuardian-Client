@@ -4,6 +4,7 @@ import 'package:cafe_plug_guardian_client/screens/alert_by_plug_id.dart';
 import 'package:cafe_plug_guardian_client/services/api_plug.dart';
 import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
+import 'package:cafe_plug_guardian_client/widgets/custom_button_widget.dart';
 import 'package:cafe_plug_guardian_client/widgets/page_entry_button_widget.dart';
 import 'package:cafe_plug_guardian_client/widgets/power_entry_widget.dart';
 import 'package:flutter/material.dart';
@@ -88,20 +89,19 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
                                     ),
                                   ),
                                   BoldText(content: snapshot.data!.onOff),
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      if (snapshot.data!.onOff == 'On') {
-                                        ApiPlug.patchPlugOff(
-                                            snapshot.data!.plugId);
-                                      } else {
-                                        ApiPlug.patchPlugOn(
-                                            snapshot.data!.plugId);
-                                      }
-                                    },
-                                    child: snapshot.data!.onOff == 'On'
-                                        ? const NormalText(content: 'Off')
-                                        : const NormalText(content: 'On'),
-                                  ),
+                                  CustomButton(
+                                      content: snapshot.data!.onOff == 'On'
+                                          ? 'Off'
+                                          : 'On',
+                                      onPressed: () {
+                                        if (snapshot.data!.onOff == 'On') {
+                                          ApiPlug.patchPlugOff(
+                                              snapshot.data!.plugId);
+                                        } else {
+                                          ApiPlug.patchPlugOn(
+                                              snapshot.data!.plugId);
+                                        }
+                                      }),
                                   const SizedBox(
                                     height: 10,
                                   ),
