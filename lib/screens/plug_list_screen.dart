@@ -53,7 +53,7 @@ class _PlugListScreenState extends State<PlugListScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('플러그 총 개수: ${snapshot.data!.length}'),
+                    HeadingText(content: '총 개수: ${snapshot.data!.length}'),
                     Row(
                       children: [
                         CustomButton(
