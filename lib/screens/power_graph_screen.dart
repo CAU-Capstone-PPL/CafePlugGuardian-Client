@@ -28,7 +28,7 @@ class _PowerGraphScreenState extends State<PowerGraphScreen> {
           centerTitle: false,
           backgroundColor: AppColor.background,
           foregroundColor: AppColor.text,
-          title: widget.plugId == '0'
+          title: widget.plugId == 0
               ? const Text(
                   'Total Power Graph',
                   style: TextStyle(
