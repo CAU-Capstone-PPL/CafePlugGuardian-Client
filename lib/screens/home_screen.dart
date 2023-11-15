@@ -3,6 +3,7 @@ import 'package:cafe_plug_guardian_client/screens/alert_screen.dart';
 import 'package:cafe_plug_guardian_client/screens/plug_list_screen.dart';
 import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
+import 'package:cafe_plug_guardian_client/widgets/custom_button_widget.dart';
 import 'package:cafe_plug_guardian_client/widgets/plug_widget.dart';
 import 'package:cafe_plug_guardian_client/widgets/power_entry_widget.dart';
 import 'package:flutter/material.dart';
@@ -49,21 +50,20 @@ class HomeScreen extends StatelessWidget {
                 const HeadingText(
                   content: 'ON Plug List',
                 ),
-                OutlinedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const PlugListScreen(),
-                      ),
-                    );
-                  },
-                  child: const Text(
-                    'View All',
-                    style: TextStyle(color: AppColor.text),
-                  ),
-                ),
+                CustomButton(
+                    content: 'View all',
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PlugListScreen(),
+                        ),
+                      );
+                    }),
               ],
+            ),
+            const SizedBox(
+              height: 10,
             ),
             FutureBuilder(
               future: plugs,
