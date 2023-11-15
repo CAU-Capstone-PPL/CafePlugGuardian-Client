@@ -1,5 +1,6 @@
 class AlertModel {
-  final String plugId, plugName, blockingTime;
+  final String plugName, blockingTime;
+  final int plugId;
 
   AlertModel.fromJson(Map<String, dynamic> json)
       : plugId = json['plugId'],

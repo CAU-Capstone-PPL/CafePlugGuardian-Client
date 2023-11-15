@@ -2,7 +2,7 @@ import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:flutter/material.dart';
 
 class Alert extends StatelessWidget {
-  final String plugId;
+  final int plugId;
   final String plugName;
   final String blockingTime;
   const Alert({

@@ -3,7 +3,8 @@ import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:flutter/material.dart';
 
 class PowerEntry extends StatefulWidget {
-  final String plugId, plugName;
+  final String plugName;
+  final int plugId;
 
   const PowerEntry({
     super.key,

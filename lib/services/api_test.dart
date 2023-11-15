@@ -12,7 +12,7 @@ class ApiTest {
     return plugInstances;
   }
 
-  static Future<PlugDetatilModel> testGetPlugById(String id) async {
+  static Future<PlugDetatilModel> testGetPlugById(int id) async {
     Map<String, dynamic> plugDataById =
         dummyDataPlugDetail.firstWhere((e) => e['plugId'] == id);
     return PlugDetatilModel.fromJson(plugDataById);

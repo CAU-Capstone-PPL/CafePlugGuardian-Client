@@ -8,7 +8,7 @@ import 'package:cafe_plug_guardian_client/widgets/power_entry_widget.dart';
 import 'package:flutter/material.dart';
 
 class PlugDetailScreen extends StatefulWidget {
-  final String id;
+  final int id;
   const PlugDetailScreen({super.key, required this.id});
 
   @override

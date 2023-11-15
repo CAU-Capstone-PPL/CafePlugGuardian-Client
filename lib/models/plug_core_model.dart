@@ -1,5 +1,6 @@
 class PlugCoreModel {
-  final String plugId, plugName, onOff, runningTime, usedPower, assignPower;
+  final String plugName, onOff, runningTime;
+  final int plugId, usedPower, assignPower;
 
   PlugCoreModel.fromJson(Map<String, dynamic> json)
       : plugId = json['plugId'],

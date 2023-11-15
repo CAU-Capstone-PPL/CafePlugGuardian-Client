@@ -3,7 +3,8 @@ import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:flutter/material.dart';
 
 class Plug extends StatelessWidget {
-  final String plugId, plugName, onOff, runningTime, usedPower, assignPower;
+  final String plugName, onOff, runningTime;
+  final int plugId, usedPower, assignPower;
 
   const Plug({
     super.key,

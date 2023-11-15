@@ -115,7 +115,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const PowerEntry(plugId: '0', plugName: 'null'),
+            const PowerEntry(plugId: 0, plugName: 'null'),
           ],
         ),
       ),

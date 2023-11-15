@@ -4,7 +4,7 @@ import 'package:cafe_plug_guardian_client/widgets/weekly_power_widget.dart';
 import 'package:flutter/material.dart';
 
 class PowerGraphScreen extends StatefulWidget {
-  final String plugId;
+  final int plugId;
   final String plugName;
 
   const PowerGraphScreen({
