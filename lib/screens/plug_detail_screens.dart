@@ -4,7 +4,6 @@ import 'package:cafe_plug_guardian_client/screens/alert_by_plug_id.dart';
 import 'package:cafe_plug_guardian_client/services/api_plug.dart';
 import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
-import 'package:cafe_plug_guardian_client/widgets/alert_widget.dart';
 import 'package:cafe_plug_guardian_client/widgets/page_entry_button_widget.dart';
 import 'package:cafe_plug_guardian_client/widgets/power_entry_widget.dart';
 import 'package:flutter/material.dart';

@@ -1,6 +1,7 @@
 import 'package:cafe_plug_guardian_client/models/plug_core_model.dart';
 import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
+import 'package:cafe_plug_guardian_client/widgets/custom_button_widget.dart';
 import 'package:cafe_plug_guardian_client/widgets/plug_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -52,8 +53,15 @@ class _PlugListScreenState extends State<PlugListScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text('플러그 총 개수: ${snapshot.data!.length}'),
-                    const Text('플러그 추가'),
-                    const Text('플러그 삭제'),
+                    Row(
+                      children: [
+                        CustomButton(content: '플러그 추가', onPressed: () {}),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        CustomButton(content: '플러그 삭제', onPressed: () {}),
+                      ],
+                    ),
                   ],
                 ),
                 const SizedBox(height: 20),
