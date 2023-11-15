@@ -1,4 +1,5 @@
 import 'package:cafe_plug_guardian_client/models/plug_core_model.dart';
+import 'package:cafe_plug_guardian_client/screens/plug_connect_screen.dart';
 import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/custom_button_widget.dart';
@@ -55,7 +56,17 @@ class _PlugListScreenState extends State<PlugListScreen> {
                     Text('플러그 총 개수: ${snapshot.data!.length}'),
                     Row(
                       children: [
-                        CustomButton(content: '플러그 추가', onPressed: () {}),
+                        CustomButton(
+                            content: '플러그 추가',
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const PlugConnectScreen(),
+                                ),
+                              );
+                            }),
                         const SizedBox(
                           width: 10,
                         ),
