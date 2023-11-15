@@ -51,19 +51,11 @@ class Plug extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    plugName,
-                    style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: AppColor.text),
+                  TitleText(
+                    content: plugName,
                   ),
-                  Text(
-                    onOff,
-                    style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: AppColor.text),
+                  BoldText(
+                    content: onOff,
                   ),
                 ],
               ),
