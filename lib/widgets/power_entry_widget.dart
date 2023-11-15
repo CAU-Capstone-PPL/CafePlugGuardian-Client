@@ -49,7 +49,7 @@ class _PowerEntryState extends State<PowerEntry> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              widget.plugId == '0'
+              widget.plugId == 0
                   ? const Text(
                       'Total Power Graph',
                       style: TextStyle(
