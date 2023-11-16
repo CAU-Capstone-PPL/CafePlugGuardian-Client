@@ -1,6 +1,10 @@
+import 'package:cafe_plug_guardian_client/screens/plug_connect_return_wifi_screen.dart';
+import 'package:cafe_plug_guardian_client/services/api_plug.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/custom_button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:connectivity/connectivity.dart';
+import 'package:network_info_plus/network_info_plus.dart';
 
 class PlugConnectScreen extends StatefulWidget {
   const PlugConnectScreen({super.key});
@@ -12,6 +16,27 @@ class PlugConnectScreen extends StatefulWidget {
 class _PlugConnectScreenState extends State<PlugConnectScreen> {
   final TextEditingController _ssidController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  Future<bool> _tryConnectWifi(String ssid, String password) async {
+    //와이파이 연결은 네이티브 코드 필요해서 임시로 주석 처리 추후 구현
+
+    return true;
+  }
+
+  Future<bool> _validateWifiConnection(String ssid, String password) async {
+    final info = NetworkInfo();
+    String originalSSID = "";
+    /*
+    String? originalSSID = await info.getWifiName();
+
+    if (originalSSID == null) {
+      return false;
+    }*/
+    bool isConnected = await _tryConnectWifi(ssid, password);
+    await _tryConnectWifi(originalSSID, "");
+
+    return isConnected;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +58,7 @@ class _PlugConnectScreenState extends State<PlugConnectScreen> {
             const SizedBox(
               height: 10,
             ),
-            const HeadingText(content: '플러그를 연결하려면 어쩌구 저쩌구'),
+            const HeadingText(content: '플러그 핫스팟에 연결 후 연결할 와이파이 SSID, 비밀번호를 입력해주세요.'),
             const SizedBox(
               height: 20,
             ),
@@ -58,7 +83,22 @@ class _PlugConnectScreenState extends State<PlugConnectScreen> {
             const SizedBox(height: 16.0),
             CustomButton(
               content: '연결',
-              onPressed: () {},
+              onPressed: () async {
+                String ssid = _ssidController.text;
+                String password =_passwordController.text;
+
+                if (await _validateWifiConnection(ssid, password)) {
+                  String topic = await ApiPlug.getPlugTopic();
+                  print('테스트: $topic');
+                  await ApiPlug.getPlugConnectWiFi(ssid, password);
+
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PlugConnectWifiScreen(topic: topic),
+                  ));
+                }
+              },
             ),
             const SizedBox(
               height: 20,
