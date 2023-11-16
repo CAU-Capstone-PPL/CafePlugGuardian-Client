@@ -4,7 +4,9 @@ import 'package:cafe_plug_guardian_client/screens/alert_by_plug_id.dart';
 import 'package:cafe_plug_guardian_client/services/api_plug.dart';
 import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
+import 'package:cafe_plug_guardian_client/widgets/custom_button_widget.dart';
 import 'package:cafe_plug_guardian_client/widgets/page_entry_button_widget.dart';
+import 'package:cafe_plug_guardian_client/widgets/plug_power_info.dart';
 import 'package:cafe_plug_guardian_client/widgets/power_entry_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -57,7 +59,7 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
                         ),
                         Container(
                           width: 400,
-                          height: 300,
+                          height: 350,
                           decoration: BoxDecoration(
                             border:
                                 Border.all(color: AppColor.text, width: 1.5),
@@ -75,6 +77,7 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   NormalText(
                                       content:
@@ -88,20 +91,19 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
                                     ),
                                   ),
                                   BoldText(content: snapshot.data!.onOff),
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      if (snapshot.data!.onOff == 'On') {
-                                        ApiPlug.patchPlugOff(
-                                            snapshot.data!.plugId);
-                                      } else {
-                                        ApiPlug.patchPlugOn(
-                                            snapshot.data!.plugId);
-                                      }
-                                    },
-                                    child: snapshot.data!.onOff == 'On'
-                                        ? const NormalText(content: 'Off')
-                                        : const NormalText(content: 'On'),
-                                  ),
+                                  CustomButton(
+                                      content: snapshot.data!.onOff == 'On'
+                                          ? 'Off'
+                                          : 'On',
+                                      onPressed: () {
+                                        if (snapshot.data!.onOff == 'On') {
+                                          ApiPlug.patchPlugOff(
+                                              snapshot.data!.plugId);
+                                        } else {
+                                          ApiPlug.patchPlugOn(
+                                              snapshot.data!.plugId);
+                                        }
+                                      }),
                                   const SizedBox(
                                     height: 10,
                                   ),
@@ -113,30 +115,12 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
                                   ),
                                 ],
                               ),
-                              Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  const NormalText(content: '누적 전력소모량'),
-                                  TitleText(
-                                      content: '${snapshot.data!.usedPower} W'),
-                                  const NormalText(content: '할당된 전력량'),
-                                  TitleText(
-                                      content:
-                                          '${snapshot.data!.assignPower} W'),
-                                  const NormalText(content: '현재 전력 소모량'),
-                                  TitleText(
-                                      content:
-                                          '${snapshot.data!.realTimePower} W'),
-                                  const NormalText(content: '플러그 사용 시작 시각'),
-                                  TitleText(content: snapshot.data!.startTime),
-                                  const NormalText(content: '플러그 사용 시간'),
-                                  TitleText(
-                                      content:
-                                          '${snapshot.data!.runningTime} h'),
-                                ],
-                              ),
+                              PlugPowerInfomattion(
+                                  assignPower: snapshot.data!.assignPower,
+                                  usedPower: snapshot.data!.usedPower,
+                                  realTimePower: snapshot.data!.realTimePower,
+                                  startTime: snapshot.data!.startTime,
+                                  runningTime: snapshot.data!.runningTime),
                             ],
                           ),
                         ),
