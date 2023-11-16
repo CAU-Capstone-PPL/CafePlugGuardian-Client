@@ -45,6 +45,19 @@ class ApiPlug {
   }
 
   //플러그 총 갯수와 플러그 리스트 → 플러그 리스트 스크린에 띄울 것 (get) : static Future<List<PlugCoreModel>> getPlugs() async
+  //알림 리스트 ⇒ 알림 스크린에 띄울것 (get)
+  static Future<List<PlugCoreModel>> getPlugs() async {
+    List<PlugCoreModel> plugsInstance = [];
+    final url = Uri.parse('$baseUrl/user/1/cafe/1/plug'); //url 수정 필요
+    final response = await http.get(url);
+    if (response.statusCode != 200) {
+      throw Error();
+    }
+    final Map<String, dynamic> responseBody = jsonDecode(response.body);
+    final List<dynamic> plugs = responseBody['result'];
+    plugsInstance = plugs.map((plug) => PlugCoreModel.fromJson(plug)).toList();
+    return plugsInstance;
+  }
 
   //플러그 개별 제어 on/off → 홈스크린에서 개별 플러그 On/off 제어 (patch)
   static Future<bool> patchPlugOn(int plugId) async {
@@ -82,7 +95,8 @@ class ApiPlug {
   //최근 일주일 간 개별 플러그 전력 사용량 (get) ⇒ 플러그 상세 스크린에 해당 플러그 전력 사용 그래프 띄울 것
 
   //플러그 연결
-  static Future<void> patchPlugConnect(String topic, int userId, int cafeId) async {
+  static Future<void> patchPlugConnect(
+      String topic, int userId, int cafeId) async {
     final url = Uri.parse('$baseUrl/plug?topic=$topic');
 
     Map<String, dynamic> data = {
@@ -91,13 +105,11 @@ class ApiPlug {
     };
     var body = json.encode(data);
 
-    final response = await http.patch(
-      url,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: body
-    );
+    final response = await http.patch(url,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: body);
 
     return; //리턴하는게 있는데 필요 없을 수도?
   }
@@ -119,7 +131,8 @@ class ApiPlug {
 
   //플러그 와이파이 연결
   static Future<void> getPlugConnectWiFi(String ssid, String password) async {
-    final url = Uri.parse('$plugBaseUrl/cm?cmnd=backlog%20ssid1%20$ssid%3Bpassword1%20$password');
+    final url = Uri.parse(
+        '$plugBaseUrl/cm?cmnd=backlog%20ssid1%20$ssid%3Bpassword1%20$password');
     final response = await http.get(url);
 
     return;

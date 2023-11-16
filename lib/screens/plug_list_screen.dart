@@ -1,5 +1,6 @@
 import 'package:cafe_plug_guardian_client/models/plug_core_model.dart';
 import 'package:cafe_plug_guardian_client/screens/plug_connect_screen.dart';
+import 'package:cafe_plug_guardian_client/services/api_plug.dart';
 import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/custom_button_widget.dart';
@@ -19,7 +20,8 @@ class _PlugListScreenState extends State<PlugListScreen> {
   @override
   void initState() {
     super.initState();
-    plugs = ApiTest.testGetPlugs();
+    //plugs = ApiTest.testGetPlugs();
+    plugs = ApiPlug.getPlugs();
   }
 
   @override
@@ -46,6 +48,10 @@ class _PlugListScreenState extends State<PlugListScreen> {
             } else if (!snapshot.hasData) {
               return const Center(
                 child: Text('No plugs available.'),
+              );
+            } else if (snapshot.data!.isEmpty) {
+              const Center(
+                child: BoldText(content: '플러그를 연결하세요'),
               );
             }
             return Column(

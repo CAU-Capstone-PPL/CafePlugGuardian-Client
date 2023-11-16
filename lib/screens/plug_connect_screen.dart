@@ -58,7 +58,8 @@ class _PlugConnectScreenState extends State<PlugConnectScreen> {
             const SizedBox(
               height: 10,
             ),
-            const HeadingText(content: '플러그 핫스팟에 연결 후 연결할 와이파이 SSID, 비밀번호를 입력해주세요.'),
+            const HeadingText(
+                content: '플러그 핫스팟에 연결 후 연결할 와이파이 SSID, 비밀번호를 입력해주세요.'),
             const SizedBox(
               height: 20,
             ),
@@ -85,18 +86,20 @@ class _PlugConnectScreenState extends State<PlugConnectScreen> {
               content: '연결',
               onPressed: () async {
                 String ssid = _ssidController.text;
-                String password =_passwordController.text;
+                String password = _passwordController.text;
 
                 if (await _validateWifiConnection(ssid, password)) {
-                  String topic = await ApiPlug.getPlugTopic();
-                  print('테스트: $topic');
-                  await ApiPlug.getPlugConnectWiFi(ssid, password);
+                  //String topic = await ApiPlug.getPlugTopic();
+                  //print('테스트: $topic');
+                  //await ApiPlug.getPlugConnectWiFi(ssid, password);
+                  String topic = 'hello';
 
                   Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PlugConnectWifiScreen(topic: topic),
-                  ));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            PlugConnectWifiScreen(topic: topic),
+                      ));
                 }
               },
             ),

@@ -68,12 +68,12 @@ class Plug extends StatelessWidget {
                   PlugInfoWidget(
                     contentName: '할당전력량',
                     content: assignPower,
-                    unit: 'W',
+                    unit: 'Wh',
                   ),
                   PlugInfoWidget(
                     contentName: '누적소모량',
                     content: usedPower,
-                    unit: 'W',
+                    unit: 'Wh',
                   ),
                   PlugInfoWidget(
                     contentName: '이용시간',
