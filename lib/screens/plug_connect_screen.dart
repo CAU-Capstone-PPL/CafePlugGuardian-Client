@@ -1,3 +1,4 @@
+import 'package:cafe_plug_guardian_client/screens/plug_connect_return_wifi_screen.dart';
 import 'package:cafe_plug_guardian_client/services/api_plug.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/custom_button_widget.dart';
@@ -31,10 +32,9 @@ class _PlugConnectScreenState extends State<PlugConnectScreen> {
     if (originalSSID == null) {
       return false;
     }*/
-    print('test11');
     bool isConnected = await _tryConnectWifi(ssid, password);
     await _tryConnectWifi(originalSSID, "");
-    print('test12');
+
     return isConnected;
   }
 
@@ -58,7 +58,7 @@ class _PlugConnectScreenState extends State<PlugConnectScreen> {
             const SizedBox(
               height: 10,
             ),
-            const HeadingText(content: '플러그를 연결하려면 어쩌구 저쩌구'),
+            const HeadingText(content: '플러그 핫스팟에 연결 후 연결할 와이파이 SSID, 비밀번호를 입력해주세요.'),
             const SizedBox(
               height: 20,
             ),
@@ -87,20 +87,16 @@ class _PlugConnectScreenState extends State<PlugConnectScreen> {
                 String ssid = _ssidController.text;
                 String password =_passwordController.text;
 
-                print('test1');
-
                 if (await _validateWifiConnection(ssid, password)) {
-                  print('test2');
-                  //String topic = await ApiPlug.getPlugTopic();
-                  print('test3');
-                  //print('테스트: $topic');
-                  //await ApiPlug.getPlugConnectWiFi(ssid, password);
+                  String topic = await ApiPlug.getPlugTopic();
+                  print('테스트: $topic');
+                  await ApiPlug.getPlugConnectWiFi(ssid, password);
 
-                  //userId, cafeId 받을 방법 구현 전까지 더미 대입
-                  //await ApiPlug.patchPlugConnect(topic, userId, cafeId);
-                  //await ApiPlug.patchPlugConnect(topic, 1, 1);
-                  await ApiPlug.patchPlugConnect('tasmota_9D8DEA', 1, 1);
-                  //Navigator.pop(context);
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PlugConnectWifiScreen(topic: topic),
+                  ));
                 }
               },
             ),
