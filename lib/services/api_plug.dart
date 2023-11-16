@@ -83,7 +83,7 @@ class ApiPlug {
 
   //플러그 연결
   static Future<void> patchPlugConnect(String topic, int userId, int cafeId) async {
-    final url = Uri.parse('$baseUrl/plug?topic=plugTopic');
+    final url = Uri.parse('$baseUrl/plug?topic=$topic');
 
     Map<String, dynamic> data = {
       'userId': userId,

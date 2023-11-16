@@ -91,14 +91,15 @@ class _PlugConnectScreenState extends State<PlugConnectScreen> {
 
                 if (await _validateWifiConnection(ssid, password)) {
                   print('test2');
-                  String topic = await ApiPlug.getPlugTopic();
+                  //String topic = await ApiPlug.getPlugTopic();
                   print('test3');
-                  print('테스트: $topic');
-                  await ApiPlug.getPlugConnectWiFi(ssid, password);
+                  //print('테스트: $topic');
+                  //await ApiPlug.getPlugConnectWiFi(ssid, password);
 
                   //userId, cafeId 받을 방법 구현 전까지 더미 대입
                   //await ApiPlug.patchPlugConnect(topic, userId, cafeId);
                   //await ApiPlug.patchPlugConnect(topic, 1, 1);
+                  await ApiPlug.patchPlugConnect('tasmota_9D8DEA', 1, 1);
                   //Navigator.pop(context);
                 }
               },
