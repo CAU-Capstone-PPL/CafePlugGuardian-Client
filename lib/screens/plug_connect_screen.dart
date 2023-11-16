@@ -94,7 +94,7 @@ class _PlugConnectScreenState extends State<PlugConnectScreen> {
                   String topic = await ApiPlug.getPlugTopic();
                   print('test3');
                   print('테스트: $topic');
-                  //await ApiPlug.getPlugConnectWiFi(ssid, password);
+                  await ApiPlug.getPlugConnectWiFi(ssid, password);
 
                   //userId, cafeId 받을 방법 구현 전까지 더미 대입
                   //await ApiPlug.patchPlugConnect(topic, userId, cafeId);
