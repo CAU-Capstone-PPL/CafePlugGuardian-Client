@@ -1,6 +1,9 @@
+import 'package:cafe_plug_guardian_client/services/api_plug.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/custom_button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:connectivity/connectivity.dart';
+import 'package:network_info_plus/network_info_plus.dart';
 
 class PlugConnectScreen extends StatefulWidget {
   const PlugConnectScreen({super.key});
@@ -12,6 +15,26 @@ class PlugConnectScreen extends StatefulWidget {
 class _PlugConnectScreenState extends State<PlugConnectScreen> {
   final TextEditingController _ssidController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  Future<bool> _tryConnectWifi(String ssid, String password) async {
+    //와이파이 연결은 네이티브 코드 필요해서 임시로 주석 처리 추후 구현
+
+    return true;
+  }
+
+  Future<bool> _validateWifiConnection(String ssid, String password) async {
+    final info = NetworkInfo();
+    String? originalSSID = await info.getWifiName();
+
+    if (originalSSID == null) {
+      return false;
+    }
+
+    bool isConnected = await _tryConnectWifi(ssid, password);
+    await _tryConnectWifi(originalSSID, "");
+
+    return isConnected;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +81,20 @@ class _PlugConnectScreenState extends State<PlugConnectScreen> {
             const SizedBox(height: 16.0),
             CustomButton(
               content: '연결',
-              onPressed: () {},
+              onPressed: () async {
+                String ssid = _ssidController.text;
+                String password =_passwordController.text;
+
+                if (await _validateWifiConnection(ssid, password)) {
+                  String topic = await ApiPlug.getPlugTopic();
+                  await ApiPlug.getPlugConnectWiFi(ssid, password);
+
+                  //userId, cafeId 받을 방법 구현 전까지 더미 대입
+                  //await ApiPlug.patchPlugConnect(topic, userId, cafeId);
+                  await ApiPlug.patchPlugConnect(topic, 1, 1);
+                  //Navigator.pop(context);
+                }
+              },
             ),
             const SizedBox(
               height: 20,
