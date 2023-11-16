@@ -114,7 +114,7 @@ class ApiPlug {
     final response = await http.get(url);
 
     final Map<String, dynamic> status = jsonDecode(response.body);
-    return status["Topic"] as String;
+    return status['Status']['Topic'] as String;
   }
 
   //플러그 와이파이 연결

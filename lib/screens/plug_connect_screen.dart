@@ -24,15 +24,17 @@ class _PlugConnectScreenState extends State<PlugConnectScreen> {
 
   Future<bool> _validateWifiConnection(String ssid, String password) async {
     final info = NetworkInfo();
+    String originalSSID = "";
+    /*
     String? originalSSID = await info.getWifiName();
 
     if (originalSSID == null) {
       return false;
-    }
-
+    }*/
+    print('test11');
     bool isConnected = await _tryConnectWifi(ssid, password);
     await _tryConnectWifi(originalSSID, "");
-
+    print('test12');
     return isConnected;
   }
 
@@ -85,13 +87,18 @@ class _PlugConnectScreenState extends State<PlugConnectScreen> {
                 String ssid = _ssidController.text;
                 String password =_passwordController.text;
 
+                print('test1');
+
                 if (await _validateWifiConnection(ssid, password)) {
+                  print('test2');
                   String topic = await ApiPlug.getPlugTopic();
-                  await ApiPlug.getPlugConnectWiFi(ssid, password);
+                  print('test3');
+                  print('테스트: $topic');
+                  //await ApiPlug.getPlugConnectWiFi(ssid, password);
 
                   //userId, cafeId 받을 방법 구현 전까지 더미 대입
                   //await ApiPlug.patchPlugConnect(topic, userId, cafeId);
-                  await ApiPlug.patchPlugConnect(topic, 1, 1);
+                  //await ApiPlug.patchPlugConnect(topic, 1, 1);
                   //Navigator.pop(context);
                 }
               },
