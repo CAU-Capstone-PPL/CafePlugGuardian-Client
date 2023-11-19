@@ -1,7 +1,6 @@
 import 'package:cafe_plug_guardian_client/models/plug_core_model.dart';
 import 'package:cafe_plug_guardian_client/screens/plug_connect_screen.dart';
 import 'package:cafe_plug_guardian_client/services/api_plug.dart';
-import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/custom_button_widget.dart';
 import 'package:cafe_plug_guardian_client/widgets/plug_widget.dart';

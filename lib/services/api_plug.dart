@@ -103,7 +103,8 @@ class ApiPlug {
       'userId': userId,
       'cafeId': cafeId,
     };
-    var body = json.encode(data);
+
+    final body = json.encode(data);
 
     final response = await http.patch(url,
         headers: {

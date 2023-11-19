@@ -1,9 +1,7 @@
 import 'package:cafe_plug_guardian_client/screens/plug_connect_return_wifi_screen.dart';
-import 'package:cafe_plug_guardian_client/services/api_plug.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/custom_button_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:connectivity/connectivity.dart';
 import 'package:network_info_plus/network_info_plus.dart';
 
 class PlugConnectScreen extends StatefulWidget {
