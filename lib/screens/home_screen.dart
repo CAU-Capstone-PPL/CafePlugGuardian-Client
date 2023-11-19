@@ -1,4 +1,5 @@
 import 'package:cafe_plug_guardian_client/models/plug_core_model.dart';
+import 'package:cafe_plug_guardian_client/provider/user_provider.dart';
 import 'package:cafe_plug_guardian_client/screens/alert_screen.dart';
 import 'package:cafe_plug_guardian_client/screens/plug_list_screen.dart';
 import 'package:cafe_plug_guardian_client/services/api_test.dart';
@@ -7,6 +8,7 @@ import 'package:cafe_plug_guardian_client/widgets/custom_button_widget.dart';
 import 'package:cafe_plug_guardian_client/widgets/plug_widget.dart';
 import 'package:cafe_plug_guardian_client/widgets/power_entry_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -36,8 +38,8 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ],
-        title: const AppBarText(
-          content: 'Cafe Nickname',
+        title: AppBarText(
+          content: context.read<UserProvider>().user!.userName,
         ),
       ),
       body: Padding(

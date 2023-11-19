@@ -9,16 +9,16 @@ class ApiLogin {
   static Future<UserModel> postLogin(String userAccount, String userPw) async {
     final url = Uri.parse('$baseUrl/user/login');
     Map<String, dynamic> data = {
-      "userAccount": userAccount,
-      "userPw": userPw,
+      'userAccount': userAccount,
+      'userPw': userPw,
     };
     final body = jsonEncode(data);
-    final response = await http.patch(url,
+    final response = await http.post(url,
         headers: {
           'Content-Type': 'application/json',
         },
         body: body);
-
+    print(response.statusCode);
     if (response.statusCode != 200) {
       throw Error();
     }

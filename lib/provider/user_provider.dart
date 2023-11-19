@@ -8,8 +8,8 @@ class UserProvider extends ChangeNotifier {
 
   bool get isAuthenticated => _user != null;
 
-  void login(int userId, String userName, String token) {
-    _user = UserModel(userId: userId, userName: userName, token: token);
+  void login(UserModel user) {
+    _user = user;
     notifyListeners();
   }
 
