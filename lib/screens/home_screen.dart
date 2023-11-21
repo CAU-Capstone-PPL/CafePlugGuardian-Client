@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cafe_plug_guardian_client/models/plug_core_model.dart';
 import 'package:cafe_plug_guardian_client/provider/user_provider.dart';
 import 'package:cafe_plug_guardian_client/screens/alert_screen.dart';
@@ -10,13 +12,31 @@ import 'package:cafe_plug_guardian_client/widgets/power_entry_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   //final Future<List<PlugCoreModel>> plugs = ApiPlug.getPlugs();
+  Future<List<PlugCoreModel>> plugs = ApiTest.testGetOnPlugs();
+  //test code
 
-  final Future<List<PlugCoreModel>> plugs =
-      ApiTest.testGetOnPlugs(); //test code
+  @override
+  void initState() {
+    super.initState();
+    Timer.periodic(const Duration(seconds: 3), (Timer timer) {
+      apiCall();
+    });
+  }
+
+  void apiCall() {
+    plugs = ApiTest.testGetOnPlugs();
+    print("gi");
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
