@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cafe_plug_guardian_client/models/plug_core_model.dart';
+import 'package:cafe_plug_guardian_client/provider/plug_core_provider.dart';
 import 'package:cafe_plug_guardian_client/provider/user_provider.dart';
 import 'package:cafe_plug_guardian_client/screens/alert_screen.dart';
 import 'package:cafe_plug_guardian_client/screens/plug_list_screen.dart';
@@ -21,21 +22,24 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   //final Future<List<PlugCoreModel>> plugs = ApiPlug.getPlugs();
-  Future<List<PlugCoreModel>> plugs = ApiTest.testGetOnPlugs();
+  //late Future<List<PlugCoreModel>> plugs;
+  late Timer _timer;
+  //final ScrollController _scrollController = ScrollController();
   //test code
 
   @override
   void initState() {
     super.initState();
-    Timer.periodic(const Duration(seconds: 3), (Timer timer) {
-      apiCall();
+    _timer = Timer.periodic(const Duration(seconds: 3), (Timer timer) {
+      context.read<PlugCoreProvider>().updatePlugs();
     });
   }
 
-  void apiCall() {
-    plugs = ApiTest.testGetOnPlugs();
-    print("gi");
-    setState(() {});
+  @override
+  void dispose() {
+    _timer.cancel();
+    //_scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -87,7 +91,29 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               height: 10,
             ),
-            FutureBuilder(
+            Expanded(
+              child: GridView.count(
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                crossAxisCount: 2,
+                childAspectRatio: 1.2,
+                children: context
+                    .watch<PlugCoreProvider>()
+                    .plugs
+                    .map(
+                      (plug) => Plug(
+                        plugId: plug.plugId,
+                        plugName: plug.plugName,
+                        onOff: plug.onOff,
+                        runningTime: plug.runningTime,
+                        usedPower: plug.usedPower,
+                        assignPower: plug.assignPower,
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
+            /*FutureBuilder(
               future: plugs,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
@@ -104,27 +130,24 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 }
                 return Expanded(
-                  child: GridView.count(
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-                    crossAxisCount: 2,
-                    childAspectRatio: 1.2,
-                    children: snapshot.data!
-                        .map(
-                          (plug) => Plug(
-                            plugId: plug.plugId,
-                            plugName: plug.plugName,
-                            onOff: plug.onOff,
-                            runningTime: plug.runningTime,
-                            usedPower: plug.usedPower,
-                            assignPower: plug.assignPower,
-                          ),
-                        )
-                        .toList(),
+                  child: ListView.builder(
+                    controller: _scrollController,
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) {
+                      var plug = snapshot.data![index];
+                      return Plug(
+                        plugId: plug.plugId,
+                        plugName: plug.plugName,
+                        onOff: plug.onOff,
+                        runningTime: plug.runningTime,
+                        usedPower: plug.usedPower,
+                        assignPower: plug.assignPower,
+                      );
+                    },
                   ),
                 );
               },
-            ),
+            ),*/
             const SizedBox(
               height: 20,
             ),

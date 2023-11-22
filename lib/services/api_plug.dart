@@ -2,7 +2,9 @@ import 'dart:convert';
 import 'package:cafe_plug_guardian_client/models/alert_model.dart';
 import 'package:cafe_plug_guardian_client/models/plug_core_model.dart';
 import 'package:cafe_plug_guardian_client/models/plug_detail_model.dart';
+import 'package:cafe_plug_guardian_client/provider/plug_core_provider.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
 class ApiPlug {
   static const String baseUrl = 'http://43.202.29.19/api';
@@ -12,6 +14,7 @@ class ApiPlug {
   static Future<List<PlugCoreModel>> getOnPlugs() async {
     final url = Uri.parse('$baseUrl/plug url'); //url 수정 필요
     final response = await http.get(url);
+
     if (response.statusCode != 200) {
       throw Error();
     }

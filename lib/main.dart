@@ -1,3 +1,4 @@
+import 'package:cafe_plug_guardian_client/provider/plug_core_provider.dart';
 import 'package:cafe_plug_guardian_client/provider/user_provider.dart';
 import 'package:cafe_plug_guardian_client/screens/login_screen.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
@@ -13,8 +14,13 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => UserProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+            create: (BuildContext context) => UserProvider()),
+        ChangeNotifierProvider(
+            create: (BuildContext context) => PlugCoreProvider()),
+      ],
       child: MaterialApp(
         title: 'cafe_plug_guardian_client',
         theme: ThemeData(
