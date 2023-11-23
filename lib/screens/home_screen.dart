@@ -21,23 +21,28 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  //final Future<List<PlugCoreModel>> plugs = ApiPlug.getPlugs();
-  //late Future<List<PlugCoreModel>> plugs;
   late Timer _timer;
-  //final ScrollController _scrollController = ScrollController();
-  //test code
 
   @override
   void initState() {
     super.initState();
+    context.read<PlugCoreProvider>().updatePlugs();
+    _startTimer();
+  }
+
+  void _startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 3), (Timer timer) {
       context.read<PlugCoreProvider>().updatePlugs();
     });
   }
 
+  void _stopTimer() {
+    _timer.cancel();
+  }
+
   @override
   void dispose() {
-    _timer.cancel();
+    _stopTimer();
     //_scrollController.dispose();
     super.dispose();
   }
@@ -79,12 +84,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 CustomButton(
                     content: 'View all',
                     onPressed: () {
+                      _stopTimer();
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => const PlugListScreen(),
                         ),
-                      );
+                      ).then((_) => {_startTimer()});
                     }),
               ],
             ),
