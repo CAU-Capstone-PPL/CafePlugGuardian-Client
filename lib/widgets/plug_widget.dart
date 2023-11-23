@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 class Plug extends StatelessWidget {
   final String plugName, onOff, runningTime;
-  final int plugId, usedPower, assignPower;
+  final int plugId;
+  final double usedPower, assignPower;
 
   const Plug({
     super.key,
@@ -56,12 +57,12 @@ class Plug extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 PlugInfoWidget(
-                  contentName: '할당전력량',
+                  contentName: '할당량',
                   content: assignPower,
                   unit: 'Wh',
                 ),
                 PlugInfoWidget(
-                  contentName: '누적소모량',
+                  contentName: '소모량',
                   content: usedPower,
                   unit: 'Wh',
                 ),

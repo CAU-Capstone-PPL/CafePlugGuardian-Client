@@ -2,9 +2,7 @@ import 'dart:convert';
 import 'package:cafe_plug_guardian_client/models/alert_model.dart';
 import 'package:cafe_plug_guardian_client/models/plug_core_model.dart';
 import 'package:cafe_plug_guardian_client/models/plug_detail_model.dart';
-import 'package:cafe_plug_guardian_client/provider/plug_core_provider.dart';
 import 'package:http/http.dart' as http;
-import 'package:provider/provider.dart';
 
 class ApiPlug {
   static const String baseUrl = 'http://43.202.29.19/api';

@@ -2,7 +2,7 @@ import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:flutter/material.dart';
 
 class PlugPowerInfomattion extends StatelessWidget {
-  int assignPower, usedPower, realTimePower;
+  double assignPower, usedPower, realTimePower;
   String startTime, runningTime;
 
   PlugPowerInfomattion({

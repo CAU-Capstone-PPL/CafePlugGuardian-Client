@@ -1,7 +1,15 @@
 class PlugDetatilModel {
-  final String plugName, onOff, startTime, runningTime, plugDescription;
+  String plugName, onOff, plugDescription;
+  String startTime = '', runningTime = '';
 
-  final int plugId, usedPower, assignPower, realTimePower;
+  int plugId;
+  double usedPower = 0, assignPower = 0, realTimePower = 0;
+
+  PlugDetatilModel(
+      {required this.plugId,
+      required this.plugName,
+      required this.onOff,
+      required this.plugDescription});
 
   PlugDetatilModel.fromJson(Map<String, dynamic> json)
       : plugId = json['plugId'],

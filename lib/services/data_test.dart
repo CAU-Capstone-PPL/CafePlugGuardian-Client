@@ -4,64 +4,64 @@ const List<Map<String, dynamic>> dummyDataPlugCore = [
     'plugName': 'Plug 1',
     'onOff': 'On',
     'runningTime': '2',
-    'usedPower': 100,
-    'assignPower': 150,
+    'usedPower': 100.0,
+    'assignPower': 150.0,
   },
   {
     'plugId': 3,
     'plugName': 'Plug 3',
     'onOff': 'On',
     'runningTime': '3',
-    'usedPower': 120,
-    'assignPower': 200,
+    'usedPower': 120.0,
+    'assignPower': 200.0,
   },
   {
     'plugId': 4,
     'plugName': 'Plug 4',
     'onOff': 'On',
     'runningTime': '1.5',
-    'usedPower': 80,
-    'assignPower': 110
+    'usedPower': 80.0,
+    'assignPower': 110.0
   },
   {
     'plugId': 6,
     'plugName': 'Plug 6',
     'onOff': 'On',
     'runningTime': '2',
-    'usedPower': 110,
-    'assignPower': 150
+    'usedPower': 110.0,
+    'assignPower': 150.0
   },
   {
     'plugId': 7,
     'plugName': 'Plug 7',
     'onOff': 'On',
     'runningTime': '2.5',
-    'usedPower': 95,
-    'assignPower': 130
+    'usedPower': 95.0,
+    'assignPower': 130.0
   },
   {
     'plugId': 9,
     'plugName': 'Plug 9',
     'onOff': 'On',
     'runningTime': '4',
-    'usedPower': 150,
-    'assignPower': 180
+    'usedPower': 150.0,
+    'assignPower': 180.0
   },
   {
     'plugId': 11,
     'plugName': 'Plug 11',
     'onOff': 'On',
     'runningTime': '3',
-    'usedPower': 120,
-    'assignPower': 160
+    'usedPower': 120.0,
+    'assignPower': 160.0
   },
   {
     'plugId': 12,
     'plugName': 'Plug 12',
     'onOff': 'On',
     'runningTime': '1.5',
-    'usedPower': 70,
-    'assignPower': 100
+    'usedPower': 70.0,
+    'assignPower': 100.0
   },
 ];
 
@@ -73,10 +73,10 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'onOff': 'On',
     'startTime': '08:00 AM',
     'runningTime': '2',
-    'usedPower': 100,
-    'assignPower': 150,
+    'usedPower': 100.0,
+    'assignPower': 150.0,
     'plugDescription': 'hello 1',
-    'realTimePower': 200
+    'realTimePower': 200.0
   },
   {
     'plugId': 2,
@@ -84,10 +84,10 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'onOff': 'Off',
     'startTime': '',
     'runningTime': '',
-    'usedPower': 0,
-    'assignPower': 0,
+    'usedPower': 0.0,
+    'assignPower': 0.0,
     'plugDescription': 'hello 2',
-    'realTimePower': 0
+    'realTimePower': 0.0
   },
   {
     'plugId': 3,
@@ -95,10 +95,10 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'onOff': 'On',
     'startTime': '03:45 PM',
     'runningTime': '3',
-    'usedPower': 120,
-    'assignPower': 200,
+    'usedPower': 120.0,
+    'assignPower': 200.0,
     'plugDescription': 'hello 3',
-    'realTimePower': 50
+    'realTimePower': 50.0
   },
   {
     'plugId': 4,
@@ -106,10 +106,10 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'onOff': 'On',
     'startTime': '09:15 AM',
     'runningTime': '1.5',
-    'usedPower': 80,
-    'assignPower': 110,
+    'usedPower': 80.0,
+    'assignPower': 110.0,
     'plugDescription': 'hello 4',
-    'realTimePower': 60
+    'realTimePower': 60.0
   },
   {
     'plugId': 5,
@@ -117,10 +117,10 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'onOff': 'Off',
     'startTime': '',
     'runningTime': '',
-    'usedPower': 0,
-    'assignPower': 0,
+    'usedPower': 0.0,
+    'assignPower': 0.0,
     'plugDescription': 'hello 5',
-    'realTimePower': 0
+    'realTimePower': 0.0
   },
   {
     'plugId': 6,
@@ -128,10 +128,10 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'onOff': 'On',
     'startTime': '04:30 PM',
     'runningTime': '2',
-    'usedPower': 110,
-    'assignPower': 150,
+    'usedPower': 110.0,
+    'assignPower': 150.0,
     'plugDescription': 'hello 6',
-    'realTimePower': 80
+    'realTimePower': 80.0
   },
   {
     'plugId': 7,
@@ -139,10 +139,10 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'onOff': 'On',
     'startTime': '11:45 AM',
     'runningTime': '2.5',
-    'usedPower': 95,
-    'assignPower': 130,
+    'usedPower': 95.0,
+    'assignPower': 130.0,
     'plugDescription': 'hello 7',
-    'realTimePower': 120
+    'realTimePower': 120.0
   },
   {
     'plugId': 8,
@@ -150,10 +150,10 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'onOff': 'Off',
     'startTime': '',
     'runningTime': '',
-    'usedPower': 0,
-    'assignPower': 0,
+    'usedPower': 0.0,
+    'assignPower': 0.0,
     'plugDescription': 'hello 8',
-    'realTimePower': 0
+    'realTimePower': 0.0
   },
   {
     'plugId': 9,
@@ -161,10 +161,10 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'onOff': 'On',
     'startTime': '06:00 AM',
     'runningTime': '4',
-    'usedPower': 150,
-    'assignPower': 180,
+    'usedPower': 150.0,
+    'assignPower': 180.0,
     'plugDescription': 'hello 9',
-    'realTimePower': 210
+    'realTimePower': 210.0
   },
   {
     'plugId': 10,
@@ -172,10 +172,10 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'onOff': 'Off',
     'startTime': '',
     'runningTime': '',
-    'usedPower': 0,
-    'assignPower': 0,
+    'usedPower': 0.0,
+    'assignPower': 0.0,
     'plugDescription': 'hello 10',
-    'realTimePower': 0
+    'realTimePower': 0.0
   },
   {
     'plugId': 11,
@@ -183,10 +183,10 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'onOff': 'On',
     'startTime': '07:30 AM',
     'runningTime': '3',
-    'usedPower': 120,
-    'assignPower': 160,
+    'usedPower': 120.0,
+    'assignPower': 160.0,
     'plugDescription': 'hello 11',
-    'realTimePower': 211
+    'realTimePower': 211.0
   },
   {
     'plugId': 12,
@@ -194,10 +194,10 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'onOff': 'On',
     'startTime': '10:00 AM',
     'runningTime': '1.5',
-    'usedPower': 70,
-    'assignPower': 100,
+    'usedPower': 70.0,
+    'assignPower': 100.0,
     'plugDescription': 'hello 12',
-    'realTimePower': 223
+    'realTimePower': 223.0
   },
   {
     'plugId': 13,
@@ -205,10 +205,10 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     'onOff': 'Off',
     'startTime': '',
     'runningTime': '',
-    'usedPower': 0,
-    'assignPower': 0,
+    'usedPower': 0.0,
+    'assignPower': 0.0,
     'plugDescription': 'hello 13',
-    'realTimePower': 0
+    'realTimePower': 0.0
   }
 ];
 
@@ -288,104 +288,104 @@ const List<Map<String, dynamic>> dummyDataPlugs = [
     'plugName': 'Plug 1',
     'onOff': 'On',
     'runningTime': '2',
-    'usedPower': 100,
-    'assignPower': 150,
+    'usedPower': 100.0,
+    'assignPower': 150.0,
   },
   {
     'plugId': 2,
     'plugName': 'Plug 2',
     'onOff': 'Off',
     'runningTime': '',
-    'usedPower': 0,
-    'assignPower': 0,
+    'usedPower': 0.0,
+    'assignPower': 0.0,
   },
   {
     'plugId': 3,
     'plugName': 'Plug 3',
     'onOff': 'On',
     'runningTime': '3',
-    'usedPower': 120,
-    'assignPower': 200,
+    'usedPower': 120.0,
+    'assignPower': 200.0,
   },
   {
     'plugId': 4,
     'plugName': 'Plug 4',
     'onOff': 'On',
     'runningTime': '1.5',
-    'usedPower': 80,
-    'assignPower': 110,
+    'usedPower': 80.0,
+    'assignPower': 110.0,
   },
   {
     'plugId': 5,
     'plugName': 'Plug 5',
     'onOff': 'Off',
     'runningTime': '',
-    'usedPower': 0,
-    'assignPower': 0,
+    'usedPower': 0.0,
+    'assignPower': 0.0
   },
   {
     'plugId': 6,
     'plugName': 'Plug 6',
     'onOff': 'On',
     'runningTime': '2',
-    'usedPower': 110,
-    'assignPower': 150,
+    'usedPower': 110.0,
+    'assignPower': 150.0,
   },
   {
     'plugId': 7,
     'plugName': 'Plug 7',
     'onOff': 'On',
     'runningTime': '2.5',
-    'usedPower': 95,
-    'assignPower': 130,
+    'usedPower': 95.0,
+    'assignPower': 130.0,
   },
   {
     'plugId': 8,
     'plugName': 'Plug 8',
     'onOff': 'Off',
     'runningTime': '',
-    'usedPower': 0,
-    'assignPower': 0,
+    'usedPower': 0.0,
+    'assignPower': 0.0,
   },
   {
     'plugId': 9,
     'plugName': 'Plug 9',
     'onOff': 'On',
     'runningTime': '4',
-    'usedPower': 150,
-    'assignPower': 180,
+    'usedPower': 150.0,
+    'assignPower': 180.0,
   },
   {
     'plugId': 10,
     'plugName': 'Plug 10',
     'onOff': 'Off',
     'runningTime': '',
-    'usedPower': 0,
-    'assignPower': 0,
+    'usedPower': 0.0,
+    'assignPower': 0.0,
   },
   {
     'plugId': 11,
     'plugName': 'Plug 11',
     'onOff': 'On',
     'runningTime': '3',
-    'usedPower': 120,
-    'assignPower': 160,
+    'usedPower': 120.0,
+    'assignPower': 160.0,
   },
   {
     'plugId': 12,
     'plugName': 'Plug 12',
     'onOff': 'On',
     'runningTime': '1.5',
-    'usedPower': 70,
-    'assignPower': 100,
+    'usedPower': 70.0,
+    'assignPower': 100.0,
   },
   {
     'plugId': 13,
     'plugName': 'Plug 13',
     'onOff': 'Off',
     'runningTime': '',
-    'usedPower': 0,
-    'assignPower': 0,
+    'usedPower': 0.0,
+    'assignPower': 0.0,
   }
 ];
 const List<double> dummyDataWeeklyPowerData = [
