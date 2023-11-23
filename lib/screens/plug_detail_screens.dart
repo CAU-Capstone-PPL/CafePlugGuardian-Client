@@ -36,8 +36,15 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
     return Scaffold(
       backgroundColor: AppColor.background,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: AppColor.background,
         title: const AppBarText(content: '플러그 상세 페이지'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),

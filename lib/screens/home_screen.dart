@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:cafe_plug_guardian_client/models/plug_core_model.dart';
 import 'package:cafe_plug_guardian_client/provider/plug_core_provider.dart';
+import 'package:cafe_plug_guardian_client/provider/timer_provider.dart';
 import 'package:cafe_plug_guardian_client/provider/user_provider.dart';
 import 'package:cafe_plug_guardian_client/screens/alert_screen.dart';
+import 'package:cafe_plug_guardian_client/screens/plug_detail_screens.dart';
 import 'package:cafe_plug_guardian_client/screens/plug_list_screen.dart';
 import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
@@ -26,13 +28,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<PlugCoreProvider>().updatePlugs();
     _startTimer();
   }
 
   void _startTimer() {
+    context.read<PlugCoreProvider>().updateOnPlugs();
     _timer = Timer.periodic(const Duration(seconds: 3), (Timer timer) {
-      context.read<PlugCoreProvider>().updatePlugs();
+      context.read<PlugCoreProvider>().updateOnPlugs();
     });
   }
 
@@ -43,7 +45,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void dispose() {
     _stopTimer();
-    //_scrollController.dispose();
     super.dispose();
   }
 
@@ -90,7 +91,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         MaterialPageRoute(
                           builder: (context) => const PlugListScreen(),
                         ),
-                      ).then((_) => {_startTimer()});
+                      ).then((_) {
+                        _startTimer();
+                      });
                     }),
               ],
             ),
@@ -105,55 +108,34 @@ class _HomeScreenState extends State<HomeScreen> {
                 childAspectRatio: 1.2,
                 children: context
                     .watch<PlugCoreProvider>()
-                    .plugs
+                    .onPlugs
                     .map(
-                      (plug) => Plug(
-                        plugId: plug.plugId,
-                        plugName: plug.plugName,
-                        onOff: plug.onOff,
-                        runningTime: plug.runningTime,
-                        usedPower: plug.usedPower,
-                        assignPower: plug.assignPower,
+                      (plug) => GestureDetector(
+                        onTap: () {
+                          _stopTimer();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  PlugDetailScreen(id: plug.plugId),
+                            ),
+                          ).then((_) {
+                            _startTimer();
+                          });
+                        },
+                        child: Plug(
+                          plugId: plug.plugId,
+                          plugName: plug.plugName,
+                          onOff: plug.onOff,
+                          runningTime: plug.runningTime,
+                          usedPower: plug.usedPower,
+                          assignPower: plug.assignPower,
+                        ),
                       ),
                     )
                     .toList(),
               ),
             ),
-            /*FutureBuilder(
-              future: plugs,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                } else if (snapshot.hasError) {
-                  return Center(
-                    child: BoldText(content: 'Error: ${snapshot.error}'),
-                  );
-                } else if (!snapshot.hasData) {
-                  return const Center(
-                    child: BoldText(content: 'No plugs available.'),
-                  );
-                }
-                return Expanded(
-                  child: ListView.builder(
-                    controller: _scrollController,
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (context, index) {
-                      var plug = snapshot.data![index];
-                      return Plug(
-                        plugId: plug.plugId,
-                        plugName: plug.plugName,
-                        onOff: plug.onOff,
-                        runningTime: plug.runningTime,
-                        usedPower: plug.usedPower,
-                        assignPower: plug.assignPower,
-                      );
-                    },
-                  ),
-                );
-              },
-            ),*/
             const SizedBox(
               height: 20,
             ),

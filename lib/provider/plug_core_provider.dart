@@ -4,19 +4,34 @@ import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:flutter/material.dart';
 
 class PlugCoreProvider extends ChangeNotifier {
-  List<PlugCoreModel> _plugs = [];
+  List<PlugCoreModel> _onPlugs = [];
+  List<PlugCoreModel> _allPlugs = [];
   bool _test = true;
 
-  List<PlugCoreModel> get plugs => _plugs;
+  List<PlugCoreModel> get onPlugs => _onPlugs;
+  List<PlugCoreModel> get allPlugs => _allPlugs;
 
-  void updatePlugs() async {
+  void updateOnPlugs() async {
     if (_test) {
-      _plugs = await ApiTest.testGetOnPlugs();
-      print('fetch 완');
+      _onPlugs = await ApiTest.testGetOnPlugs();
+      print('updateOnPlugs');
       _test = false;
     } else {
-      _plugs = await ApiTest.testGetPlugs();
-      print('바뀐 api');
+      _onPlugs = await ApiTest.testGetPlugs();
+      print('updateOnPlugs');
+      _test = true;
+    }
+    notifyListeners();
+  }
+
+  void updateAllPlugs() async {
+    if (_test) {
+      _allPlugs = await ApiTest.testGetOnPlugs();
+      print('updateAllPlugs');
+      _test = false;
+    } else {
+      _allPlugs = await ApiTest.testGetPlugs();
+      print('updateAllPlugs');
       _test = true;
     }
     notifyListeners();

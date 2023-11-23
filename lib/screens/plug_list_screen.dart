@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:cafe_plug_guardian_client/models/plug_core_model.dart';
 import 'package:cafe_plug_guardian_client/provider/plug_core_provider.dart';
+import 'package:cafe_plug_guardian_client/provider/timer_provider.dart';
 import 'package:cafe_plug_guardian_client/screens/plug_connect_screen.dart';
+import 'package:cafe_plug_guardian_client/screens/plug_detail_screens.dart';
 import 'package:cafe_plug_guardian_client/services/api_plug.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/custom_button_widget.dart';
@@ -18,20 +20,18 @@ class PlugListScreen extends StatefulWidget {
 }
 
 class _PlugListScreenState extends State<PlugListScreen> {
-  late final Future<List<PlugCoreModel>> plugs;
-
   late Timer _timer;
 
   @override
   void initState() {
     super.initState();
-    context.read<PlugCoreProvider>().updatePlugs();
     _startTimer();
   }
 
   void _startTimer() {
+    context.read<PlugCoreProvider>().updateAllPlugs();
     _timer = Timer.periodic(const Duration(seconds: 3), (Timer timer) {
-      context.read<PlugCoreProvider>().updatePlugs();
+      context.read<PlugCoreProvider>().updateAllPlugs();
     });
   }
 
@@ -42,7 +42,6 @@ class _PlugListScreenState extends State<PlugListScreen> {
   @override
   void dispose() {
     _stopTimer();
-    //_scrollController.dispose();
     super.dispose();
   }
 
@@ -71,7 +70,7 @@ class _PlugListScreenState extends State<PlugListScreen> {
               children: [
                 HeadingText(
                     content:
-                        '총 개수: ${context.watch<PlugCoreProvider>().plugs.length}'),
+                        '총 개수: ${context.watch<PlugCoreProvider>().allPlugs.length}'),
                 Row(
                   children: [
                     CustomButton(
@@ -106,15 +105,29 @@ class _PlugListScreenState extends State<PlugListScreen> {
                 childAspectRatio: 1.2,
                 children: context
                     .watch<PlugCoreProvider>()
-                    .plugs
+                    .allPlugs
                     .map(
-                      (plug) => Plug(
-                        plugId: plug.plugId,
-                        plugName: plug.plugName,
-                        onOff: plug.onOff,
-                        runningTime: plug.runningTime,
-                        usedPower: plug.usedPower,
-                        assignPower: plug.assignPower,
+                      (plug) => GestureDetector(
+                        onTap: () {
+                          _stopTimer();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  PlugDetailScreen(id: plug.plugId),
+                            ),
+                          ).then((_) {
+                            _startTimer();
+                          });
+                        },
+                        child: Plug(
+                          plugId: plug.plugId,
+                          plugName: plug.plugName,
+                          onOff: plug.onOff,
+                          runningTime: plug.runningTime,
+                          usedPower: plug.usedPower,
+                          assignPower: plug.assignPower,
+                        ),
                       ),
                     )
                     .toList(),
