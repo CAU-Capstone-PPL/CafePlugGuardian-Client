@@ -1,11 +1,7 @@
 import 'dart:async';
-
-import 'package:cafe_plug_guardian_client/models/plug_core_model.dart';
 import 'package:cafe_plug_guardian_client/provider/plug_core_provider.dart';
-import 'package:cafe_plug_guardian_client/provider/timer_provider.dart';
 import 'package:cafe_plug_guardian_client/screens/plug_connect_screen.dart';
 import 'package:cafe_plug_guardian_client/screens/plug_detail_screens.dart';
-import 'package:cafe_plug_guardian_client/services/api_plug.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/custom_button_widget.dart';
 import 'package:cafe_plug_guardian_client/widgets/plug_widget.dart';
@@ -134,81 +130,7 @@ class _PlugListScreenState extends State<PlugListScreen> {
               ),
             ),
           ],
-        ), /*FutureBuilder(
-          future: plugs,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (snapshot.hasError) {
-              return Center(
-                child: Text('Error: ${snapshot.error}'),
-              );
-            } else if (!snapshot.hasData) {
-              return const Center(
-                child: Text('No plugs available.'),
-              );
-            } else if (snapshot.data!.isEmpty) {
-              const Center(
-                child: BoldText(content: '플러그를 연결하세요'),
-              );
-            }
-            return Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    HeadingText(content: '총 개수: ${snapshot.data!.length}'),
-                    Row(
-                      children: [
-                        CustomButton(
-                            content: '플러그 추가',
-                            onPressed: () {
-                              _stopTimer();
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const PlugConnectScreen(),
-                                ),
-                              ).then((_) {
-                                _startTimer();
-                              });
-                            }),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        CustomButton(content: '플러그 삭제', onPressed: () {}),
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Expanded(
-                  child: GridView.count(
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-                    crossAxisCount: 2,
-                    childAspectRatio: 1.2,
-                    children: snapshot.data!
-                        .map(
-                          (plug) => Plug(
-                            plugId: plug.plugId,
-                            plugName: plug.plugName,
-                            onOff: plug.onOff,
-                            runningTime: plug.runningTime,
-                            usedPower: plug.usedPower,
-                            assignPower: plug.assignPower,
-                          ),
-                        )
-                        .toList(),
-                  ),
-                ),
-              ],
-            );
-          },
-        ),*/
+        ),
       ),
     );
   }

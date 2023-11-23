@@ -1,5 +1,4 @@
 import 'package:cafe_plug_guardian_client/provider/plug_core_provider.dart';
-import 'package:cafe_plug_guardian_client/provider/timer_provider.dart';
 import 'package:cafe_plug_guardian_client/provider/user_provider.dart';
 import 'package:cafe_plug_guardian_client/screens/login_screen.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
@@ -21,8 +20,6 @@ class App extends StatelessWidget {
             create: (BuildContext context) => UserProvider()),
         ChangeNotifierProvider(
             create: (BuildContext context) => PlugCoreProvider()),
-        ChangeNotifierProvider(
-            create: (BuildContext context) => TimerProvider()),
       ],
       child: MaterialApp(
         title: 'cafe_plug_guardian_client',

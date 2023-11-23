@@ -1,9 +1,5 @@
-import 'package:cafe_plug_guardian_client/provider/plug_core_provider.dart';
-import 'package:cafe_plug_guardian_client/provider/timer_provider.dart';
-import 'package:cafe_plug_guardian_client/screens/plug_detail_screens.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class Plug extends StatelessWidget {
   final String plugName, onOff, runningTime;
