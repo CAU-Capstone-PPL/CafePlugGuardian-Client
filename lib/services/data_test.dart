@@ -42,10 +42,10 @@ const List<Map<String, dynamic>> dummyDataPlugCore = [
     "userId": 1,
     "cafeId": 1,
     "subGroup": "group",
-    "onOff": "Off",
-    "runningTime": {"hours": 0, "minutes": 0},
-    "usedPower": 0.0,
-    "assignPower": 0.0
+    "onOff": "On",
+    "runningTime": {"hours": 0, "minutes": 15},
+    "usedPower": 12.0,
+    "assignPower": 900.0
   },
   {
     "plugId": 505,
@@ -54,10 +54,10 @@ const List<Map<String, dynamic>> dummyDataPlugCore = [
     "userId": 1,
     "cafeId": 1,
     "subGroup": "group",
-    "onOff": "On",
-    "runningTime": {"hours": 2, "minutes": 0},
-    "usedPower": 300.0,
-    "assignPower": 450.0
+    "onOff": "Off",
+    "runningTime": {"hours": 0, "minutes": 0},
+    "usedPower": 0.0,
+    "assignPower": 0.0
   },
   {
     "plugId": 606,
@@ -66,10 +66,10 @@ const List<Map<String, dynamic>> dummyDataPlugCore = [
     "userId": 1,
     "cafeId": 1,
     "subGroup": "group",
-    "onOff": "Off",
-    "runningTime": {"hours": 0, "minutes": 0},
-    "usedPower": 0.0,
-    "assignPower": 0.0
+    "onOff": "On",
+    "runningTime": {"hours": 2, "minutes": 0},
+    "usedPower": 300.0,
+    "assignPower": 450.0
   },
   {
     "plugId": 707,
@@ -199,33 +199,18 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     "userId": 1,
     "cafeId": 1,
     "subGroup": "group",
-    "onOff": "Off",
-    "runningTime": {"hours": 0, "minutes": 0},
-    "usedPower": 0.0,
-    "assignPower": 0.0,
+    "onOff": "On",
+    "runningTime": {"hours": 0, "minutes": 50},
+    "usedPower": 150.0,
+    "assignPower": 900.0,
     "plugDescription": "Back corner",
     "startTime": {"hours": 0, "minutes": 0},
-    "realTimePower": 0.0
+    "realTimePower": 1.2
   },
   {
     "plugId": 505,
     "topic": "plug_505",
     "plugName": "plug505",
-    "userId": 1,
-    "cafeId": 1,
-    "subGroup": "group",
-    "onOff": "On",
-    "runningTime": {"hours": 2, "minutes": 0},
-    "usedPower": 300.0,
-    "assignPower": 450.0,
-    "plugDescription": "By the door",
-    "startTime": {"hours": 1, "minutes": 0},
-    "realTimePower": 8.5
-  },
-  {
-    "plugId": 606,
-    "topic": "plug_606",
-    "plugName": "plug606",
     "userId": 1,
     "cafeId": 1,
     "subGroup": "group",
@@ -236,6 +221,21 @@ const List<Map<String, dynamic>> dummyDataPlugDetail = [
     "plugDescription": "Opposite the counter",
     "startTime": {"hours": 0, "minutes": 0},
     "realTimePower": 0.0
+  },
+  {
+    "plugId": 606,
+    "topic": "plug_606",
+    "plugName": "plug606",
+    "userId": 1,
+    "cafeId": 1,
+    "subGroup": "group",
+    "onOff": "On",
+    "runningTime": {"hours": 3, "minutes": 5},
+    "usedPower": 380.0,
+    "assignPower": 450.0,
+    "plugDescription": "By the door",
+    "startTime": {"hours": 1, "minutes": 0},
+    "realTimePower": 8.5
   },
   {
     "plugId": 707,
@@ -383,13 +383,13 @@ const List<Map<String, dynamic>> dummyDataChanged = [
     "userId": 1,
     "cafeId": 1,
     "subGroup": "group",
-    "onOff": "Off",
+    "onOff": "On",
     "runningTime": {"hours": 0, "minutes": 0},
-    "usedPower": 0.0,
-    "assignPower": 0.0,
+    "usedPower": 300.0,
+    "assignPower": 900.0,
     "plugDescription": "Back corner",
-    "startTime": {"hours": 0, "minutes": 0},
-    "realTimePower": 0.0
+    "startTime": {"hours": 1, "minutes": 15},
+    "realTimePower": 0.2
   },
   {
     "plugId": 505,
@@ -413,13 +413,13 @@ const List<Map<String, dynamic>> dummyDataChanged = [
     "userId": 1,
     "cafeId": 1,
     "subGroup": "group",
-    "onOff": "Off",
-    "runningTime": {"hours": 0, "minutes": 0},
-    "usedPower": 0.0,
-    "assignPower": 0.0,
-    "plugDescription": "Opposite the counter",
-    "startTime": {"hours": 0, "minutes": 0},
-    "realTimePower": 0.0
+    "onOff": "On",
+    "runningTime": {"hours": 3, "minutes": 5},
+    "usedPower": 380.0,
+    "assignPower": 450.0,
+    "plugDescription": "By the door",
+    "startTime": {"hours": 1, "minutes": 0},
+    "realTimePower": 8.5
   },
   {
     "plugId": 707,
@@ -444,8 +444,8 @@ const List<Map<String, dynamic>> dummyDataChanged = [
     "cafeId": 1,
     "subGroup": "group",
     "onOff": "Off",
-    "runningTime": {"hours": 2, "minutes": 30},
-    "usedPower": 260.0,
+    "runningTime": {"hours": 1, "minutes": 15},
+    "usedPower": 130.2,
     "assignPower": 300.0,
     "plugDescription": "Near the restroom",
     "startTime": {"hours": 3, "minutes": 15},
