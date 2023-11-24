@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:cafe_plug_guardian_client/models/time_model.dart';
 import 'package:cafe_plug_guardian_client/provider/plug_core_provider.dart';
 import 'package:cafe_plug_guardian_client/provider/user_provider.dart';
 import 'package:cafe_plug_guardian_client/screens/alert_screen.dart';
@@ -135,7 +136,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           plugId: plug.plugId,
                           plugName: plug.plugName,
                           onOff: plug.onOff,
-                          runningTime: plug.runningTime,
+                          runningTime: TimeModel(
+                                  hours: plug.runningTime.hours,
+                                  minutes: plug.runningTime.minutes)
+                              .toString(),
                           usedPower: plug.usedPower,
                           assignPower: plug.assignPower,
                         ),
