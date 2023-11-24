@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:cafe_plug_guardian_client/provider/plug_core_provider.dart';
 import 'package:cafe_plug_guardian_client/provider/user_provider.dart';
 import 'package:cafe_plug_guardian_client/screens/alert_screen.dart';
+import 'package:cafe_plug_guardian_client/screens/login_screen.dart';
 import 'package:cafe_plug_guardian_client/screens/plug_detail_screens.dart';
 import 'package:cafe_plug_guardian_client/screens/plug_list_screen.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
@@ -60,6 +61,17 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             icon: const Icon(
               Icons.add_alert_outlined,
+              size: 40,
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              context.read<UserProvider>().logout();
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const LoginScreen()));
+            },
+            icon: const Icon(
+              Icons.logout,
               size: 40,
             ),
           ),

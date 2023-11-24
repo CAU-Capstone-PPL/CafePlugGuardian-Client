@@ -1,11 +1,7 @@
-import 'package:cafe_plug_guardian_client/models/user_model.dart';
-import 'package:cafe_plug_guardian_client/provider/user_provider.dart';
-import 'package:cafe_plug_guardian_client/screens/home_screen.dart';
 import 'package:cafe_plug_guardian_client/services/api_login.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/custom_button_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatelessWidget {
   final TextEditingController _userAccountController = TextEditingController();
