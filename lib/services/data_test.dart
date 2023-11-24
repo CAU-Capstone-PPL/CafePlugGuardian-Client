@@ -398,7 +398,7 @@ const List<Map<String, dynamic>> dummyDataChanged = [
     "userId": 1,
     "cafeId": 1,
     "subGroup": "group",
-    "onOff": "On",
+    "onOff": "Off",
     "runningTime": {"hours": 3, "minutes": 5},
     "usedPower": 380.0,
     "assignPower": 450.0,
