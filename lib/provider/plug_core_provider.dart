@@ -17,7 +17,7 @@ class PlugCoreProvider extends ChangeNotifier {
       print('updateOnPlugs');
       _test = false;
     } else {
-      _onPlugs = await ApiTest.testGetPlugs();
+      _onPlugs = await ApiTest.testGetOnPlugsChanged();
       print('updateOnPlugs');
       _test = true;
     }
@@ -26,11 +26,11 @@ class PlugCoreProvider extends ChangeNotifier {
 
   void updateAllPlugs() async {
     if (_test) {
-      _allPlugs = await ApiTest.testGetOnPlugs();
+      _allPlugs = await ApiTest.testGetPlugs();
       print('updateAllPlugs');
       _test = false;
     } else {
-      _allPlugs = await ApiTest.testGetPlugs();
+      _allPlugs = await ApiTest.testGetPlugsChanged();
       print('updateAllPlugs');
       _test = true;
     }

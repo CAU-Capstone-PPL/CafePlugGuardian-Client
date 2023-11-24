@@ -25,7 +25,7 @@ class PlugDetailProvider extends ChangeNotifier {
       print('updatePlug');
       _test = false;
     } else {
-      _plug = await ApiTest.testGetPlugById(id);
+      _plug = await ApiTest.testGetPlugChangedById(id);
       print('updatePlug');
       _test = true;
     }
