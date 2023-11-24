@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:cafe_plug_guardian_client/models/user_model.dart';
 import 'package:http/http.dart' as http;
 
