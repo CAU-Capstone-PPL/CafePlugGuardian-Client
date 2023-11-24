@@ -9,7 +9,19 @@ class ApiTest {
     List<PlugCoreModel> plugInstances = [];
     const List<dynamic> plugs = dummyDataPlugCore;
     plugInstances = plugs.map((plug) => PlugCoreModel.fromJson(plug)).toList();
-    return plugInstances;
+    List<PlugCoreModel> onPlugs =
+        plugInstances.where((plug) => plug.onOff == "On").toList();
+    return onPlugs;
+  }
+
+  static Future<List<PlugCoreModel>> testGetOnPlugsChanged() async {
+    // 실제 API를 호출하는 대신 더미 데이터를 반환합니다.
+    List<PlugCoreModel> plugInstances = [];
+    const List<dynamic> plugs = dummyDataChanged;
+    plugInstances = plugs.map((plug) => PlugCoreModel.fromJson(plug)).toList();
+    List<PlugCoreModel> onPlugs =
+        plugInstances.where((plug) => plug.onOff == "On").toList();
+    return onPlugs;
   }
 
   static Future<PlugDetatilModel> testGetPlugById(int id) async {
@@ -18,9 +30,24 @@ class ApiTest {
     return PlugDetatilModel.fromJson(plugDataById);
   }
 
-  static Future<List<double>> testGetWeeklyPower() async {
-    List<double> weeklyPowerData = dummyDataWeeklyPowerData;
-    return Future.delayed(const Duration(seconds: 0), () => weeklyPowerData);
+  static Future<PlugDetatilModel> testGetPlugChangedById(int id) async {
+    Map<String, dynamic> plugDataById =
+        dummyDataChanged.firstWhere((e) => e['plugId'] == id);
+    return PlugDetatilModel.fromJson(plugDataById);
+  }
+
+  static Future<List<PlugCoreModel>> testGetPlugs() async {
+    List<PlugCoreModel> plugInstances = [];
+    const List<dynamic> plugs = dummyDataPlugCore;
+    plugInstances = plugs.map((plug) => PlugCoreModel.fromJson(plug)).toList();
+    return plugInstances;
+  }
+
+  static Future<List<PlugCoreModel>> testGetPlugsChanged() async {
+    List<PlugCoreModel> plugInstances = [];
+    const List<dynamic> plugs = dummyDataChanged;
+    plugInstances = plugs.map((plug) => PlugCoreModel.fromJson(plug)).toList();
+    return plugInstances;
   }
 
   static Future<List<AlertModel>> tsetGetAlertList() async {
@@ -30,12 +57,8 @@ class ApiTest {
     return alertInstance;
   }
 
-  static Future<List<PlugCoreModel>> testGetPlugs() async {
-    List<PlugCoreModel> plugInstances = [];
-    const List<dynamic> plugs = dummyDataPlugs;
-    plugInstances = plugs.map((plug) => PlugCoreModel.fromJson(plug)).toList();
-    return plugInstances;
-    // 실제 API를 호출하는 대신 더미 데이터를 반환합니다.
-    //return PlugListModel.fromJson(dummyDataPlug);
+  static Future<List<double>> testGetWeeklyPower() async {
+    List<double> weeklyPowerData = dummyDataWeeklyPowerData;
+    return Future.delayed(const Duration(seconds: 0), () => weeklyPowerData);
   }
 }
