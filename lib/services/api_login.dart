@@ -26,4 +26,27 @@ class ApiLogin {
 
     return result;
   }
+
+  static Future<bool> singUp(
+      String userAccount, String userName, String userPw) async {
+    final url = Uri.parse('$baseUrl/user/signUp');
+    Map<String, dynamic> data = {
+      'userAccount': userAccount,
+      'userName': userName,
+      'userPw': userPw,
+    };
+    final body = jsonEncode(data);
+    final response = await http.post(url,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: body);
+    print(response.statusCode);
+    if (response.statusCode != 200) {
+      throw Error();
+    }
+    final dynamic json = jsonDecode(response.body);
+
+    return json['success'];
+  }
 }

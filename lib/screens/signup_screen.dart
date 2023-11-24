@@ -9,7 +9,9 @@ import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatelessWidget {
   final TextEditingController _userAccountController = TextEditingController();
+  final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _userPwController = TextEditingController();
+
   SignUpScreen({super.key});
 
   @override
@@ -33,7 +35,7 @@ class SignUpScreen extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              const HeadingText(content: 'Cafe Plug Guardian Sign Up'),
+              const HeadingText(content: 'Sign Up'),
               const SizedBox(
                 height: 20,
               ),
@@ -41,6 +43,16 @@ class SignUpScreen extends StatelessWidget {
                 controller: _userAccountController,
                 decoration: const InputDecoration(
                   labelText: 'User Account',
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.all(12.0),
+                ),
+              ),
+              const SizedBox(height: 16.0),
+              TextField(
+                controller: _userNameController,
+                obscureText: true,
+                decoration: const InputDecoration(
+                  labelText: 'Nickname',
                   border: OutlineInputBorder(),
                   contentPadding: EdgeInsets.all(12.0),
                 ),
@@ -61,13 +73,12 @@ class SignUpScreen extends StatelessWidget {
                 onPressed: () async {
                   String userAccount = _userAccountController.text;
                   String userPw = _userPwController.text;
-                  UserModel user =
-                      await ApiLogin.postLogin(userAccount, userPw);
-                  context.read<UserProvider>().login(user);
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const HomeScreen()));
+                  String userName = _userNameController.text;
+                  if (await ApiLogin.singUp(userAccount, userName, userPw)) {
+                    Navigator.pop(context);
+                  } else {
+                    print('회원가입 오류!');
+                  }
                 },
               ),
             ],
