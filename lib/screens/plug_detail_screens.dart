@@ -153,26 +153,29 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
                           ],
                         ),
                         PlugPowerInfomattion(
-                            assignPower: context
-                                .watch<PlugDetailProvider>()
-                                .plug!
-                                .assignPower,
-                            usedPower: context
-                                .watch<PlugDetailProvider>()
-                                .plug!
-                                .usedPower,
-                            realTimePower: context
-                                .watch<PlugDetailProvider>()
-                                .plug!
-                                .realTimePower,
-                            startTime: context
-                                .watch<PlugDetailProvider>()
-                                .plug!
-                                .startTime,
-                            runningTime: context
-                                .watch<PlugDetailProvider>()
-                                .plug!
-                                .runningTime),
+                          assignPower: context
+                              .watch<PlugDetailProvider>()
+                              .plug!
+                              .assignPower,
+                          usedPower: context
+                              .watch<PlugDetailProvider>()
+                              .plug!
+                              .usedPower,
+                          realTimePower: context
+                              .watch<PlugDetailProvider>()
+                              .plug!
+                              .realTimePower,
+                          startTime: context
+                              .watch<PlugDetailProvider>()
+                              .plug!
+                              .startTime
+                              .toString(),
+                          runningTime: context
+                              .watch<PlugDetailProvider>()
+                              .plug!
+                              .runningTime
+                              .toString(),
+                        ),
                       ],
                     ),
                   ),
