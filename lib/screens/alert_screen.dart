@@ -17,7 +17,7 @@ class _AlertScreenState extends State<AlertScreen> {
   @override
   void initState() {
     super.initState();
-    alerts = ApiTest.tsetGetAlertList();
+    alerts = ApiTest.testGetAlertList();
   }
 
   @override

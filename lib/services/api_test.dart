@@ -50,11 +50,18 @@ class ApiTest {
     return plugInstances;
   }
 
-  static Future<List<AlertModel>> tsetGetAlertList() async {
+  static Future<List<AlertModel>> testGetAlertList() async {
     List<AlertModel> alertInstance = [];
     const List<dynamic> alerts = dummyDataAlerts;
     alertInstance = alerts.map((alert) => AlertModel.fromJson(alert)).toList();
     return alertInstance;
+  }
+
+  static Future<List<AlertModel>> testGetAlertListByPlugId(int plugId) async {
+    List<AlertModel> alertInstance = await testGetAlertList();
+    List<AlertModel> alertsByPlugId =
+        alertInstance.where((alert) => alert.plugId == plugId).toList();
+    return alertsByPlugId;
   }
 
   static Future<List<double>> testGetWeeklyPower() async {

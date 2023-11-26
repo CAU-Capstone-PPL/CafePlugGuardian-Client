@@ -29,7 +29,7 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
   void initState() {
     super.initState();
     _startTimer();
-    alerts = ApiTest.tsetGetAlertList();
+    alerts = ApiTest.testGetAlertList();
     //plug = ApiPlug.getPlugById(widget.id);
   }
 
@@ -195,8 +195,13 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              AlertByPlugIdScreen(plugId: widget.id),
+                          builder: (context) => AlertByPlugIdScreen(
+                            plugId: widget.id,
+                            plugName: context
+                                .read<PlugDetailProvider>()
+                                .plug!
+                                .plugName,
+                          ),
                         ),
                       );
                     },
