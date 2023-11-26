@@ -1,16 +1,18 @@
+import 'package:cafe_plug_guardian_client/models/date_time_model.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:flutter/material.dart';
 
 class Alert extends StatelessWidget {
   final int plugId;
   final String plugName;
-  final String blockingTime;
-  const Alert({
-    super.key,
-    required this.plugId,
-    required this.plugName,
-    required this.blockingTime,
-  });
+  final DateTimeModel blockingTime;
+  final bool check;
+  const Alert(
+      {super.key,
+      required this.plugId,
+      required this.plugName,
+      required this.blockingTime,
+      required this.check});
 
   @override
   Widget build(BuildContext context) {
@@ -43,24 +45,24 @@ class Alert extends StatelessWidget {
                     image: AssetImage('assets/alert.png'),
                     width: 30,
                   ),
-                  const Text(
-                    '허용하지 않는\n기기연결',
-                    style: TextStyle(fontSize: 16),
+                  const SizedBox(
+                    width: 10,
                   ),
                   Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+                    const BoldText(content: '허용하지 않는 기기연결'),
+                    const SizedBox(
+                      height: 5,
+                    ),
                     Text('plugId: $plugId'),
                     Text(plugName),
-                    Text(blockingTime),
+                    Text(
+                        '${blockingTime.date.toString()} ${blockingTime.time.toString()}'),
                   ])
                 ],
               ),
-              /*Text(
-                '$plugName에서 비정상적인 전자기기가 $blockingTime에 감지되었습니다.',
-                style: const TextStyle(
-                  color: AppColor.text,
-                  fontSize: 16,
-                ),
-              ),*/
+            ),
+            const SizedBox(
+              width: 10,
             ),
             const Icon(
               Icons.chevron_right_rounded,
