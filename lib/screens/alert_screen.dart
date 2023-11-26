@@ -46,6 +46,7 @@ class _AlertScreenState extends State<AlertScreen> {
                     plugId: alert.plugId,
                     plugName: alert.plugName,
                     blockingTime: alert.blockingTime,
+                    check: alert.check,
                   );
                 },
               );
