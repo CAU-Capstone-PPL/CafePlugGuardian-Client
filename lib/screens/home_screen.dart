@@ -51,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: AppColor.background,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         centerTitle: false,
         backgroundColor: AppColor.background,
         foregroundColor: AppColor.text,
@@ -68,8 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
             onPressed: () {
               context.read<UserProvider>().logout();
-              Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => const LoginScreen()));
+              Navigator.popUntil(context, (route) => route.isFirst);
             },
             icon: const Icon(
               Icons.logout,
