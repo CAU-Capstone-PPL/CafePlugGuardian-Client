@@ -3,9 +3,9 @@ import 'package:cafe_plug_guardian_client/models/time_model.dart';
 import 'package:cafe_plug_guardian_client/provider/plug_core_provider.dart';
 import 'package:cafe_plug_guardian_client/provider/user_provider.dart';
 import 'package:cafe_plug_guardian_client/screens/alert_screen.dart';
-import 'package:cafe_plug_guardian_client/screens/login_screen.dart';
 import 'package:cafe_plug_guardian_client/screens/plug_detail_screens.dart';
 import 'package:cafe_plug_guardian_client/screens/plug_list_screen.dart';
+import 'package:cafe_plug_guardian_client/screens/user_manage_screen.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/custom_button_widget.dart';
 import 'package:cafe_plug_guardian_client/widgets/plug_widget.dart';
@@ -68,6 +68,18 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           IconButton(
             onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const UserManageScreen()));
+            },
+            icon: const Icon(
+              Icons.settings,
+              size: 40,
+            ),
+          ),
+          IconButton(
+            onPressed: () {
               context.read<UserProvider>().logout();
               Navigator.popUntil(context, (route) => route.isFirst);
             },
@@ -78,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
         title: AppBarText(
-          content: context.read<UserProvider>().user!.userName,
+          content: '${context.read<UserProvider>().user!.userName} 님',
         ),
       ),
       body: Padding(

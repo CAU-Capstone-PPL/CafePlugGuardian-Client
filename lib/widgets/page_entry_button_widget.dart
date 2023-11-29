@@ -33,20 +33,20 @@ class _PageEntryButtonState extends State<PageEntryButton> {
             ),
           ],
         ),
-        child: const Padding(
-          padding: EdgeInsets.all(10.0),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '비정상 접근 로그',
-                style: TextStyle(
+                widget.content,
+                style: const TextStyle(
                   color: AppColor.text,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Icon(
+              const Icon(
                 Icons.chevron_right_rounded,
                 size: 30,
                 color: AppColor.text,
