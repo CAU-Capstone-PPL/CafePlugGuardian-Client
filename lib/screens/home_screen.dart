@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const HeadingText(
-                  content: 'ON Plug List',
+                  content: '손님이 사용 중인 Plug List',
                 ),
                 CustomButton(
                     content: 'View all',
@@ -122,43 +122,46 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 10,
             ),
             Expanded(
-              child: GridView.count(
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                crossAxisCount: 2,
-                childAspectRatio: 1.2,
-                children: context
-                    .watch<PlugCoreProvider>()
-                    .onPlugs
-                    .map(
-                      (plug) => GestureDetector(
-                        onTap: () {
-                          _stopTimer();
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  PlugDetailScreen(id: plug.plugId),
+              child: context.read<PlugCoreProvider>().onPlugs.isNotEmpty
+                  ? GridView.count(
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                      crossAxisCount: 2,
+                      childAspectRatio: 1.2,
+                      children: context
+                          .watch<PlugCoreProvider>()
+                          .onPlugs
+                          .map(
+                            (plug) => GestureDetector(
+                              onTap: () {
+                                _stopTimer();
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        PlugDetailScreen(id: plug.plugId),
+                                  ),
+                                ).then((_) {
+                                  _startTimer();
+                                });
+                              },
+                              child: Plug(
+                                plugId: plug.plugId,
+                                plugName: plug.plugName,
+                                toggle: plug.toggle,
+                                runningTime: TimeModel(
+                                        hours: plug.runningTime.hours,
+                                        minutes: plug.runningTime.minutes)
+                                    .toString(),
+                                usedPower: plug.usedPower,
+                                assignPower: plug.assignPower,
+                              ),
                             ),
-                          ).then((_) {
-                            _startTimer();
-                          });
-                        },
-                        child: Plug(
-                          plugId: plug.plugId,
-                          plugName: plug.plugName,
-                          toggle: plug.toggle,
-                          runningTime: TimeModel(
-                                  hours: plug.runningTime.hours,
-                                  minutes: plug.runningTime.minutes)
-                              .toString(),
-                          usedPower: plug.usedPower,
-                          assignPower: plug.assignPower,
-                        ),
-                      ),
+                          )
+                          .toList(),
                     )
-                    .toList(),
-              ),
+                  : const Center(
+                      child: TitleText(content: '아직 손님이 사용 중인 플러그가 없습니다.')),
             ),
             const SizedBox(
               height: 20,

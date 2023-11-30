@@ -12,15 +12,17 @@ class PlugCoreProvider extends ChangeNotifier {
   List<PlugCoreModel> get allPlugs => _allPlugs;
 
   void updateOnPlugs() async {
-    if (_test) {
-      _onPlugs = await ApiTest.testGetOnPlugs();
+    _onPlugs = await ApiPlug.getOnPlugs(1);
+    /*if (_test) {
+      //_onPlugs = await ApiTest.testGetOnPlugs();
+      
       print('updateOnPlugs');
       _test = false;
     } else {
       _onPlugs = await ApiTest.testGetOnPlugsChanged();
       print('updateOnPlugs');
       _test = true;
-    }
+    }*/
     notifyListeners();
   }
 

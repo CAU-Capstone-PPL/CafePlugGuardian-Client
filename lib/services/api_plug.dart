@@ -9,17 +9,21 @@ class ApiPlug {
   static const String plugBaseUrl = 'http://192.168.4.1';
 
   //플러그 정보 리스트 (get) ⇒ 홈스크린과 플러그 전체 스크린에 띄울 것
-  static Future<List<PlugCoreModel>> getOnPlugs() async {
-    final url = Uri.parse('$baseUrl/plug url'); //url 수정 필요
+  static Future<List<PlugCoreModel>> getOnPlugs(int cafeId) async {
+    final url = Uri.parse('$baseUrl/cafe/$cafeId/plug');
     final response = await http.get(url);
 
     if (response.statusCode != 200) {
       throw Error();
     }
-    final List<dynamic> plugs = jsonDecode(response.body);
-    List<PlugCoreModel> plugInstances =
-        plugs.map((plug) => PlugCoreModel.fromJson(plug)).toList();
-    return plugInstances;
+    final Map<String, dynamic> body = jsonDecode(response.body);
+    final List<dynamic> plugs = body['result'];
+    List<PlugCoreModel> plugInstances = plugs.map((plug) {
+      return PlugCoreModel.fromJson(plug);
+    }).toList();
+
+    return plugInstances
+        .toList(); //.where((plug) => plug.useStatus == true).toList();
   }
 
   //플러그 디테일 정보 (get) ⇒ 플러그 상세 스크린에 띄울 것 id를 이용
