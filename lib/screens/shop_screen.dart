@@ -78,7 +78,7 @@ class _ShopScreenState extends State<ShopScreen> {
                                   context: context,
                                   builder: (context) => AlertDialog(
                                     title:
-                                        const HeadingText(content: '구매하시겠습니까?'),
+                                        const HeadingText(content: '수정하시겠습니까?'),
                                     content: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
