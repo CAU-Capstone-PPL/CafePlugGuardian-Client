@@ -1,7 +1,8 @@
 import 'package:cafe_plug_guardian_client/models/time_model.dart';
 
 class PlugDetatilModel {
-  String plugName, onOff, plugDescription;
+  String plugName, plugDescription;
+  bool toggle;
   TimeModel startTime, runningTime;
   int plugId;
   double usedPower, assignPower, realTimePower;
@@ -9,7 +10,7 @@ class PlugDetatilModel {
   PlugDetatilModel(
       {required this.plugId,
       required this.plugName,
-      required this.onOff,
+      required this.toggle,
       required this.plugDescription,
       required this.startTime,
       required this.runningTime,
@@ -20,7 +21,7 @@ class PlugDetatilModel {
   PlugDetatilModel.fromJson(Map<String, dynamic> json)
       : plugId = json['plugId'],
         plugName = json['plugName'],
-        onOff = json['onOff'],
+        toggle = json['toggle'],
         startTime = TimeModel.fromJson(json['startTime']),
         runningTime = TimeModel.fromJson(json['runningTime']),
         usedPower = json['usedPower'],

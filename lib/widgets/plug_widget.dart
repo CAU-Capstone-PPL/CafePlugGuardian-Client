@@ -2,7 +2,8 @@ import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:flutter/material.dart';
 
 class Plug extends StatelessWidget {
-  final String plugName, onOff, runningTime;
+  final String plugName, runningTime;
+  final bool toggle;
   final int plugId;
   final double usedPower, assignPower;
 
@@ -10,7 +11,7 @@ class Plug extends StatelessWidget {
     super.key,
     required this.plugId,
     required this.plugName,
-    required this.onOff,
+    required this.toggle,
     required this.runningTime,
     required this.usedPower,
     required this.assignPower,
@@ -19,7 +20,7 @@ class Plug extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Opacity(
-      opacity: onOff == 'On' ? 1.0 : 0.5,
+      opacity: toggle ? 1.0 : 0.5,
       child: Container(
         width: 170,
         height: 150.0,
@@ -46,7 +47,7 @@ class Plug extends StatelessWidget {
                   content: plugName,
                 ),
                 BoldText(
-                  content: onOff,
+                  content: toggle ? 'On' : 'Off',
                 ),
               ],
             ),

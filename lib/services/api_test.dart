@@ -10,7 +10,7 @@ class ApiTest {
     const List<dynamic> plugs = dummyDataPlugCore;
     plugInstances = plugs.map((plug) => PlugCoreModel.fromJson(plug)).toList();
     List<PlugCoreModel> onPlugs =
-        plugInstances.where((plug) => plug.onOff == "On").toList();
+        plugInstances.where((plug) => plug.toggle == true).toList();
     return onPlugs;
   }
 
@@ -20,7 +20,7 @@ class ApiTest {
     const List<dynamic> plugs = dummyDataChanged;
     plugInstances = plugs.map((plug) => PlugCoreModel.fromJson(plug)).toList();
     List<PlugCoreModel> onPlugs =
-        plugInstances.where((plug) => plug.onOff == "On").toList();
+        plugInstances.where((plug) => plug.toggle == true).toList();
     return onPlugs;
   }
 

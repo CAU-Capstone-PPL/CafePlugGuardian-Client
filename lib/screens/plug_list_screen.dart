@@ -119,7 +119,7 @@ class _PlugListScreenState extends State<PlugListScreen> {
                         child: Plug(
                           plugId: plug.plugId,
                           plugName: plug.plugName,
-                          onOff: plug.onOff,
+                          toggle: plug.toggle,
                           runningTime: plug.runningTime.toString(),
                           usedPower: plug.usedPower,
                           assignPower: plug.assignPower,

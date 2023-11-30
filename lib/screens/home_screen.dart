@@ -147,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Plug(
                           plugId: plug.plugId,
                           plugName: plug.plugName,
-                          onOff: plug.onOff,
+                          toggle: plug.toggle,
                           runningTime: TimeModel(
                                   hours: plug.runningTime.hours,
                                   minutes: plug.runningTime.minutes)
