@@ -46,7 +46,6 @@ class SignUpScreen extends StatelessWidget {
               const SizedBox(height: 16.0),
               TextField(
                 controller: _userNameController,
-                obscureText: true,
                 decoration: const InputDecoration(
                   labelText: 'Nickname',
                   border: OutlineInputBorder(),
@@ -70,10 +69,27 @@ class SignUpScreen extends StatelessWidget {
                   String userAccount = _userAccountController.text;
                   String userPw = _userPwController.text;
                   String userName = _userNameController.text;
-                  if (await ApiLogin.singUp(userAccount, userName, userPw)) {
-                    Navigator.pop(context);
-                  } else {
-                    print('회원가입 오류!');
+                  try {
+                    if (await ApiLogin.singUp(userAccount, userName, userPw)) {
+                      Navigator.pop(context);
+                    }
+                  } catch (e) {
+                    final errorMessage = e.toString();
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: const HeadingText(content: 'Login Error'),
+                        content: BoldText(content: errorMessage),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      ),
+                    );
                   }
                 },
               ),
