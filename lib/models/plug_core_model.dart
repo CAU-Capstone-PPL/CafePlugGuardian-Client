@@ -1,11 +1,10 @@
 import 'package:cafe_plug_guardian_client/models/time_model.dart';
 
 class PlugCoreModel {
-  final String plugName;
-  final bool toggle;
-  final bool useStatus;
-  final TimeModel runningTime;
   final int plugId;
+  final String plugName;
+  final bool toggle, useStatus;
+  final TimeModel runningTime;
   final double usedPower, assignPower;
 
   PlugCoreModel.fromJson(Map<String, dynamic> json)

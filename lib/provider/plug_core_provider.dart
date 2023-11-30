@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class PlugCoreProvider extends ChangeNotifier {
   List<PlugCoreModel> _onPlugs = [];
   List<PlugCoreModel> _allPlugs = [];
-  bool _test = true;
+  final bool _test = true;
 
   List<PlugCoreModel> get onPlugs => _onPlugs;
   List<PlugCoreModel> get allPlugs => _allPlugs;
@@ -27,7 +27,8 @@ class PlugCoreProvider extends ChangeNotifier {
   }
 
   void updateAllPlugs() async {
-    if (_test) {
+    _allPlugs = await ApiPlug.getPlugs(1);
+    /*if (_test) {
       _allPlugs = await ApiTest.testGetPlugs();
       print('updateAllPlugs');
       _test = false;
@@ -35,7 +36,7 @@ class PlugCoreProvider extends ChangeNotifier {
       _allPlugs = await ApiTest.testGetPlugsChanged();
       print('updateAllPlugs');
       _test = true;
-    }
+    }*/
     notifyListeners();
   }
 }

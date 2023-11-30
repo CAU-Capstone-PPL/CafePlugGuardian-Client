@@ -94,40 +94,43 @@ class _PlugListScreenState extends State<PlugListScreen> {
               height: 10,
             ),
             Expanded(
-              child: GridView.count(
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                crossAxisCount: 2,
-                childAspectRatio: 1.2,
-                children: context
-                    .watch<PlugCoreProvider>()
-                    .allPlugs
-                    .map(
-                      (plug) => GestureDetector(
-                        onTap: () {
-                          _stopTimer();
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  PlugDetailScreen(id: plug.plugId),
+              child: context.read<PlugCoreProvider>().allPlugs.isNotEmpty
+                  ? GridView.count(
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                      crossAxisCount: 2,
+                      childAspectRatio: 1.2,
+                      children: context
+                          .watch<PlugCoreProvider>()
+                          .allPlugs
+                          .map(
+                            (plug) => GestureDetector(
+                              onTap: () {
+                                _stopTimer();
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        PlugDetailScreen(id: plug.plugId),
+                                  ),
+                                ).then((_) {
+                                  _startTimer();
+                                });
+                              },
+                              child: Plug(
+                                plugId: plug.plugId,
+                                plugName: plug.plugName,
+                                toggle: plug.toggle,
+                                runningTime: plug.runningTime.toString(),
+                                usedPower: plug.usedPower,
+                                assignPower: plug.assignPower,
+                              ),
                             ),
-                          ).then((_) {
-                            _startTimer();
-                          });
-                        },
-                        child: Plug(
-                          plugId: plug.plugId,
-                          plugName: plug.plugName,
-                          toggle: plug.toggle,
-                          runningTime: plug.runningTime.toString(),
-                          usedPower: plug.usedPower,
-                          assignPower: plug.assignPower,
-                        ),
-                      ),
+                          )
+                          .toList(),
                     )
-                    .toList(),
-              ),
+                  : const Center(
+                      child: TitleText(content: '등록된 플러그가 없습니다. 추가하세요!')),
             ),
           ],
         ),
