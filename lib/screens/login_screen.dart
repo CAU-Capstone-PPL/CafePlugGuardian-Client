@@ -66,15 +66,34 @@ class _LoginScreenState extends State<LoginScreen> {
               CustomButton(
                 content: 'Login',
                 onPressed: () async {
-                  String userAccount = _userAccountController.text;
-                  String userPw = _userPwController.text;
-                  UserModel user =
-                      await ApiLogin.postLogin(userAccount, userPw);
-                  context.read<UserProvider>().login(user);
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const HomeScreen()));
+                  try {
+                    String userAccount = _userAccountController.text;
+                    String userPw = _userPwController.text;
+                    UserModel user =
+                        await ApiLogin.postLogin(userAccount, userPw);
+                    context.read<UserProvider>().login(user);
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()));
+                  } catch (e) {
+                    final errorMessage = e.toString();
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: const HeadingText(content: 'Login Error'),
+                        content: BoldText(content: errorMessage),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
                 },
               ),
               const SizedBox(
