@@ -41,11 +41,11 @@ class _AlertByPlugIdScreenState extends State<AlertByPlugIdScreen> {
                 itemBuilder: (context, index) {
                   var alert = snapshot.data![index];
                   return Alert(
-                    plugId: alert.plugId,
-                    plugName: alert.plugName,
-                    blockingTime: alert.blockingTime,
-                    check: alert.check,
-                  );
+                      plugId: alert.plugId,
+                      plugName: alert.plugName,
+                      plugOffTime: alert.plugOffTime,
+                      ownerCheck: alert.ownerCheck,
+                      isToggleOn: alert.isToggleOn);
                 },
               );
             }
