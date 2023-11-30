@@ -1,4 +1,5 @@
 import 'package:cafe_plug_guardian_client/models/alert_model.dart';
+import 'package:cafe_plug_guardian_client/services/api_plug.dart';
 import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/alert_widget.dart';
@@ -17,6 +18,7 @@ class _AlertScreenState extends State<AlertScreen> {
   @override
   void initState() {
     super.initState();
+    //alerts = ApiPlug.getAlertList();
     alerts = ApiTest.testGetAlertList();
   }
 
@@ -39,15 +41,15 @@ class _AlertScreenState extends State<AlertScreen> {
               return ListView.separated(
                 itemCount: snapshot.data!.length,
                 separatorBuilder: (context, index) =>
-                    const SizedBox(height: 10), // 예시로 간격을 10으로 설정
+                    const SizedBox(height: 30),
                 itemBuilder: (context, index) {
                   var alert = snapshot.data![index];
                   return Alert(
-                    plugId: alert.plugId,
-                    plugName: alert.plugName,
-                    blockingTime: alert.blockingTime,
-                    check: alert.check,
-                  );
+                      plugId: alert.plugId,
+                      plugName: alert.plugName,
+                      plugOffTime: alert.plugOffTime,
+                      ownerCheck: alert.ownerCheck,
+                      isToggleOn: alert.isToggleOn);
                 },
               );
             }

@@ -516,77 +516,105 @@ const List<Map<String, dynamic>> dummyDataChanged = [
 //더미데이터
 const List<Map<String, dynamic>> dummyDataAlerts = [
   {
-    "plugId": 101,
-    "plugName": "Plug101",
-    "blockingTime": {
-      "date": {"year": 2023, "month": 11, "day": 26},
-      "time": {"hours": 20, "minutes": 31},
+    "plugId": 1,
+    "plugName": "Plug 1",
+    "plugOffTime": {
+      "date": {"day": 1, "month": 12, "year": 2023},
+      "time": {"hours": 10, "minutes": 30}
     },
-    "check": false
+    "ownerCheck": true,
+    "isToggleOn": false
   },
   {
-    "plugId": 202,
-    "plugName": "Plug202",
-    "blockingTime": {
-      "date": {"year": 2023, "month": 11, "day": 25},
+    "plugId": 2,
+    "plugName": "Plug 2",
+    "plugOffTime": {
+      "date": {"day": 2, "month": 12, "year": 2023},
+      "time": {"hours": 12, "minutes": 45}
+    },
+    "ownerCheck": false,
+    "isToggleOn": true
+  },
+  {
+    "plugId": 3,
+    "plugName": "Plug 3",
+    "plugOffTime": {
+      "date": {"day": 3, "month": 12, "year": 2023},
+      "time": {"hours": 14, "minutes": 15}
+    },
+    "ownerCheck": true,
+    "isToggleOn": true
+  },
+  {
+    "plugId": 4,
+    "plugName": "Plug 4",
+    "plugOffTime": {
+      "date": {"day": 4, "month": 12, "year": 2023},
+      "time": {"hours": 16, "minutes": 30}
+    },
+    "ownerCheck": false,
+    "isToggleOn": false
+  },
+  {
+    "plugId": 5,
+    "plugName": "Plug 5",
+    "plugOffTime": {
+      "date": {"day": 5, "month": 12, "year": 2023},
       "time": {"hours": 18, "minutes": 45}
     },
-    "check": true
+    "ownerCheck": true,
+    "isToggleOn": true
   },
   {
-    "plugId": 303,
-    "plugName": "Plug303",
-    "blockingTime": {
-      "date": {"year": 2023, "month": 11, "day": 24},
-      "time": {"hours": 16, "minutes": 12}
+    "plugId": 6,
+    "plugName": "Plug 6",
+    "plugOffTime": {
+      "date": {"day": 6, "month": 12, "year": 2023},
+      "time": {"hours": 20, "minutes": 0}
     },
-    "check": false
+    "ownerCheck": false,
+    "isToggleOn": false
   },
   {
-    "plugId": 404,
-    "plugName": "Plug404",
-    "blockingTime": {
-      "date": {"year": 2023, "month": 11, "day": 23},
-      "time": {"hours": 14, "minutes": 28}
+    "plugId": 7,
+    "plugName": "Plug 7",
+    "plugOffTime": {
+      "date": {"day": 7, "month": 12, "year": 2023},
+      "time": {"hours": 22, "minutes": 15}
     },
-    "check": true
+    "ownerCheck": true,
+    "isToggleOn": true
   },
   {
-    "plugId": 505,
-    "plugName": "Plug505",
-    "blockingTime": {
-      "date": {"year": 2023, "month": 11, "day": 22},
-      "time": {"hours": 12, "minutes": 54}
+    "plugId": 8,
+    "plugName": "Plug 8",
+    "plugOffTime": {
+      "date": {"day": 8, "month": 12, "year": 2023},
+      "time": {"hours": 23, "minutes": 30}
     },
-    "check": false
+    "ownerCheck": false,
+    "isToggleOn": false
   },
   {
-    "plugId": 606,
-    "plugName": "Plug606",
-    "blockingTime": {
-      "date": {"year": 2023, "month": 11, "day": 21},
-      "time": {"hours": 11, "minutes": 10}
+    "plugId": 9,
+    "plugName": "Plug 9",
+    "plugOffTime": {
+      "date": {"day": 9, "month": 12, "year": 2023},
+      "time": {"hours": 1, "minutes": 45}
     },
-    "check": true
+    "ownerCheck": true,
+    "isToggleOn": true
   },
   {
-    "plugId": 707,
-    "plugName": "Plug707",
-    "blockingTime": {
-      "date": {"year": 2023, "month": 11, "day": 20},
-      "time": {"hours": 9, "minutes": 26}
+    "plugId": 10,
+    "plugName": "Plug 10",
+    "plugOffTime": {
+      "date": {"day": 10, "month": 12, "year": 2023},
+      "time": {"hours": 3, "minutes": 0}
     },
-    "check": false
-  },
-  {
-    "plugId": 808,
-    "plugName": "Plug808",
-    "blockingTime": {
-      "date": {"year": 2023, "month": 11, "day": 19},
-      "time": {"hours": 7, "minutes": 42}
-    },
-    "check": true
-  },
+    "ownerCheck": false,
+    "isToggleOn": false
+  }
 ];
 
 const List<double> dummyDataWeeklyPowerData = [
