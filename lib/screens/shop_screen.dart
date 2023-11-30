@@ -49,16 +49,7 @@ class _ShopScreenState extends State<ShopScreen> {
                         '메뉴 개수: ${context.watch<MenuProvider>().menuList.length}'),
                 Row(
                   children: [
-                    CustomButton(
-                        content: '메뉴 추가',
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const PlugConnectScreen(),
-                            ),
-                          );
-                        }),
+                    CustomButton(content: '메뉴 추가', onPressed: () {}),
                     const SizedBox(
                       width: 10,
                     ),
@@ -82,7 +73,41 @@ class _ShopScreenState extends State<ShopScreen> {
                           .menuList
                           .map(
                             (menu) => GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => AlertDialog(
+                                    title:
+                                        const HeadingText(content: '구매하시겠습니까?'),
+                                    content: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        const Image(
+                                          image:
+                                              AssetImage('assets/coffee.png'),
+                                          width: 100,
+                                          height: 100,
+                                        ),
+                                        NormalText(content: menu.name),
+                                        BoldText(
+                                            content: '${menu.price} point'),
+                                        CaptionText(content: menu.description),
+                                      ],
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: const Text('OK'),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
                               child: Menu(
                                 name: menu.name,
                                 price: menu.price,

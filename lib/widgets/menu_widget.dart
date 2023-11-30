@@ -36,18 +36,13 @@ class Menu extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          TitleText(content: name),
-          const SizedBox(
-            height: 20,
+          const Image(
+            image: AssetImage('assets/coffee.png'),
+            width: 40,
+            height: 40,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              const NormalText(content: '가격'),
-              BoldText(content: '$price'),
-            ],
-          ),
-          CaptionText(content: description),
+          NormalText(content: name),
+          BoldText(content: '$price point'),
         ],
       ),
     );

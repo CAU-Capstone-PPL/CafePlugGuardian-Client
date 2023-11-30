@@ -622,7 +622,7 @@ List<Map<String, dynamic>> cafeMenuData = [
   },
   {
     'name': 'Blueberry Muffin',
-    'description': 'Moist muffin with blueberries',
+    'description': 'muffin with blueberries',
     'price': 2,
   },
   {
