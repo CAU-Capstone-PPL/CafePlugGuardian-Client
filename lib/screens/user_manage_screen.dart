@@ -1,4 +1,5 @@
 import 'package:cafe_plug_guardian_client/provider/user_provider.dart';
+import 'package:cafe_plug_guardian_client/screens/shop_screen.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/page_entry_button_widget.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,14 @@ class UserManageScreen extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              PageEntryButton(content: '상점 관리', onTap: () {}),
+              PageEntryButton(
+                  content: '상점 관리',
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ShopScreen()));
+                  }),
             ],
           ),
         ),

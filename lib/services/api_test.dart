@@ -1,4 +1,5 @@
 import 'package:cafe_plug_guardian_client/models/alert_model.dart';
+import 'package:cafe_plug_guardian_client/models/menu_model.dart';
 import 'package:cafe_plug_guardian_client/models/plug_core_model.dart';
 import 'package:cafe_plug_guardian_client/models/plug_detail_model.dart';
 import 'package:cafe_plug_guardian_client/services/data_test.dart';
@@ -67,5 +68,11 @@ class ApiTest {
   static Future<List<double>> testGetWeeklyPower() async {
     List<double> weeklyPowerData = dummyDataWeeklyPowerData;
     return Future.delayed(const Duration(seconds: 0), () => weeklyPowerData);
+  }
+
+  static Future<List<MenuModel>> testGetMenu() async {
+    List<MenuModel> menuList =
+        cafeMenuData.map((menu) => MenuModel.fromJson(menu)).toList();
+    return menuList;
   }
 }
