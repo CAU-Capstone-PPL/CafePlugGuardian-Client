@@ -1,7 +1,4 @@
 import 'package:cafe_plug_guardian_client/provider/menu_provider.dart';
-import 'package:cafe_plug_guardian_client/provider/plug_core_provider.dart';
-import 'package:cafe_plug_guardian_client/screens/plug_connect_screen.dart';
-import 'package:cafe_plug_guardian_client/screens/plug_detail_screens.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/custom_button_widget.dart';
 import 'package:cafe_plug_guardian_client/widgets/menu_widget.dart';
@@ -16,6 +13,9 @@ class ShopScreen extends StatefulWidget {
 }
 
 class _ShopScreenState extends State<ShopScreen> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController priceController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
   @override
   void initState() {
     super.initState();
@@ -25,6 +25,7 @@ class _ShopScreenState extends State<ShopScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppColor.background,
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -47,15 +48,57 @@ class _ShopScreenState extends State<ShopScreen> {
                 HeadingText(
                     content:
                         '메뉴 개수: ${context.watch<MenuProvider>().menuList.length}'),
-                Row(
-                  children: [
-                    CustomButton(content: '메뉴 추가', onPressed: () {}),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    CustomButton(content: '메뉴 삭제', onPressed: () {}),
-                  ],
-                ),
+                CustomButton(
+                    content: '메뉴 추가',
+                    onPressed: () {
+                      nameController.clear();
+                      priceController.clear();
+                      descriptionController.clear();
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: const HeadingText(content: '메뉴 추가'),
+                          content: SingleChildScrollView(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const Image(
+                                  image: AssetImage('assets/coffee.png'),
+                                  width: 100,
+                                  height: 100,
+                                ),
+                                TextField(
+                                  controller: nameController,
+                                  decoration:
+                                      const InputDecoration(labelText: '메뉴 이름'),
+                                ),
+                                TextField(
+                                  controller: priceController,
+                                  decoration:
+                                      const InputDecoration(labelText: '가격'),
+                                  keyboardType: TextInputType.number,
+                                ),
+                                TextField(
+                                  controller: descriptionController,
+                                  decoration:
+                                      const InputDecoration(labelText: '설명'),
+                                ),
+                              ],
+                            ),
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                //추가
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text('추가'),
+                            ),
+                          ],
+                        ),
+                      );
+                    }),
               ],
             ),
             const SizedBox(
@@ -74,35 +117,61 @@ class _ShopScreenState extends State<ShopScreen> {
                           .map(
                             (menu) => GestureDetector(
                               onTap: () {
+                                nameController.text = menu.name;
+                                priceController.text = menu.price.toString();
+                                descriptionController.text = menu.description;
                                 showDialog(
                                   context: context,
                                   builder: (context) => AlertDialog(
-                                    title:
-                                        const HeadingText(content: '수정하시겠습니까?'),
-                                    content: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        const Image(
-                                          image:
-                                              AssetImage('assets/coffee.png'),
-                                          width: 100,
-                                          height: 100,
-                                        ),
-                                        NormalText(content: menu.name),
-                                        BoldText(
-                                            content: '${menu.price} point'),
-                                        CaptionText(content: menu.description),
-                                      ],
+                                    title: const HeadingText(content: '메뉴'),
+                                    content: SingleChildScrollView(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          const Image(
+                                            image:
+                                                AssetImage('assets/coffee.png'),
+                                            width: 100,
+                                            height: 100,
+                                          ),
+                                          TextField(
+                                            controller: nameController,
+                                            decoration: const InputDecoration(
+                                                labelText: '메뉴 이름'),
+                                          ),
+                                          TextField(
+                                            controller: priceController,
+                                            decoration: const InputDecoration(
+                                                labelText: '가격'),
+                                            keyboardType: TextInputType.number,
+                                          ),
+                                          TextField(
+                                            controller: descriptionController,
+                                            decoration: const InputDecoration(
+                                                labelText: '설명'),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                     actions: [
                                       TextButton(
                                         onPressed: () {
+                                          //삭제
+
                                           Navigator.of(context).pop();
                                         },
-                                        child: const Text('OK'),
+                                        child: const Text('삭제'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          //수정
+
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: const Text('수정'),
                                       ),
                                     ],
                                   ),

@@ -13,4 +13,14 @@ class MenuProvider extends ChangeNotifier {
     _menuList = await ApiTest.testGetMenu();
     notifyListeners();
   }
+
+  void addMenu(MenuModel menu) async {
+    //구현
+    notifyListeners();
+  }
+
+  void deleteMenu(int menuId) async {
+    //구현
+    notifyListeners();
+  }
 }

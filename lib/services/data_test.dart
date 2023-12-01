@@ -629,31 +629,37 @@ const List<double> dummyDataWeeklyPowerData = [
 
 List<Map<String, dynamic>> cafeMenuData = [
   {
+    'id': 1,
     'name': 'Espresso',
     'description': 'Strong black coffee',
     'price': 3,
   },
   {
+    'id': 2,
     'name': 'Cappuccino',
     'description': 'Espresso with frothy milk',
     'price': 4,
   },
   {
+    'id': 3,
     'name': 'Latte',
     'description': 'Espresso with steamed milk',
     'price': 4,
   },
   {
+    'id': 4,
     'name': 'Croissant',
     'description': 'Flaky pastry with buttery layers',
     'price': 3,
   },
   {
+    'id': 5,
     'name': 'Blueberry Muffin',
     'description': 'muffin with blueberries',
     'price': 2,
   },
   {
+    'id': 6,
     'name': 'Avocado Toast',
     'description': 'Toasted bread with mashed avocado',
     'price': 6,

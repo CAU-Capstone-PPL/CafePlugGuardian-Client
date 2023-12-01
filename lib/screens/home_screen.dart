@@ -58,8 +58,13 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const AlertScreen()));
+              _stopTimer();
+              Navigator.of(context)
+                  .push(MaterialPageRoute(
+                      builder: (context) => const AlertScreen()))
+                  .then((_) {
+                _startTimer();
+              });
             },
             icon: const Icon(
               Icons.add_alert_outlined,
@@ -68,10 +73,14 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           IconButton(
             onPressed: () {
+              _stopTimer();
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const UserManageScreen()));
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const UserManageScreen()))
+                  .then((_) {
+                _startTimer();
+              });
             },
             icon: const Icon(
               Icons.settings,
