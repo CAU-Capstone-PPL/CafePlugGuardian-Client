@@ -21,6 +21,7 @@ class Alert extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        //관리자용 앱 플러그 차단 로그 확인 완료 Api
         Navigator.push(
             context,
             MaterialPageRoute(
@@ -60,7 +61,7 @@ class Alert extends StatelessWidget {
                     const Row(
                       children: [
                         Image(
-                          image: AssetImage('assets/alert.png'),
+                          image: AssetImage('assets/Blocking.png'),
                           width: 20,
                         ),
                         SizedBox(width: 10),
@@ -76,6 +77,7 @@ class Alert extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Column(
                           children: [
@@ -83,7 +85,7 @@ class Alert extends StatelessWidget {
                             NormalText(content: plugName)
                           ],
                         ),
-                        const NormalText(content: '  플러그 전원을 차단합니다.'),
+                        const NormalText(content: '     플러그 전원을 차단합니다.'),
                       ],
                     ),
                     const Icon(

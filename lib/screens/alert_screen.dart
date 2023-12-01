@@ -1,4 +1,5 @@
 import 'package:cafe_plug_guardian_client/models/alert_model.dart';
+import 'package:cafe_plug_guardian_client/services/api_alert.dart';
 import 'package:cafe_plug_guardian_client/services/api_plug.dart';
 import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
@@ -18,8 +19,8 @@ class _AlertScreenState extends State<AlertScreen> {
   @override
   void initState() {
     super.initState();
-    //alerts = ApiPlug.getAlertList();
-    alerts = ApiTest.testGetAlertList();
+    alerts = ApiAlert.getAlertList(1);
+    //alerts = ApiTest.testGetAlertList();
   }
 
   @override
@@ -37,24 +38,28 @@ class _AlertScreenState extends State<AlertScreen> {
         child: FutureBuilder(
           future: alerts,
           builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return ListView.separated(
-                itemCount: snapshot.data!.length,
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: 30),
-                itemBuilder: (context, index) {
-                  var alert = snapshot.data![index];
-                  return Alert(
-                      plugId: alert.plugId,
-                      plugName: alert.plugName,
-                      plugOffTime: alert.plugOffTime,
-                      ownerCheck: alert.ownerCheck,
-                      isToggleOn: alert.isToggleOn);
-                },
+            if (!snapshot.hasData) {
+              return const Center(
+                child: TitleText(content: '비허용 기기 연결 알람이 없습니다.'),
+              );
+            } else if (snapshot.data!.isEmpty) {
+              return const Center(
+                child: TitleText(content: '비허용 기기 연결 알람이 없습니다.'),
               );
             }
-            return const Center(
-              child: CircularProgressIndicator(),
+
+            return ListView.separated(
+              itemCount: snapshot.data!.length,
+              separatorBuilder: (context, index) => const SizedBox(height: 30),
+              itemBuilder: (context, index) {
+                var alert = snapshot.data![index];
+                return Alert(
+                    plugId: alert.plugId,
+                    plugName: alert.plugName,
+                    plugOffTime: alert.plugOffTime,
+                    ownerCheck: alert.ownerCheck,
+                    isToggleOn: alert.isToggleOn);
+              },
             );
           },
         ),

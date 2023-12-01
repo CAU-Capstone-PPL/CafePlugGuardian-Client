@@ -15,8 +15,25 @@ class ApiAlert {
       throw Error();
     }
     final dynamic body = jsonDecode(response.body);
+    final List<dynamic> alerts = body['result'];
     final List<AlertModel> alertInstance =
-        body['result'].map((alert) => AlertModel.fromJson(alert)).toList();
+        alerts.map((alert) => AlertModel.fromJson(alert)).toList();
+
+    return alertInstance;
+  }
+
+  //플러그별 비허용 로그 리스트 ⇒ 플러그별 비허용 로그 스크린에 띄울것 (get)
+  static Future<List<AlertModel>> getAlertListById(int plugId) async {
+    final url = Uri.parse('$baseUrl/plug/$plugId/blockingLog');
+    final response = await http.get(url);
+    if (response.statusCode != 200) {
+      print(response.statusCode);
+      throw Error();
+    }
+    final dynamic body = jsonDecode(response.body);
+    final List<dynamic> alerts = body['result'];
+    final List<AlertModel> alertInstance =
+        alerts.map((alert) => AlertModel.fromJson(alert)).toList();
 
     return alertInstance;
   }

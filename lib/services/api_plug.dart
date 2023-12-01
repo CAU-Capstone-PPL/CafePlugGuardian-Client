@@ -55,19 +55,6 @@ class ApiPlug {
     return PlugDetatilModel.fromJson(body['result']);
   }
 
-  //알림 리스트 ⇒ 알림 스크린에 띄울것 (get)
-  static Future<List<AlertModel>> getAlertList() async {
-    List<AlertModel> alertInstance = [];
-    final url = Uri.parse('$baseUrl/alerts url'); //url 수정 필요
-    final response = await http.get(url);
-    if (response.statusCode != 200) {
-      throw Error();
-    }
-    final List<dynamic> alerts = jsonDecode(response.body);
-    alertInstance = alerts.map((alert) => AlertModel.fromJson(alert)).toList();
-    return alertInstance;
-  }
-
   //플러그 개별 제어 on/off → 홈스크린에서 개별 플러그 On/off 제어 (patch)
   static Future<bool> patchPlugOn(int plugId) async {
     final url = Uri.parse('$baseUrl/plug/$plugId/turnOn');
