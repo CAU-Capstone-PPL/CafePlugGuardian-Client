@@ -29,10 +29,10 @@ class Plug extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: AppColor.background,
+          color: Colors.white,
           boxShadow: [
             BoxShadow(
-              blurRadius: 10,
+              blurRadius: 2,
               offset: const Offset(5, 5),
               color: Colors.black.withOpacity(0.3),
             ),

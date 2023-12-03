@@ -82,10 +82,10 @@ class _PlugListScreenState extends State<PlugListScreen> {
                             _startTimer();
                           });
                         }),
-                    const SizedBox(
+                    /*const SizedBox(
                       width: 10,
-                    ),
-                    CustomButton(content: '플러그 삭제', onPressed: () {}),
+                    ),*/
+                    //CustomButton(content: '플러그 삭제', onPressed: () {}),
                   ],
                 ),
               ],

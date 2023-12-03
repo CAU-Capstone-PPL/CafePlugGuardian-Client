@@ -35,7 +35,7 @@ class _PowerEntryState extends State<PowerEntry> {
         decoration: BoxDecoration(
           //border: Border.all(color: AppColor.text, width: 1.5),
           borderRadius: BorderRadius.circular(10),
-          color: AppColor.background,
+          color: Colors.white,
           boxShadow: [
             BoxShadow(
               blurRadius: 2,

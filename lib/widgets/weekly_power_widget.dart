@@ -14,7 +14,7 @@ class WeeklyPowerWidget extends StatelessWidget {
     return Container(
       height: MediaQuery.sizeOf(context).height * 0.5,
       decoration: BoxDecoration(
-        color: AppColor.background,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
@@ -53,7 +53,7 @@ class WeeklyPowerWidget extends StatelessWidget {
             return BarTooltipItem(
               rod.toY.round().toString(),
               const TextStyle(
-                color: AppColor.background,
+                color: AppColor.text,
                 fontWeight: FontWeight.bold,
               ),
             );

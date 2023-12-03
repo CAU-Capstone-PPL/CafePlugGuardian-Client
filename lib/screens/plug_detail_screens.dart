@@ -80,7 +80,17 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const HeadingText(content: '플러그 정보'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const HeadingText(content: '플러그 정보'),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.settings),
+                      iconSize: 40,
+                    ),
+                  ],
+                ),
                 const SizedBox(
                   height: 10,
                 ),
@@ -88,7 +98,7 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
                   height: 350,
                   decoration: BoxDecoration(
                     //border: Border.all(color: AppColor.text, width: 1.5),
-                    color: AppColor.background,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: [
                       BoxShadow(
@@ -189,7 +199,7 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
                                   height: 120,
                                   decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: AppColor.background,
+                                    color: Colors.white,
                                   ),
                                 ),
                                 Column(
