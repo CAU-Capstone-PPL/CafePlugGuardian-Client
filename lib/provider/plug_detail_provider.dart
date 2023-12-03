@@ -2,6 +2,7 @@ import 'package:cafe_plug_guardian_client/models/plug_detail_model.dart';
 import 'package:cafe_plug_guardian_client/models/time_model.dart';
 import 'package:cafe_plug_guardian_client/services/api_plug.dart';
 import 'package:cafe_plug_guardian_client/services/api_test.dart';
+import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:flutter/material.dart';
 
 class PlugDetailProvider extends ChangeNotifier {
@@ -17,13 +18,13 @@ class PlugDetailProvider extends ChangeNotifier {
     usedPower: 0.0,
     realTimePower: 0.0,
   );
-  final bool _test = true;
+  bool _test = true;
 
   PlugDetatilModel? get plug => _plug;
 
   void updatePlug(int id) async {
-    _plug = await ApiPlug.getPlugById(id);
-    /*if (_test) {
+    //_plug = await ApiPlug.getPlugById(id);
+    if (_test) {
       _plug = await ApiTest.testGetPlugById(id);
       print('updatePlug');
       _test = false;
@@ -31,7 +32,7 @@ class PlugDetailProvider extends ChangeNotifier {
       _plug = await ApiTest.testGetPlugChangedById(id);
       print('updatePlug');
       _test = true;
-    }*/
+    }
     notifyListeners();
   }
 }

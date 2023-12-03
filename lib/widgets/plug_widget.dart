@@ -21,9 +21,8 @@ class Plug extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double fillRatio = assignPower == 0.0
-        ? assignPower
-        : (assignPower - usedPower) / assignPower;
+    double fillRatio =
+        assignPower == 0.0 ? assignPower : usedPower / assignPower;
     return Opacity(
       opacity: toggle ? 1.0 : 0.5,
       child: Container(
@@ -65,24 +64,22 @@ class Plug extends StatelessWidget {
                     Container(
                       height: 10, // Adjust the height of the bar
                       decoration: BoxDecoration(
+                        //border: Border.all(width: 1.2),
                         borderRadius: BorderRadius.circular(5),
-                        gradient: LinearGradient(
-                          colors: [
-                            AppColor.text,
-                            _getColor(fillRatio)
-                          ], // You can use different colors here
-                        ),
+                        color: Colors.grey[300],
                       ),
-                      width:
-                          MediaQuery.of(context).size.width * 0.3 * fillRatio,
+                      width: MediaQuery.of(context).size.width * 0.5,
                     ),
                     Container(
                       height: 10, // Adjust the height of the bar
                       decoration: BoxDecoration(
-                        border: Border.all(width: 1.2),
                         borderRadius: BorderRadius.circular(5),
+                        gradient: LinearGradient(
+                          colors: [AppColor.text, _getColor(fillRatio)],
+                        ),
                       ),
-                      width: MediaQuery.of(context).size.width * 0.5,
+                      width:
+                          MediaQuery.of(context).size.width * 0.5 * fillRatio,
                     ),
                   ],
                 ),
@@ -134,11 +131,11 @@ class PlugInfoWidget extends StatelessWidget {
 }
 
 Color _getColor(double fillRatio) {
-  if (fillRatio >= 0.6) {
-    return AppColor.main; // Green when fillRatio is between 60 and 100
-  } else if (fillRatio >= 0.3) {
-    return Colors.yellow; // Yellow when fillRatio is between 30 and 60
+  if (fillRatio >= 0.8) {
+    return Colors.red;
+  } else if (fillRatio >= 0.6) {
+    return Colors.yellow;
   } else {
-    return Colors.red; // Red when fillRatio is between 0 and 30
+    return AppColor.main;
   }
 }
