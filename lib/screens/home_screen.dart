@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const HeadingText(
-                  content: '손님이 사용 중인 Plug List',
+                  content: '손님이 사용 중인 Plugs',
                 ),
                 CustomButton(
                     content: 'View all',

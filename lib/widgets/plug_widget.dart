@@ -58,17 +58,16 @@ class Plug extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const NormalText(content: '전력량 '),
                 Stack(
                   children: [
                     Container(
-                      height: 10, // Adjust the height of the bar
+                      height: 10,
                       decoration: BoxDecoration(
                         //border: Border.all(width: 1.2),
                         borderRadius: BorderRadius.circular(5),
                         color: Colors.grey[300],
                       ),
-                      width: MediaQuery.of(context).size.width * 0.5,
+                      width: MediaQuery.of(context).size.width * 0.4,
                     ),
                     Container(
                       height: 10, // Adjust the height of the bar
@@ -79,7 +78,7 @@ class Plug extends StatelessWidget {
                         ),
                       ),
                       width:
-                          MediaQuery.of(context).size.width * 0.5 * fillRatio,
+                          MediaQuery.of(context).size.width * 0.4 * fillRatio,
                     ),
                   ],
                 ),
@@ -87,16 +86,29 @@ class Plug extends StatelessWidget {
                   width: 10,
                 ),
                 PlugInfoWidget(
-                  contentName: '',
-                  content: assignPower,
+                  contentName: '사용량 ',
+                  content: usedPower,
                   unit: 'Wh',
                 ),
               ],
             ),
-            PlugInfoWidget(
-              contentName: '이용시간',
-              content: runningTime,
-              unit: '',
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                PlugInfoWidget(
+                  contentName: '이용시간',
+                  content: runningTime,
+                  unit: '',
+                ),
+                PlugInfoWidget(
+                  contentName: '총 전력량 ',
+                  content: assignPower,
+                  unit: 'Wh',
+                ),
+              ],
             ),
           ],
         ),
@@ -123,7 +135,7 @@ class PlugInfoWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         NormalText(content: contentName),
-        BoldText(content: ' $content '),
+        BoldText(content: '$content '),
         CaptionText(content: unit),
       ],
     );
