@@ -132,45 +132,43 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Expanded(
               child: context.read<PlugCoreProvider>().onPlugs.isNotEmpty
-                  ? GridView.count(
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
-                      crossAxisCount: 2,
-                      childAspectRatio: 1.2,
-                      children: context
-                          .watch<PlugCoreProvider>()
-                          .onPlugs
-                          .map(
-                            (plug) => GestureDetector(
-                              onTap: () {
-                                _stopTimer();
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        PlugDetailScreen(id: plug.plugId),
-                                  ),
-                                ).then((_) {
-                                  _startTimer();
-                                });
-                              },
-                              child: Plug(
-                                plugId: plug.plugId,
-                                plugName: plug.plugName,
-                                toggle: plug.toggle,
-                                runningTime: TimeModel(
-                                        hours: plug.runningTime.hours,
-                                        minutes: plug.runningTime.minutes)
-                                    .toString(),
-                                usedPower: plug.usedPower,
-                                assignPower: plug.assignPower,
+                  ? ListView.separated(
+                      itemCount:
+                          context.watch<PlugCoreProvider>().onPlugs.length,
+                      separatorBuilder: (BuildContext context, int index) {
+                        return const SizedBox(height: 16);
+                      },
+                      itemBuilder: (context, index) {
+                        final plug =
+                            context.watch<PlugCoreProvider>().onPlugs[index];
+                        return GestureDetector(
+                          onTap: () {
+                            _stopTimer();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    PlugDetailScreen(id: plug.plugId),
                               ),
-                            ),
-                          )
-                          .toList(),
+                            ).then((_) {
+                              _startTimer();
+                            });
+                          },
+                          child: Plug(
+                            plugId: plug.plugId,
+                            plugName: plug.plugName,
+                            toggle: plug.toggle,
+                            useStatus: plug.useStatus,
+                            runningTime: plug.runningTime,
+                            usedPower: plug.usedPower,
+                            assignPower: plug.assignPower,
+                          ),
+                        );
+                      },
                     )
                   : const Center(
-                      child: TitleText(content: '아직 손님이 사용 중인 플러그가 없습니다.')),
+                      child: TitleText(content: '아직 손님이 사용 중인 플러그가 없습니다.'),
+                    ),
             ),
             const SizedBox(
               height: 20,

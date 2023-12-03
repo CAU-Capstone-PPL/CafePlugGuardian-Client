@@ -11,7 +11,7 @@ class ApiTest {
     const List<dynamic> plugs = dummyDataPlugCore;
     plugInstances = plugs.map((plug) => PlugCoreModel.fromJson(plug)).toList();
     List<PlugCoreModel> onPlugs =
-        plugInstances.where((plug) => plug.toggle == true).toList();
+        plugInstances.where((plug) => plug.useStatus == true).toList();
     return onPlugs;
   }
 
@@ -21,7 +21,7 @@ class ApiTest {
     const List<dynamic> plugs = dummyDataChanged;
     plugInstances = plugs.map((plug) => PlugCoreModel.fromJson(plug)).toList();
     List<PlugCoreModel> onPlugs =
-        plugInstances.where((plug) => plug.toggle == true).toList();
+        plugInstances.where((plug) => plug.useStatus == true).toList();
     return onPlugs;
   }
 
