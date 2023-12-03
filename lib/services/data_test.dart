@@ -552,8 +552,8 @@ const List<Map<String, dynamic>> dummyDataChanged = [
 //더미데이터
 const List<Map<String, dynamic>> dummyDataAlerts = [
   {
-    "plugId": 1,
-    "plugName": "Plug 1",
+    "plugId": 101,
+    "plugName": "Plug 101",
     "plugOffTime": {
       "date": {"day": 1, "month": 12, "year": 2023},
       "time": {"hours": 10, "minutes": 30}
@@ -562,8 +562,8 @@ const List<Map<String, dynamic>> dummyDataAlerts = [
     "isToggleOn": false
   },
   {
-    "plugId": 2,
-    "plugName": "Plug 2",
+    "plugId": 202,
+    "plugName": "Plug 202",
     "plugOffTime": {
       "date": {"day": 2, "month": 12, "year": 2023},
       "time": {"hours": 12, "minutes": 45}
@@ -572,8 +572,8 @@ const List<Map<String, dynamic>> dummyDataAlerts = [
     "isToggleOn": true
   },
   {
-    "plugId": 3,
-    "plugName": "Plug 3",
+    "plugId": 101,
+    "plugName": "Plug 101",
     "plugOffTime": {
       "date": {"day": 3, "month": 12, "year": 2023},
       "time": {"hours": 14, "minutes": 15}
@@ -582,8 +582,8 @@ const List<Map<String, dynamic>> dummyDataAlerts = [
     "isToggleOn": true
   },
   {
-    "plugId": 4,
-    "plugName": "Plug 4",
+    "plugId": 101,
+    "plugName": "Plug 101",
     "plugOffTime": {
       "date": {"day": 4, "month": 12, "year": 2023},
       "time": {"hours": 16, "minutes": 30}
@@ -592,8 +592,8 @@ const List<Map<String, dynamic>> dummyDataAlerts = [
     "isToggleOn": false
   },
   {
-    "plugId": 5,
-    "plugName": "Plug 5",
+    "plugId": 505,
+    "plugName": "Plug 505",
     "plugOffTime": {
       "date": {"day": 5, "month": 12, "year": 2023},
       "time": {"hours": 18, "minutes": 45}
@@ -602,8 +602,8 @@ const List<Map<String, dynamic>> dummyDataAlerts = [
     "isToggleOn": true
   },
   {
-    "plugId": 6,
-    "plugName": "Plug 6",
+    "plugId": 606,
+    "plugName": "Plug 606",
     "plugOffTime": {
       "date": {"day": 6, "month": 12, "year": 2023},
       "time": {"hours": 20, "minutes": 0}
@@ -612,8 +612,8 @@ const List<Map<String, dynamic>> dummyDataAlerts = [
     "isToggleOn": false
   },
   {
-    "plugId": 7,
-    "plugName": "Plug 7",
+    "plugId": 707,
+    "plugName": "Plug 707",
     "plugOffTime": {
       "date": {"day": 7, "month": 12, "year": 2023},
       "time": {"hours": 22, "minutes": 15}
@@ -622,8 +622,8 @@ const List<Map<String, dynamic>> dummyDataAlerts = [
     "isToggleOn": true
   },
   {
-    "plugId": 8,
-    "plugName": "Plug 8",
+    "plugId": 808,
+    "plugName": "Plug 808",
     "plugOffTime": {
       "date": {"day": 8, "month": 12, "year": 2023},
       "time": {"hours": 23, "minutes": 30}
@@ -632,8 +632,8 @@ const List<Map<String, dynamic>> dummyDataAlerts = [
     "isToggleOn": false
   },
   {
-    "plugId": 9,
-    "plugName": "Plug 9",
+    "plugId": 909,
+    "plugName": "Plug 909",
     "plugOffTime": {
       "date": {"day": 9, "month": 12, "year": 2023},
       "time": {"hours": 1, "minutes": 45}
@@ -642,8 +642,8 @@ const List<Map<String, dynamic>> dummyDataAlerts = [
     "isToggleOn": true
   },
   {
-    "plugId": 10,
-    "plugName": "Plug 10",
+    "plugId": 111,
+    "plugName": "Plug 111",
     "plugOffTime": {
       "date": {"day": 10, "month": 12, "year": 2023},
       "time": {"hours": 3, "minutes": 0}

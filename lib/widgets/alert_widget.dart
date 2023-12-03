@@ -19,84 +19,68 @@ class Alert extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        //관리자용 앱 플러그 차단 로그 확인 완료 Api
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => PlugDetailScreen(id: plugId)));
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => AlertByPlugIdScreen(
-                      plugId: plugId,
-                      plugName: plugName,
-                    )));
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: AppColor.background,
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 10,
-              offset: const Offset(5, 5),
-              color: Colors.black.withOpacity(0.3),
-            ),
-          ],
-        ),
-        child: Opacity(
-          opacity: ownerCheck ? 0.5 : 1,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 20,
-            ),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Row(
-                      children: [
-                        Image(
-                          image: AssetImage('assets/Blocking.png'),
-                          width: 20,
-                        ),
-                        SizedBox(width: 10),
-                        BoldText(content: '비허용 기기 연결'),
-                      ],
-                    ),
-                    CaptionText(
-                        content:
-                            '${plugOffTime.date.toString()} ${plugOffTime.time.toString()}'),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Column(
-                          children: [
-                            NormalText(content: 'plugId: $plugId'),
-                            NormalText(content: plugName)
-                          ],
-                        ),
-                        const NormalText(content: '     플러그 전원을 차단합니다.'),
-                      ],
-                    ),
-                    const Icon(
-                      Icons.chevron_right_rounded,
-                      color: AppColor.text,
-                      size: 30,
-                    ),
-                  ],
-                ),
-              ],
-            ),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: AppColor.background,
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 10,
+            offset: const Offset(5, 5),
+            color: Colors.black.withOpacity(0.3),
+          ),
+        ],
+      ),
+      child: Opacity(
+        opacity: ownerCheck ? 0.5 : 1,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 10,
+            horizontal: 20,
+          ),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Row(
+                    children: [
+                      Image(
+                        image: AssetImage('assets/Blocking.png'),
+                        width: 20,
+                      ),
+                      SizedBox(width: 10),
+                      BoldText(content: '비허용 기기 연결'),
+                    ],
+                  ),
+                  CaptionText(
+                      content:
+                          '${plugOffTime.date.toString()} ${plugOffTime.time.toString()}'),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        children: [
+                          NormalText(content: 'plugId: $plugId'),
+                          NormalText(content: plugName)
+                        ],
+                      ),
+                      const NormalText(content: '   플러그 전원을 차단합니다.'),
+                    ],
+                  ),
+                  const Icon(
+                    Icons.chevron_right_rounded,
+                    color: AppColor.text,
+                    size: 30,
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

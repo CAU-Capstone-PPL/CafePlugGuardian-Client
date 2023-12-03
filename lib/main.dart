@@ -1,3 +1,4 @@
+import 'package:cafe_plug_guardian_client/provider/alert_provider.dart';
 import 'package:cafe_plug_guardian_client/provider/menu_provider.dart';
 import 'package:cafe_plug_guardian_client/provider/plug_core_provider.dart';
 import 'package:cafe_plug_guardian_client/provider/plug_detail_provider.dart';
@@ -32,6 +33,8 @@ class App extends StatelessWidget {
             create: (BuildContext context) => PlugDetailProvider()),
         ChangeNotifierProvider(
             create: (BuildContext context) => MenuProvider()),
+        ChangeNotifierProvider(
+            create: (BuildContext context) => AlertProvider()),
       ],
       child: MaterialApp(
         title: 'cafe_plug_guardian_client',

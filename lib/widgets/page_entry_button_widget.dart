@@ -22,7 +22,7 @@ class _PageEntryButtonState extends State<PageEntryButton> {
       onTap: widget.onTap,
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(color: AppColor.text, width: 1.5),
+          //border: Border.all(color: AppColor.text, width: 1.5),
           borderRadius: BorderRadius.circular(10),
           color: AppColor.background,
           boxShadow: [
@@ -47,7 +47,7 @@ class _PageEntryButtonState extends State<PageEntryButton> {
                 ),
               ),
               const Icon(
-                Icons.chevron_right_rounded,
+                Icons.arrow_forward,
                 size: 30,
                 color: AppColor.text,
               ),

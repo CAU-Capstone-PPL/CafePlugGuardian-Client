@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:cafe_plug_guardian_client/models/alert_model.dart';
 import 'package:cafe_plug_guardian_client/provider/plug_detail_provider.dart';
 import 'package:cafe_plug_guardian_client/screens/alert_by_plug_id.dart';
+import 'package:cafe_plug_guardian_client/screens/power_graph_screen.dart';
 import 'package:cafe_plug_guardian_client/services/api_plug.dart';
 import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
@@ -86,7 +87,7 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
                 Container(
                   height: 350,
                   decoration: BoxDecoration(
-                    border: Border.all(color: AppColor.text, width: 1.5),
+                    //border: Border.all(color: AppColor.text, width: 1.5),
                     color: AppColor.background,
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: [
@@ -253,10 +254,23 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                PowerEntry(
-                    plugId: widget.id,
-                    plugName:
-                        context.read<PlugDetailProvider>().plug!.plugName),
+                PageEntryButton(
+                    content:
+                        '${context.read<PlugDetailProvider>().plug!.plugName} Power Graph',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PowerGraphScreen(
+                            plugId: widget.id,
+                            plugName: context
+                                .read<PlugDetailProvider>()
+                                .plug!
+                                .plugName,
+                          ),
+                        ),
+                      );
+                    }),
                 const SizedBox(
                   height: 20,
                 ),
