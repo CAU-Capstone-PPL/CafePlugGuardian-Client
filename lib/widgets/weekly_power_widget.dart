@@ -11,15 +11,29 @@ class WeeklyPowerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BarChart(
-      BarChartData(
-        barTouchData: barTouchData,
-        titlesData: titlesData,
-        borderData: borderData,
-        barGroups: barGroups,
-        gridData: const FlGridData(show: false),
-        alignment: BarChartAlignment.spaceAround,
-        maxY: 20,
+    return Container(
+      height: MediaQuery.sizeOf(context).height * 0.5,
+      decoration: BoxDecoration(
+        color: AppColor.background,
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 10,
+            offset: const Offset(5, 5),
+            color: Colors.black.withOpacity(0.3),
+          )
+        ],
+      ),
+      child: BarChart(
+        BarChartData(
+          barTouchData: barTouchData,
+          titlesData: titlesData,
+          borderData: borderData,
+          barGroups: barGroups,
+          gridData: const FlGridData(show: false),
+          alignment: BarChartAlignment.spaceAround,
+          maxY: 20,
+        ),
       ),
     );
   }

@@ -57,7 +57,7 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
             ? context.watch<PlugDetailProvider>().plug!.assignPower
             : context.watch<PlugDetailProvider>().plug!.usedPower /
                 context.watch<PlugDetailProvider>().plug!.assignPower;
-    print(fillRatio);
+
     return Scaffold(
       backgroundColor: AppColor.background,
       appBar: AppBar(
