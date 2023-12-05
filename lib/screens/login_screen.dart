@@ -72,7 +72,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     UserModel user =
                         await ApiLogin.postLogin(userAccount, userPw);
                     context.read<UserProvider>().login(user);
-                    Navigator.pushReplacement(
+                    _userAccountController.clear();
+                    _userPwController.clear();
+                    Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const HomeScreen()));

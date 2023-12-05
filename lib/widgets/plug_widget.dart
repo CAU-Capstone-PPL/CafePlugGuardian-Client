@@ -67,7 +67,7 @@ class Plug extends StatelessWidget {
                         borderRadius: BorderRadius.circular(5),
                         color: Colors.grey[300],
                       ),
-                      width: MediaQuery.of(context).size.width * 0.4,
+                      width: MediaQuery.of(context).size.width * 0.42,
                     ),
                     Container(
                       height: 10, // Adjust the height of the bar
@@ -78,7 +78,7 @@ class Plug extends StatelessWidget {
                         ),
                       ),
                       width:
-                          MediaQuery.of(context).size.width * 0.4 * fillRatio,
+                          MediaQuery.of(context).size.width * 0.42 * fillRatio,
                     ),
                   ],
                 ),

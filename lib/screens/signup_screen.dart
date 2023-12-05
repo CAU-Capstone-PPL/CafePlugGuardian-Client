@@ -71,6 +71,9 @@ class SignUpScreen extends StatelessWidget {
                   String userName = _userNameController.text;
                   try {
                     if (await ApiLogin.singUp(userAccount, userName, userPw)) {
+                      _userAccountController.clear();
+                      _userNameController.clear();
+                      _userPwController.clear();
                       Navigator.pop(context);
                     }
                   } catch (e) {

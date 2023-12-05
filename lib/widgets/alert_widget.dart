@@ -65,12 +65,9 @@ class Alert extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Column(
-                        children: [
-                          NormalText(content: 'plugId: $plugId'),
-                          NormalText(content: plugName)
-                        ],
+                        children: [Text('plugId: $plugId'), Text(plugName)],
                       ),
-                      const NormalText(content: '   플러그 전원을 차단합니다.'),
+                      const NormalText(content: '  플러그 전원을 차단합니다.'),
                     ],
                   ),
                   const Icon(

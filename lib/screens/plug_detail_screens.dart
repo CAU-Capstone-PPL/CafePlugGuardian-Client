@@ -168,94 +168,109 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
                       ),
                       Flexible(
                         flex: 1,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Stack(
-                              alignment: AlignmentDirectional.center,
-                              children: [
-                                Container(
-                                  width: 170,
-                                  height: 170,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.grey[200],
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Stack(
+                                alignment: AlignmentDirectional.center,
+                                children: [
+                                  Container(
+                                    width: 200,
+                                    height: 200,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.grey[200],
+                                    ),
                                   ),
-                                ),
-                                Container(
-                                  width: 170,
-                                  height: 170,
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
+                                  Container(
+                                    width: 200,
+                                    height: 200,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: CustomPaint(
+                                      painter: CircularGraphPainter(
+                                          ratio: fillRatio),
+                                    ),
                                   ),
-                                  child: CustomPaint(
-                                    painter:
-                                        CircularGraphPainter(ratio: fillRatio),
+                                  Container(
+                                    width: 140,
+                                    height: 140,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.white,
+                                    ),
                                   ),
-                                ),
-                                Container(
-                                  width: 120,
-                                  height: 120,
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.white,
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      const NormalText(content: '전력량 사용 현황'),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          TitleText(
+                                              content:
+                                                  '${context.watch<PlugDetailProvider>().plug!.usedPower} / ${context.watch<PlugDetailProvider>().plug!.assignPower}'),
+                                        ],
+                                      )
+                                    ],
                                   ),
-                                ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const CaptionText(content: '실시간 전력량'),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        TitleText(
-                                            content:
-                                                '${context.watch<PlugDetailProvider>().plug!.realTimePower}'),
-                                        const CaptionText(content: ' Wh'),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const NormalText(content: '총 전력량'),
-                                const SizedBox(width: 10),
-                                BoldText(
-                                    content:
-                                        '${context.watch<PlugDetailProvider>().plug!.assignPower}'),
-                                const SizedBox(width: 2),
-                                const CaptionText(content: 'Wh'),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const NormalText(content: '남은 전력량'),
-                                const SizedBox(width: 10),
-                                BoldText(
-                                    content:
-                                        '${context.watch<PlugDetailProvider>().plug!.assignPower - context.watch<PlugDetailProvider>().plug!.usedPower}'),
-                                const SizedBox(width: 2),
-                                const CaptionText(content: 'Wh'),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            Text(
-                                '사용시간 ${context.watch<PlugDetailProvider>().plug!.runningTime}'),
-                            Text(
-                                '시작시간 ${context.watch<PlugDetailProvider>().plug!.startTime}'),
-                          ],
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const NormalText(content: '총 전력량'),
+                                  const SizedBox(width: 10),
+                                  BoldText(
+                                      content:
+                                          '${context.watch<PlugDetailProvider>().plug!.assignPower}'),
+                                  const SizedBox(width: 2),
+                                  const CaptionText(content: 'Wh'),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const NormalText(content: '남은 전력량'),
+                                  const SizedBox(width: 10),
+                                  BoldText(
+                                      content:
+                                          '${context.watch<PlugDetailProvider>().plug!.assignPower - context.watch<PlugDetailProvider>().plug!.usedPower}'),
+                                  const SizedBox(width: 2),
+                                  const CaptionText(content: 'Wh'),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const NormalText(content: '실시간 전력량'),
+                                  const SizedBox(width: 10),
+                                  BoldText(
+                                      content:
+                                          '${context.watch<PlugDetailProvider>().plug!.realTimePower}'),
+                                  const SizedBox(width: 2),
+                                  const CaptionText(content: 'W'),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                  '사용시간 ${context.watch<PlugDetailProvider>().plug!.runningTime}'),
+                              Text(
+                                  '시작시간 ${context.watch<PlugDetailProvider>().plug!.startTime}'),
+                            ],
+                          ),
                         ),
                       ),
                     ],
