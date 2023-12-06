@@ -1,4 +1,5 @@
 import 'package:cafe_plug_guardian_client/provider/menu_provider.dart';
+import 'package:cafe_plug_guardian_client/provider/user_provider.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/custom_button_widget.dart';
 import 'package:cafe_plug_guardian_client/widgets/menu_widget.dart';
@@ -16,10 +17,12 @@ class _ShopScreenState extends State<ShopScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController priceController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
+  late int cafeId;
   @override
   void initState() {
     super.initState();
-    context.read<MenuProvider>().updateMenu();
+    cafeId = context.read<UserProvider>().cafeId!;
+    context.read<MenuProvider>().updateMenu(cafeId);
   }
 
   @override
@@ -90,7 +93,15 @@ class _ShopScreenState extends State<ShopScreen> {
                           actions: [
                             TextButton(
                               onPressed: () {
-                                //추가
+                                String name = nameController.text.trim();
+                                int price =
+                                    int.parse(priceController.text.trim());
+                                String description =
+                                    descriptionController.text.trim();
+
+                                context
+                                    .read<MenuProvider>()
+                                    .addMenu(cafeId, name, price, description);
                                 Navigator.of(context).pop();
                               },
                               child: const Text('추가'),
@@ -159,7 +170,9 @@ class _ShopScreenState extends State<ShopScreen> {
                                     actions: [
                                       TextButton(
                                         onPressed: () {
-                                          //삭제
+                                          context
+                                              .read<MenuProvider>()
+                                              .deleteMenu(cafeId, menu.id);
 
                                           Navigator.of(context).pop();
                                         },
@@ -167,8 +180,15 @@ class _ShopScreenState extends State<ShopScreen> {
                                       ),
                                       TextButton(
                                         onPressed: () {
-                                          //수정
+                                          String name =
+                                              nameController.text.trim();
+                                          int price = int.parse(
+                                              priceController.text.trim());
+                                          String description =
+                                              descriptionController.text.trim();
 
+                                          context.read<MenuProvider>().addMenu(
+                                              cafeId, name, price, description);
                                           Navigator.of(context).pop();
                                         },
                                         child: const Text('수정'),

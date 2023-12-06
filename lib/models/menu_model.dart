@@ -1,10 +1,10 @@
 class MenuModel {
   final String name, description;
-  final int? id;
+  final int id;
   final int price;
 
   MenuModel(
-      {this.id,
+      {required this.id,
       required this.name,
       required this.price,
       required this.description});
