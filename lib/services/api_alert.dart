@@ -11,8 +11,9 @@ class ApiAlert {
     final url = Uri.parse('$baseUrl/cafe/$cafeId/blockingLog');
     final response = await http.get(url);
     if (response.statusCode != 200) {
-      print(response.statusCode);
-      throw Error();
+      final dynamic json = jsonDecode(response.body);
+      final String errorMessage = json['message'] ?? 'An error occurred';
+      throw Exception(errorMessage);
     }
     final dynamic body = jsonDecode(response.body);
     final List<dynamic> alerts = body['result'];
@@ -27,8 +28,9 @@ class ApiAlert {
     final url = Uri.parse('$baseUrl/plug/$plugId/blockingLog');
     final response = await http.get(url);
     if (response.statusCode != 200) {
-      print(response.statusCode);
-      throw Error();
+      final dynamic json = jsonDecode(response.body);
+      final String errorMessage = json['message'] ?? 'An error occurred';
+      throw Exception(errorMessage);
     }
     final dynamic body = jsonDecode(response.body);
     final List<dynamic> alerts = body['result'];
@@ -36,5 +38,19 @@ class ApiAlert {
         alerts.map((alert) => AlertModel.fromJson(alert)).toList();
 
     return alertInstance;
+  }
+
+  //관리자용 앱 플러그 차단 로그 확인 완료
+  static Future<bool> patchOwnerCheck(int plugId) async {
+    final url = Uri.parse('$baseUrl/url 미정');
+    final response = await http.patch(url);
+
+    if (response.statusCode != 200) {
+      final dynamic json = jsonDecode(response.body);
+      final String errorMessage = json['message'] ?? 'An error occurred';
+      throw Exception(errorMessage);
+    }
+    final dynamic json = jsonDecode(response.body);
+    return json['success'];
   }
 }

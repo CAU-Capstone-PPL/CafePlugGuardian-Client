@@ -1,12 +1,21 @@
 class MenuModel {
   final String name, description;
-  final int id, price;
+  final int? id;
+  final int price;
 
   MenuModel(
-      {required this.id,
+      {this.id,
       required this.name,
       required this.price,
       required this.description});
+
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'price': price,
+      'description': description,
+    };
+  }
 
   MenuModel.fromJson(Map<String, dynamic> json)
       : id = json['id'],

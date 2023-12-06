@@ -8,13 +8,15 @@ class ApiPlug {
   static const String baseUrl = 'http://43.202.29.19/api';
   static const String plugBaseUrl = 'http://192.168.4.1';
 
-  //플러그 정보 리스트 (get) ⇒ 홈스크린과 플러그 전체 스크린에 띄울 것
+  //손님이 사용 중인 카페 플러그 목록
   static Future<List<PlugCoreModel>> getOnPlugs(int cafeId) async {
     final url = Uri.parse('$baseUrl/cafe/$cafeId/plug');
     final response = await http.get(url);
 
     if (response.statusCode != 200) {
-      throw Error();
+      final dynamic json = jsonDecode(response.body);
+      final String errorMessage = json['message'] ?? 'An error occurred';
+      throw Exception(errorMessage);
     }
     final Map<String, dynamic> body = jsonDecode(response.body);
     final List<dynamic> plugs = body['result'];
@@ -25,13 +27,15 @@ class ApiPlug {
     return plugInstances.where((plug) => plug.useStatus == true).toList();
   }
 
-  //플러그 리스트 → 플러그 리스트 스크린에 띄울 것 (get)
+  //카페 플러그 목록
   static Future<List<PlugCoreModel>> getPlugs(int cafeId) async {
     final url = Uri.parse('$baseUrl/cafe/$cafeId/plug');
     final response = await http.get(url);
 
     if (response.statusCode != 200) {
-      throw Error();
+      final dynamic json = jsonDecode(response.body);
+      final String errorMessage = json['message'] ?? 'An error occurred';
+      throw Exception(errorMessage);
     }
     final Map<String, dynamic> body = jsonDecode(response.body);
     final List<dynamic> plugs = body['result'];
@@ -47,7 +51,9 @@ class ApiPlug {
     final url = Uri.parse('$baseUrl/plug/$plugId/info');
     final response = await http.get(url);
     if (response.statusCode != 200) {
-      throw Error();
+      final dynamic json = jsonDecode(response.body);
+      final String errorMessage = json['message'] ?? 'An error occurred';
+      throw Exception(errorMessage);
     }
     final Map<String, dynamic> body = jsonDecode(response.body);
     print(body['result']);
@@ -55,26 +61,32 @@ class ApiPlug {
     return PlugDetatilModel.fromJson(body['result']);
   }
 
-  //플러그 개별 제어 on/off → 홈스크린에서 개별 플러그 On/off 제어 (patch)
+  //토글 on
   static Future<bool> patchPlugOn(int plugId) async {
     final url = Uri.parse('$baseUrl/plug/$plugId/turnOn');
     final response = await http.patch(url);
 
     if (response.statusCode != 200) {
-      return false;
+      final dynamic json = jsonDecode(response.body);
+      final String errorMessage = json['message'] ?? 'An error occurred';
+      throw Exception(errorMessage);
     }
-    return true;
+    final dynamic json = jsonDecode(response.body);
+    return json['success'];
   }
 
-  //플러그 개별 제어 on/off → 홈스크린에서 개별 플러그 On/off 제어 (post)
+  //토클 off
   static Future<bool> patchPlugOff(int plugId) async {
     final url = Uri.parse('$baseUrl/plug/$plugId/turnOff');
     final response = await http.patch(url);
 
     if (response.statusCode != 200) {
-      return false;
+      final dynamic json = jsonDecode(response.body);
+      final String errorMessage = json['message'] ?? 'An error occurred';
+      throw Exception(errorMessage);
     }
-    return true;
+    final dynamic json = jsonDecode(response.body);
+    return json['success'];
   }
 
   //최근 일주일 간 총 플러그 전력 사용량 (get)
