@@ -57,6 +57,7 @@ class ApiLogin {
     return json['success'];
   }
 
+  //카페 목록
   static Future<List<CafeModel>> getCafeList(int userId) async {
     final url = Uri.parse('$baseUrl/cafe?userId=$userId');
     final response = await http.get(url);
@@ -76,6 +77,7 @@ class ApiLogin {
     return cafeInstance;
   }
 
+  //카페 추가
   static Future<bool> addCafe(int userId, String cafeName) async {
     final url = Uri.parse('$baseUrl/cafe');
 
