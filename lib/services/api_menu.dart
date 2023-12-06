@@ -4,11 +4,11 @@ import 'package:cafe_plug_guardian_client/models/menu_model.dart';
 import 'package:http/http.dart' as http;
 
 class ApiMenu {
-  static const String baseUrl = 'http://43.202.29.19/api';
+  static const String baseUrl = 'http://43.202.29.19/api/mileage/menu';
 
   //get 사장님 상점 메뉴 리스트
-  static Future<List<MenuModel>> getMenuList(int plugId) async {
-    final url = Uri.parse('$baseUrl/url 미정');
+  static Future<List<MenuModel>> getMenuList(int cafeId) async {
+    final url = Uri.parse('$baseUrl?cafeId=$cafeId');
     final response = await http.get(url);
     if (response.statusCode != 200) {
       final dynamic json = jsonDecode(response.body);
@@ -24,15 +24,21 @@ class ApiMenu {
   }
 
   //post 사장님 상점 메뉴 추가
-  static Future<bool> addMenu(int plugId, MenuModel menu) async {
-    final url = Uri.parse('$baseUrl/url 미정');
-    final body = jsonEncode(menu);
+  static Future<bool> addMenu(
+      int cafeId, String name, int price, String description) async {
+    final url = Uri.parse(baseUrl);
+    final body = {
+      'cafeId': cafeId,
+      'name': name,
+      'price': price,
+      'description': description,
+    };
 
     final response = await http.post(url,
         headers: {
           'Content-Type': 'application/json',
         },
-        body: body);
+        body: jsonEncode(body));
 
     if (response.statusCode != 200) {
       final dynamic json = jsonDecode(response.body);
@@ -44,9 +50,15 @@ class ApiMenu {
   }
 
   //patch 사장님 상점 메뉴 수정
-  static Future<bool> patchMenu(int plugId, int menuId, MenuModel menu) async {
-    final url = Uri.parse('$baseUrl/url 미정');
-    final body = jsonEncode(menu);
+  static Future<bool> patchMenu(
+      int cafeId, String name, int price, String description) async {
+    final url = Uri.parse(baseUrl);
+    final body = {
+      'cafeId': cafeId,
+      'name': name,
+      'price': price,
+      'description': description,
+    };
 
     final response = await http.patch(url,
         headers: {
@@ -64,10 +76,11 @@ class ApiMenu {
   }
 
   //delete 사장님 상점 메뉴 삭제
-  static Future<bool> deleteMenu(int plugId, int menuId) async {
-    final url = Uri.parse('$baseUrl/url 미정');
+  static Future<bool> deleteMenu(int menuId) async {
+    final url = Uri.parse(baseUrl);
+    final body = {'menuId': menuId};
 
-    final response = await http.delete(url);
+    final response = await http.delete(url, body: jsonEncode(body));
 
     if (response.statusCode != 200) {
       final dynamic json = jsonDecode(response.body);
