@@ -1,17 +1,16 @@
-import 'package:cafe_plug_guardian_client/provider/menu_provider.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class Menu extends StatelessWidget {
-  final String name, description;
-  final int price;
+  final String menuName, menuDescription;
+  final int menuId, menuPrice;
 
   const Menu({
     super.key,
-    required this.name,
-    required this.price,
-    required this.description,
+    required this.menuId,
+    required this.menuName,
+    required this.menuPrice,
+    required this.menuDescription,
   });
 
   @override
@@ -41,8 +40,8 @@ class Menu extends StatelessWidget {
             width: 40,
             height: 40,
           ),
-          NormalText(content: name),
-          BoldText(content: '$price point'),
+          NormalText(content: menuName),
+          BoldText(content: '$menuPrice point'),
         ],
       ),
     );

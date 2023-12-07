@@ -24,14 +24,15 @@ class ApiMenu {
   }
 
   //post 사장님 상점 메뉴 추가
-  static Future<bool> addMenu(
-      int cafeId, String name, int price, String description) async {
+  static Future<bool> addMenu(int cafeId, String menuName, int menuPrice,
+      String menuDescription) async {
     final url = Uri.parse(baseUrl);
+
     final body = {
       'cafeId': cafeId,
-      'name': name,
-      'price': price,
-      'description': description,
+      'menuName': menuName,
+      'menuPrice': menuPrice,
+      'menuDescription': menuDescription,
     };
 
     final response = await http.post(url,
@@ -50,21 +51,21 @@ class ApiMenu {
   }
 
   //patch 사장님 상점 메뉴 수정
-  static Future<bool> patchMenu(
-      int cafeId, String name, int price, String description) async {
+  static Future<bool> patchMenu(int menuId, String menuName, int menuPrice,
+      String menuDescription) async {
     final url = Uri.parse(baseUrl);
     final body = {
-      'cafeId': cafeId,
-      'name': name,
-      'price': price,
-      'description': description,
+      'menuId': menuId,
+      'menuName': menuName,
+      'menuPrice': menuPrice,
+      'menuDescription': menuDescription,
     };
 
     final response = await http.patch(url,
         headers: {
           'Content-Type': 'application/json',
         },
-        body: body);
+        body: jsonEncode(body));
 
     if (response.statusCode != 200) {
       final dynamic json = jsonDecode(response.body);
@@ -79,8 +80,13 @@ class ApiMenu {
   static Future<bool> deleteMenu(int menuId) async {
     final url = Uri.parse(baseUrl);
     final body = {'menuId': menuId};
+    print(menuId);
 
-    final response = await http.delete(url, body: jsonEncode(body));
+    final response = await http.delete(url,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode(body));
 
     if (response.statusCode != 200) {
       final dynamic json = jsonDecode(response.body);

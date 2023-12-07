@@ -25,8 +25,9 @@ class MenuProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void editMenu(int cafeId, String name, int price, String description) async {
-    if (await ApiMenu.patchMenu(cafeId, name, price, description)) {
+  void editMenu(int cafeId, int menuId, String name, int price,
+      String description) async {
+    if (await ApiMenu.patchMenu(menuId, name, price, description)) {
       updateMenu(cafeId);
     } else {
       print('수정 실패');

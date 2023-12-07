@@ -18,6 +18,25 @@ class _ShopScreenState extends State<ShopScreen> {
   TextEditingController priceController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   late int cafeId;
+
+  void _showErrorSnackBar(BuildContext context, String errorMessage) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const HeadingText(content: 'Error'),
+        content: BoldText(content: errorMessage),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -98,11 +117,14 @@ class _ShopScreenState extends State<ShopScreen> {
                                     int.parse(priceController.text.trim());
                                 String description =
                                     descriptionController.text.trim();
-
-                                context
-                                    .read<MenuProvider>()
-                                    .addMenu(cafeId, name, price, description);
-                                Navigator.of(context).pop();
+                                try {
+                                  context.read<MenuProvider>().addMenu(
+                                      cafeId, name, price, description);
+                                  Navigator.of(context).pop();
+                                } catch (e) {
+                                  String errorMessage = e.toString();
+                                  _showErrorSnackBar(context, errorMessage);
+                                }
                               },
                               child: const Text('추가'),
                             ),
@@ -128,9 +150,11 @@ class _ShopScreenState extends State<ShopScreen> {
                           .map(
                             (menu) => GestureDetector(
                               onTap: () {
-                                nameController.text = menu.name;
-                                priceController.text = menu.price.toString();
-                                descriptionController.text = menu.description;
+                                nameController.text = menu.menuName;
+                                priceController.text =
+                                    menu.menuPrice.toString();
+                                descriptionController.text =
+                                    menu.menuDescription;
                                 showDialog(
                                   context: context,
                                   builder: (context) => AlertDialog(
@@ -170,11 +194,18 @@ class _ShopScreenState extends State<ShopScreen> {
                                     actions: [
                                       TextButton(
                                         onPressed: () {
-                                          context
-                                              .read<MenuProvider>()
-                                              .deleteMenu(cafeId, menu.id);
+                                          try {
+                                            context
+                                                .read<MenuProvider>()
+                                                .deleteMenu(
+                                                    cafeId, menu.menuId);
 
-                                          Navigator.of(context).pop();
+                                            Navigator.of(context).pop();
+                                          } catch (e) {
+                                            String errorMessage = e.toString();
+                                            _showErrorSnackBar(
+                                                context, errorMessage);
+                                          }
                                         },
                                         child: const Text('삭제'),
                                       ),
@@ -186,10 +217,17 @@ class _ShopScreenState extends State<ShopScreen> {
                                               priceController.text.trim());
                                           String description =
                                               descriptionController.text.trim();
-
-                                          context.read<MenuProvider>().addMenu(
-                                              cafeId, name, price, description);
-                                          Navigator.of(context).pop();
+                                          try {
+                                            context
+                                                .read<MenuProvider>()
+                                                .editMenu(cafeId, menu.menuId,
+                                                    name, price, description);
+                                            Navigator.of(context).pop();
+                                          } catch (e) {
+                                            String errorMessage = e.toString();
+                                            _showErrorSnackBar(
+                                                context, errorMessage);
+                                          }
                                         },
                                         child: const Text('수정'),
                                       ),
@@ -198,9 +236,10 @@ class _ShopScreenState extends State<ShopScreen> {
                                 );
                               },
                               child: Menu(
-                                name: menu.name,
-                                price: menu.price,
-                                description: menu.description,
+                                menuId: menu.menuId,
+                                menuName: menu.menuName,
+                                menuPrice: menu.menuPrice,
+                                menuDescription: menu.menuDescription,
                               ),
                             ),
                           )
