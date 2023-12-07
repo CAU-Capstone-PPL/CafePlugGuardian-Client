@@ -1,16 +1,12 @@
 import 'dart:async';
 import 'dart:math';
-import 'package:cafe_plug_guardian_client/models/alert_model.dart';
 import 'package:cafe_plug_guardian_client/provider/plug_detail_provider.dart';
 import 'package:cafe_plug_guardian_client/screens/alert_by_plug_id.dart';
 import 'package:cafe_plug_guardian_client/screens/power_graph_screen.dart';
 import 'package:cafe_plug_guardian_client/services/api_plug.dart';
-import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/custom_button_widget.dart';
 import 'package:cafe_plug_guardian_client/widgets/page_entry_button_widget.dart';
-import 'package:cafe_plug_guardian_client/widgets/plug_power_info.dart';
-import 'package:cafe_plug_guardian_client/widgets/power_entry_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -48,6 +44,24 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
   void dispose() {
     _stopTimer();
     super.dispose();
+  }
+
+  void _showErrorSnackBar(BuildContext context, String errorMessage) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const HeadingText(content: 'Error'),
+        content: BoldText(content: errorMessage),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -132,31 +146,34 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
                             ),
                             BoldText(
                                 content: context
-                                            .watch<PlugDetailProvider>()
-                                            .plug!
-                                            .toggle ==
-                                        'ON'
-                                    ? 'On'
-                                    : 'Off'),
-                            CustomButton(
-                                content: context
-                                            .watch<PlugDetailProvider>()
-                                            .plug!
-                                            .toggle ==
-                                        'ON'
-                                    ? 'Off'
-                                    : 'On',
-                                onPressed: () {
-                                  if (context
-                                          .watch<PlugDetailProvider>()
-                                          .plug!
-                                          .toggle ==
-                                      'ON') {
-                                    ApiPlug.patchPlugOff(widget.id);
-                                  } else {
-                                    ApiPlug.patchPlugOn(widget.id);
-                                  }
-                                }),
+                                        .watch<PlugDetailProvider>()
+                                        .plug!
+                                        .toggle
+                                    ? 'ON'
+                                    : 'OFF'),
+                            context.watch<PlugDetailProvider>().plug!.toggle
+                                ? CustomButton(
+                                    content: 'OFF',
+                                    onPressed: () {
+                                      try {
+                                        ApiPlug.patchPlugOff(widget.id);
+                                      } catch (e) {
+                                        String errorMessage = e.toString();
+                                        _showErrorSnackBar(
+                                            context, errorMessage);
+                                      }
+                                    })
+                                : CustomButton(
+                                    content: 'ON',
+                                    onPressed: () {
+                                      try {
+                                        ApiPlug.patchPlugOn(widget.id);
+                                      } catch (e) {
+                                        String errorMessage = e.toString();
+                                        _showErrorSnackBar(
+                                            context, errorMessage);
+                                      }
+                                    }),
                             const SizedBox(
                               height: 10,
                             ),

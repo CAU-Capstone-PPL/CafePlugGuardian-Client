@@ -62,7 +62,7 @@ class ApiPlug {
   }
 
   //토글 on
-  static Future<bool> patchPlugOn(int plugId) async {
+  static Future<String> patchPlugOn(int plugId) async {
     final url = Uri.parse('$baseUrl/plug/$plugId/turnOn');
     final response = await http.patch(url);
 
@@ -72,11 +72,12 @@ class ApiPlug {
       throw Exception(errorMessage);
     }
     final dynamic json = jsonDecode(response.body);
-    return json['success'];
+    final dynamic result = json['result'];
+    return result['toggle'];
   }
 
   //토클 off
-  static Future<bool> patchPlugOff(int plugId) async {
+  static Future<String> patchPlugOff(int plugId) async {
     final url = Uri.parse('$baseUrl/plug/$plugId/turnOff');
     final response = await http.patch(url);
 
@@ -86,7 +87,8 @@ class ApiPlug {
       throw Exception(errorMessage);
     }
     final dynamic json = jsonDecode(response.body);
-    return json['success'];
+    final dynamic result = json['result'];
+    return result['toggle'];
   }
 
   //최근 일주일 간 총 플러그 전력 사용량 (get)

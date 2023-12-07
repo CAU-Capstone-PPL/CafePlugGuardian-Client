@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 class Plug extends StatelessWidget {
   final int plugId;
-  final String plugName, toggle;
-  final bool useStatus;
+  final String plugName;
+  final bool useStatus, toggle;
   final TimeModel runningTime;
   final double usedPower, assignPower;
   const Plug({
@@ -24,7 +24,7 @@ class Plug extends StatelessWidget {
     double fillRatio =
         assignPower == 0.0 ? assignPower : usedPower / assignPower;
     return Opacity(
-      opacity: toggle == 'ON' ? 1.0 : 0.5,
+      opacity: toggle ? 1.0 : 0.5,
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -48,7 +48,7 @@ class Plug extends StatelessWidget {
                   content: plugName,
                 ),
                 BoldText(
-                  content: toggle == 'ON' ? 'On' : 'Off',
+                  content: toggle ? 'On' : 'Off',
                 ),
               ],
             ),

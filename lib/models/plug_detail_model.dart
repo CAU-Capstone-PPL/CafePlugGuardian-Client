@@ -2,8 +2,8 @@ import 'package:cafe_plug_guardian_client/models/time_model.dart';
 
 class PlugDetatilModel {
   final int plugId;
-  final String plugName, plugDescription, toggle;
-  final bool useStatus;
+  final String plugName, plugDescription;
+  final bool useStatus, toggle;
   final TimeModel startTime, runningTime;
   final double usedPower, assignPower, realTimePower;
 
