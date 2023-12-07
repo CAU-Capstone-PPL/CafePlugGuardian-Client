@@ -9,7 +9,7 @@ class PlugDetailProvider extends ChangeNotifier {
   PlugDetatilModel _plug = PlugDetatilModel(
     plugId: 0,
     plugName: '',
-    toggle: false,
+    toggle: 'OFF',
     useStatus: false,
     plugDescription: '로딩 중...',
     startTime: TimeModel(hours: 0, minutes: 0),

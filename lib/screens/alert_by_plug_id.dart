@@ -56,7 +56,7 @@ class _AlertByPlugIdScreenState extends State<AlertByPlugIdScreen> {
                         plugName: alert.plugName,
                         plugOffTime: alert.plugOffTime,
                         ownerCheck: alert.ownerCheck,
-                        isToggleOn: alert.isToggleOn),
+                        toggle: alert.toggle),
                   );
                 },
               )

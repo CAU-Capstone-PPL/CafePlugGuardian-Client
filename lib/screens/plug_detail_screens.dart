@@ -132,23 +132,26 @@ class _PlugDetailScreenState extends State<PlugDetailScreen> {
                             ),
                             BoldText(
                                 content: context
-                                        .watch<PlugDetailProvider>()
-                                        .plug!
-                                        .toggle
+                                            .watch<PlugDetailProvider>()
+                                            .plug!
+                                            .toggle ==
+                                        'ON'
                                     ? 'On'
                                     : 'Off'),
                             CustomButton(
                                 content: context
-                                        .watch<PlugDetailProvider>()
-                                        .plug!
-                                        .toggle
+                                            .watch<PlugDetailProvider>()
+                                            .plug!
+                                            .toggle ==
+                                        'ON'
                                     ? 'Off'
                                     : 'On',
                                 onPressed: () {
                                   if (context
-                                      .watch<PlugDetailProvider>()
-                                      .plug!
-                                      .toggle) {
+                                          .watch<PlugDetailProvider>()
+                                          .plug!
+                                          .toggle ==
+                                      'ON') {
                                     ApiPlug.patchPlugOff(widget.id);
                                   } else {
                                     ApiPlug.patchPlugOn(widget.id);

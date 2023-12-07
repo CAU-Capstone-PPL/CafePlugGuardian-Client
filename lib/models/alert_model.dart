@@ -4,12 +4,13 @@ class AlertModel {
   final int plugId;
   final String plugName;
   final DateTimeModel plugOffTime;
-  final bool ownerCheck, isToggleOn;
+  final bool ownerCheck;
+  final String toggle;
 
   AlertModel.fromJson(Map<String, dynamic> json)
       : plugId = json['plugId'],
         plugName = json['plugName'],
         plugOffTime = DateTimeModel.fromJson(json['plugOffTime']),
         ownerCheck = json['ownerCheck'],
-        isToggleOn = json['isToggleOn'];
+        toggle = json['toggle'];
 }

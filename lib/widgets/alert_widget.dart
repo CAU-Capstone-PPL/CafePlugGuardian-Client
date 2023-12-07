@@ -6,16 +6,16 @@ import 'package:flutter/material.dart';
 
 class Alert extends StatelessWidget {
   final int plugId;
-  final String plugName;
+  final String plugName, toggle;
   final DateTimeModel plugOffTime;
-  final bool ownerCheck, isToggleOn;
+  final bool ownerCheck;
   const Alert(
       {super.key,
       required this.plugId,
       required this.plugName,
       required this.plugOffTime,
       required this.ownerCheck,
-      required this.isToggleOn});
+      required this.toggle});
 
   @override
   Widget build(BuildContext context) {
