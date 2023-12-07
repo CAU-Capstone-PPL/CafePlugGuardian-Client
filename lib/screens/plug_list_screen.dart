@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:cafe_plug_guardian_client/provider/plug_core_provider.dart';
+import 'package:cafe_plug_guardian_client/provider/user_provider.dart';
 import 'package:cafe_plug_guardian_client/screens/plug_connect_screen.dart';
 import 'package:cafe_plug_guardian_client/screens/plug_detail_screens.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
@@ -25,9 +26,13 @@ class _PlugListScreenState extends State<PlugListScreen> {
   }
 
   void _startTimer() {
-    context.read<PlugCoreProvider>().updateAllPlugs();
+    context
+        .read<PlugCoreProvider>()
+        .updateAllPlugs(context.read<UserProvider>().cafeId!);
     _timer = Timer.periodic(const Duration(seconds: 3), (Timer timer) {
-      context.read<PlugCoreProvider>().updateAllPlugs();
+      context
+          .read<PlugCoreProvider>()
+          .updateAllPlugs(context.read<UserProvider>().cafeId!);
     });
   }
 
@@ -130,7 +135,7 @@ class _PlugListScreenState extends State<PlugListScreen> {
                       },
                     )
                   : const Center(
-                      child: TitleText(content: '아직 손님이 사용 중인 플러그가 없습니다.'),
+                      child: TitleText(content: '아직 추가된 플러그가 없습니다.'),
                     ),
             ),
           ],

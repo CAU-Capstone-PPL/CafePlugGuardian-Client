@@ -18,13 +18,13 @@ class PlugDetailProvider extends ChangeNotifier {
     usedPower: 0.0,
     realTimePower: 0.0,
   );
-  bool _test = true;
+  final bool _test = true;
 
   PlugDetatilModel? get plug => _plug;
 
   void updatePlug(int id) async {
-    //_plug = await ApiPlug.getPlugById(id);
-    if (_test) {
+    _plug = await ApiPlug.getPlugById(id);
+    /*if (_test) {
       _plug = await ApiTest.testGetPlugById(id);
       print('updatePlug');
       _test = false;
@@ -32,7 +32,7 @@ class PlugDetailProvider extends ChangeNotifier {
       _plug = await ApiTest.testGetPlugChangedById(id);
       print('updatePlug');
       _test = true;
-    }
+    }*/
     notifyListeners();
   }
 }

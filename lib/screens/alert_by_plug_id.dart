@@ -53,6 +53,8 @@ class _AlertByPlugIdScreenState extends State<AlertByPlugIdScreen> {
                     },
                     child: Alert(
                         plugId: alert.plugId,
+                        plugOffLogId: alert.plugOffLogId,
+                        plugUseId: alert.plugUseId,
                         plugName: alert.plugName,
                         plugOffTime: alert.plugOffTime,
                         ownerCheck: alert.ownerCheck,

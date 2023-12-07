@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 class PlugCoreProvider extends ChangeNotifier {
   List<PlugCoreModel> _onPlugs = [];
   List<PlugCoreModel> _allPlugs = [];
-  bool _test = true;
+  final bool _test = true;
 
   List<PlugCoreModel> get onPlugs => _onPlugs;
   List<PlugCoreModel> get allPlugs => _allPlugs;
 
-  void updateOnPlugs() async {
-    //_onPlugs = await ApiPlug.getOnPlugs(1);
-    if (_test) {
+  void updateOnPlugs(int cafeId) async {
+    _onPlugs = await ApiPlug.getOnPlugs(cafeId);
+    /*if (_test) {
       _onPlugs = await ApiTest.testGetOnPlugs();
       print('updateOnPlugs');
       _test = false;
@@ -21,13 +21,13 @@ class PlugCoreProvider extends ChangeNotifier {
       _onPlugs = await ApiTest.testGetOnPlugsChanged();
       print('updateOnPlugs');
       _test = true;
-    }
+    }*/
     notifyListeners();
   }
 
-  void updateAllPlugs() async {
-    //_allPlugs = await ApiPlug.getPlugs(1);
-    if (_test) {
+  void updateAllPlugs(int cafeId) async {
+    _allPlugs = await ApiPlug.getPlugs(cafeId);
+    /*if (_test) {
       _allPlugs = await ApiTest.testGetPlugs();
       print('updateAllPlugs');
       _test = false;
@@ -35,7 +35,7 @@ class PlugCoreProvider extends ChangeNotifier {
       _allPlugs = await ApiTest.testGetPlugsChanged();
       print('updateAllPlugs');
       _test = true;
-    }
+    }*/
     notifyListeners();
   }
 }

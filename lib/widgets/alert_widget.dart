@@ -1,17 +1,17 @@
 import 'package:cafe_plug_guardian_client/models/date_time_model.dart';
-import 'package:cafe_plug_guardian_client/screens/alert_by_plug_id.dart';
-import 'package:cafe_plug_guardian_client/screens/plug_detail_screens.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:flutter/material.dart';
 
 class Alert extends StatelessWidget {
-  final int plugId;
+  final int plugId, plugOffLogId, plugUseId;
   final String plugName, toggle;
   final DateTimeModel plugOffTime;
   final bool ownerCheck;
   const Alert(
       {super.key,
       required this.plugId,
+      required this.plugOffLogId,
+      required this.plugUseId,
       required this.plugName,
       required this.plugOffTime,
       required this.ownerCheck,

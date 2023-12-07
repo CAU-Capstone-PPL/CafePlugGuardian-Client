@@ -41,9 +41,15 @@ class ApiAlert {
   }
 
   //관리자용 앱 플러그 차단 로그 확인 완료
-  static Future<bool> patchOwnerCheck(int plugId) async {
-    final url = Uri.parse('$baseUrl/url 미정');
-    final response = await http.patch(url);
+  static Future<bool> patchOwnerCheck(int plugOffLogId) async {
+    final url = Uri.parse('$baseUrl/log/check');
+    final data = {'plugOffLogId': plugOffLogId};
+
+    final response = await http.patch(url,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode(data));
 
     if (response.statusCode != 200) {
       final dynamic json = jsonDecode(response.body);

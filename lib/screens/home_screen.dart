@@ -30,9 +30,13 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _startTimer() {
-    context.read<PlugCoreProvider>().updateOnPlugs();
+    context
+        .read<PlugCoreProvider>()
+        .updateOnPlugs(context.read<UserProvider>().cafeId!);
     _timer = Timer.periodic(const Duration(seconds: 3), (Timer timer) {
-      context.read<PlugCoreProvider>().updateOnPlugs();
+      context
+          .read<PlugCoreProvider>()
+          .updateOnPlugs(context.read<UserProvider>().cafeId!);
     });
   }
 

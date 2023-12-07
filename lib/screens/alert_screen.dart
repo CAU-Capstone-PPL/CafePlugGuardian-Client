@@ -1,10 +1,7 @@
-import 'package:cafe_plug_guardian_client/models/alert_model.dart';
 import 'package:cafe_plug_guardian_client/provider/alert_provider.dart';
+import 'package:cafe_plug_guardian_client/provider/user_provider.dart';
 import 'package:cafe_plug_guardian_client/screens/alert_by_plug_id.dart';
 import 'package:cafe_plug_guardian_client/screens/plug_detail_screens.dart';
-import 'package:cafe_plug_guardian_client/services/api_alert.dart';
-import 'package:cafe_plug_guardian_client/services/api_plug.dart';
-import 'package:cafe_plug_guardian_client/services/api_test.dart';
 import 'package:cafe_plug_guardian_client/style.dart';
 import 'package:cafe_plug_guardian_client/widgets/alert_widget.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +26,9 @@ class _AlertScreenState extends State<AlertScreen> {
   }
 
   void update() {
-    context.read<AlertProvider>().updateAllAlert();
+    context
+        .read<AlertProvider>()
+        .updateAllAlert(context.read<UserProvider>().cafeId!);
   }
 
   @override
@@ -71,6 +70,8 @@ class _AlertScreenState extends State<AlertScreen> {
                     },
                     child: Alert(
                         plugId: alert.plugId,
+                        plugOffLogId: alert.plugOffLogId,
+                        plugUseId: alert.plugUseId,
                         plugName: alert.plugName,
                         plugOffTime: alert.plugOffTime,
                         ownerCheck: alert.ownerCheck,
