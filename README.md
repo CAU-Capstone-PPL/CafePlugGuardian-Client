@@ -91,6 +91,11 @@ Through these features, the cafe manager can protect the plugs in the cafe.
 
 7. Run the Application
 
+#### If you want to change the API URL address to your backend server address, follow these instructions.
+  - each dart file in lib/services has a baseUrl variable. Change that variable to 'your URL address/api'. 
+  
+  - ex) http://yourServerAddress/api
+
 
 ## License
 This program is licensed under MIT
